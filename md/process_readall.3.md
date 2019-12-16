@@ -65,7 +65,9 @@ syntax:
          write(*,*)ierr,string
       end program test_process_readall
 <br />
-</pre>Read all output of a command to an array using <b>split</b>(3f)
+</pre>
+Read all output of a command to an array using <b>split</b>(3f)
+<em>(requires the M_strings(3f) module to split the string)</em>
         <pre>
       program demo_process_readall
       use M_process ,only: process_readall
@@ -83,62 +85,22 @@ syntax:
       end program demo_process_readall
 <br />
 </pre>Results:
-        <blockquote>
-          <table cellpadding="3">
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">1</td>
-              <td valign="bottom">[Articles]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">2</td>
-              <td valign="bottom">[LIBRARY]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">3</td>
-              <td valign="bottom">[PC]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">4</td>
-              <td valign="bottom">[SHIP]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">5</td>
-              <td valign="bottom">[SPEC]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">6</td>
-              <td valign="bottom">[crib.dat]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">7</td>
-              <td valign="bottom">[doc]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">8</td>
-              <td valign="bottom">[html]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">9</td>
-              <td valign="bottom">[index.html]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">10</td>
-              <td valign="bottom">[plan.txt]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">11</td>
-              <td valign="bottom">[questions]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">12</td>
-              <td valign="bottom">[scripts]</td>
-            </tr>
-            <tr valign="top">
-              <td class="c2" width="6%" nowrap="nowrap">13</td>
-              <td valign="bottom">[tmp]</td>
-            </tr>
-          </table>
-        </blockquote>
+      <pre>
+    1  [Articles]
+    2  [LIBRARY]
+    3  [PC]
+    4  [SHIP]
+    5  [SPEC]
+    6  [crib.dat]
+    7  [doc]
+    8  [html]
+    9  [index.html]
+    10 [plan.txt]
+    11 [questions]
+    12 [scripts]
+    13 [tmp]
+</pre>
+
       </blockquote><a name="5"></a>
       <h3><a name="5">SEE ALSO</a></h3>
       <blockquote>
