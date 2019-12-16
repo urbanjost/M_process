@@ -44,7 +44,7 @@ syntax:
         <table cellpadding="3">
           <tr valign="top">
             <td class="c2" colspan="1">process_readall</td>
-            <td>Assuming sufficient memory is available all the output of the system command are concatenated into a string with spaces added between the
+            <td>Assuming sufficient memory is available all the output of the system command is concatenated into a string with spaces added between the
             output lines of the command.</td>
           </tr>
         </table>
