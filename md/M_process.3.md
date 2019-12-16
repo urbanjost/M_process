@@ -88,17 +88,10 @@
           <tr valign="top">
             <td class="c2" width="6%" nowrap="nowrap">ierr</td>
             <td valign="bottom">
-              error flag returned. <i>process_writeline</i>(3f) : negative indicates an error
-              <table width="100%" cellpadding="3">
-                <tr valign="top">
-                  <td colspan="2"><b>process_readline</b>(3f)</td>
-                </tr>
-                <tr valign="top">
-                  <td width="6%"> </td>
-                  <td>: Non-zero indicates an error</td>
-                </tr>
-              </table><!-- .PP -->
-            </td>
+              error flag returned. 
+	      <br/><i>process_writeline</i>(3f) : negative indicates an error
+              <br/><i>process_readline</i>(3f) : Non-zero indicates an error
+             </td>
           </tr>
         </table>maximum character value length is currently 4096
       </blockquote><a name="4"></a>
