@@ -995,7 +995,7 @@
         <pre>
 <b>use</b> M_process, <i>only</i> : process_open_read, process_open_write, <i>process_close</i>
 <b>use</b> M_process, <i>only</i> : process_readline, process_readall, <i>process_writeline</i>
-<b>use</b> M_process, <i>only</i> : streampointer, <i>process_debug</i>
+<b>use</b> M_process, <i>only</i> : streampointer, <i>
 </pre>
       </blockquote><a name="2"></a>
       <h3><a name="2">DESCRIPTION</a></h3>
@@ -1069,9 +1069,14 @@
           <tr valign="top">
             <td class="c2" width="6%" nowrap="nowrap">ierr</td>
             <td valign="bottom">
-              error flag returned. 
+              error flag returned. zero (0) indicates no error was detected.
+              The meaning of non-zero values can vary from system to system.
+              Typically
+              <br/><i>process_openread</i>(3f)  : negative indicates an error
+              <br/><i>process_openwrite</i>(3f) : negative indicates an error
               <br/><i>process_writeline</i>(3f) : negative indicates an error
-              <br/><i>process_readline</i>(3f) : Non-zero indicates an error
+              <br/><i>process_readline</i>(3f)  : Non-zero indicates an error
+              <br/><i>process_close</i>(3f)     : Non-zero indicates an error
              </td>
           </tr>
         </table>maximum character value length is currently 4096
@@ -1113,15 +1118,8 @@
          !###! Wrap up
          call process_close(fp,ierr)
 <br />
-<<<<<<< HEAD
       end program read_ex
 </pre>
-=======
-</pre>
-        <blockquote>
-          end program read_ex
-        </blockquote>
->>>>>>> aa2aa99ef26471e2518082e08fe9a98dfb36a7d4
         <p>When calling a line-mode program from another program the most natural way is to open a process and write to it.</p>
         <p>Following is an example program that calls the M_process module to start a plotting program called <b>gnuplot</b>(1) and give it enough commands
         to generate a plot. It then lets you interactively interact with the <b>gnuplot</b>(1) program or continue on in the program.</p>
