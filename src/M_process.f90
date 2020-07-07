@@ -71,7 +71,7 @@
 !!    string variable (see process_readall(3) for an even simpler way to
 !!    do this) ...
 !!
-!!       program read_ex
+!!      program read_ex
 !!       use M_process ,only: process_open_read, process_readline
 !!       use M_process ,only: streampointer, process_close
 !!       implicit none
@@ -114,58 +114,58 @@
 !!    gnuplot(1) program or continue on in the program.
 !!
 !!     program gnuplotExample
-!!     use M_process ,only: process_open_write, process_writeline
-!!     use M_process ,only: streampointer, process_close
-!!     implicit none
-!!     !
-!!     ! Example of Fortran writing GNUPLOT command and data file.
-!!     !
-!!     character(len=4096) :: line                             !*! line of data to write (assumed long enough to hold any command line)
-!!     type(streampointer) :: fp                               !*! C file pointer returned by process_open()
-!!     integer :: ierr                                         !*! check status of calls to process module routines
-!!     integer :: i                                            !*! DO loop counter
-!!     integer,parameter   :: n=50                             !*! number of points to put into curve to be plotted
-!!     real                :: x(n),y(n)                        !*! arrays to fill with curve data to be plotted
-!!     integer             :: ios
+!!      use M_process ,only: process_open_write, process_writeline
+!!      use M_process ,only: streampointer, process_close
+!!      implicit none
+!!      !
+!!      ! Example of Fortran writing GNUPLOT command and data file.
+!!      !
+!!      character(len=4096) :: line                             !*! line of data to write (assumed long enough to hold any command line)
+!!      type(streampointer) :: fp                               !*! C file pointer returned by process_open()
+!!      integer :: ierr                                         !*! check status of calls to process module routines
+!!      integer :: i                                            !*! DO loop counter
+!!      integer,parameter   :: n=50                             !*! number of points to put into curve to be plotted
+!!      real                :: x(n),y(n)                        !*! arrays to fill with curve data to be plotted
+!!      integer             :: ios
 !!
-!!     !*! Define sample X,Y array.
-!!     do i=1,n                                                !*! set X() values as whole numbers 1 to N
-!!        x(i)=i
-!!        !*!
-!!        y(i)=(x(i)+0.5)**2
-!!     enddo
-!!                                                             !*! Write the GnuPlot commands
-!!     call process_open_write('gnuplot',fp,ierr)              !*! open process to write to (ie. start gnuplot(1) program)
-!!     call process_writeline('$SET1 <<EOD',fp,ierr)           !*! create in-line dataset $SET1
-!!     do i=1,n
-!!        write(line,'(2(f10.3,1x))')x(i),y(i)                 !*! Write the X,Y array as coordinates to be plotted.
-!!        call process_writeline(line,fp,ierr)
-!!     enddo
+!!      !*! Define sample X,Y array.
+!!      do i=1,n                                                !*! set X() values as whole numbers 1 to N
+!!         x(i)=i
+!!         !*!
+!!         y(i)=(x(i)+0.5)**2
+!!      enddo
+!!                                                              !*! Write the GnuPlot commands
+!!      call process_open_write('gnuplot',fp,ierr)              !*! open process to write to (ie. start gnuplot(1) program)
+!!      call process_writeline('$SET1 <<EOD',fp,ierr)           !*! create in-line dataset $SET1
+!!      do i=1,n
+!!         write(line,'(2(f10.3,1x))')x(i),y(i)                 !*! Write the X,Y array as coordinates to be plotted.
+!!         call process_writeline(line,fp,ierr)
+!!      enddo
 !!
-!!     call process_writeline([character(len=128) ::                        &
-!!     &'EOD                                                             ', &
-!!     &'set title " Example of GNUPlot data and command file generation"', &
-!!     &'set nokey'                                                       , &
-!!     &'plot $SET1 with lines'                                           , &
-!!     &''],fp,ierr)
+!!      call process_writeline([character(len=128) ::                        &
+!!      &'EOD                                                             ', &
+!!      &'set title " Example of GNUPlot data and command file generation"', &
+!!      &'set nokey'                                                       , &
+!!      &'plot $SET1 with lines'                                           , &
+!!      &''],fp,ierr)
 !!
-!!     write(*,'(a)')'enter gnuplot commands or "." to exit'   !*! Additional gnuplot commands; in this case interactively entered
-!!     do
-!!        write(*,'(a)',advance='no')'gnu>>'
-!!        read(*,'(a)',iostat=ios)line
-!!        if(line.eq.'.')exit
-!!        call process_writeline(trim(line),fp,ierr)
-!!     enddo
-!!                                                             !*! Wrap up
-!!     call process_close(fp,ierr)
-!!     write(*,*)'CLOSED THE PROCESS. RETURNING TO PROGRAM'
-!!     end program gnuplotExample
+!!      write(*,'(a)')'enter gnuplot commands or "." to exit'   !*! Additional gnuplot commands; in this case interactively entered
+!!      do
+!!         write(*,'(a)',advance='no')'gnu>>'
+!!         read(*,'(a)',iostat=ios)line
+!!         if(line.eq.'.')exit
+!!         call process_writeline(trim(line),fp,ierr)
+!!      enddo
+!!                                                              !*! Wrap up
+!!      call process_close(fp,ierr)
+!!      write(*,*)'CLOSED THE PROCESS. RETURNING TO PROGRAM'
+!!      end program gnuplotExample
 !!
 !! This program starts a bash shell that, among other things, calls sqlite3 and gnuplot.
 !! In this case the text is fixed to keep the example simple. More typically the text
 !! would be conditionally selected or generated by the program.
 !!
-!!     program demo_M_process
+!!    program demo_M_process
 !!     use M_process ,only : process_open_write, process_writeline
 !!     use M_process ,only : streampointer, process_close
 !!     implicit none
@@ -234,53 +234,53 @@
 !!   routine to write data to.
 !!
 !!    program test
-!!       call readit('ls -l')
-!!       call writeit('cat -n')
-!!    contains
-!!    !-------------------------------------------------------------------------------
-!!    subroutine readit(cmd)
-!!       use M_process ,ONLY: process_open_read, process_readline, streampointer, process_close
-!!       type(streampointer) :: fp    ! C file pointer returned by process_open()
-!!       character(len=*)    :: cmd   ! command line executed to start process
-!!       character(len=4096) :: line  ! line of data to read (assumed long enough to hold any input line)
-!!       integer ierr
-!!       call process_open_read(cmd,fp,ierr)   ! open process to read from
-!!       write(*,*)'READTEST: process is opened with status ',ierr
-!!       ierr=0
-!!       do while(ierr .eq. 0)
-!!          call process_readline(line,fp,ierr)  ! read a line from the process
-!!          if(ierr.ne.0)then
-!!             write(*,*)'READTEST: ierr is ',ierr
-!!             exit
-!!          endif
-!!          write(*,*)'READTEST: line:'//trim(line)
-!!       enddo
-!!       call process_close(fp,ierr)
-!!       write(*,*)'READTEST: process closed with status ',ierr
-!!    end subroutine readit
-!!    !-------------------------------------------------------------------------------
-!!    subroutine writeit(cmd)
-!!    use M_process ,ONLY: process_open_write, process_writeline, streampointer, process_close
-!!    type(streampointer) :: fp       ! C file pointer returned by process_open()
-!!    character(len=*) :: cmd         ! command line executed to start process
-!!       character(len=4096) :: line  ! line of data to write (assumed long enough to hold any output line)
-!!       integer ierr
-!!       integer i
-!!       call process_open_write(cmd,fp,ierr)   ! open process to write to
-!!       write(*,*)'WRITETEST: process is opened'
-!!       ierr=0
-!!       do i=1,10
-!!          write(line,'("WRITETEST: line ",i0)')i
-!!          call process_writeline(line,fp,ierr)
-!!          if(ierr.lt.0)then
-!!             write(*,*)'WRITETEST: process write error ',ierr
-!!             exit
-!!          endif
-!!       enddo
-!!       call process_close(fp,ierr)
-!!       write(*,*)'WRITETEST: process closed with status ',ierr
-!!    end subroutine writeit
-!!    end program test
+!!        call readit('ls -l')
+!!        call writeit('cat -n')
+!!     contains
+!!     !-------------------------------------------------------------------------------
+!!     subroutine readit(cmd)
+!!        use M_process ,ONLY: process_open_read, process_readline, streampointer, process_close
+!!        type(streampointer) :: fp    ! C file pointer returned by process_open()
+!!        character(len=*)    :: cmd   ! command line executed to start process
+!!        character(len=4096) :: line  ! line of data to read (assumed long enough to hold any input line)
+!!        integer ierr
+!!        call process_open_read(cmd,fp,ierr)   ! open process to read from
+!!        write(*,*)'READTEST: process is opened with status ',ierr
+!!        ierr=0
+!!        do while(ierr .eq. 0)
+!!           call process_readline(line,fp,ierr)  ! read a line from the process
+!!           if(ierr.ne.0)then
+!!              write(*,*)'READTEST: ierr is ',ierr
+!!              exit
+!!           endif
+!!           write(*,*)'READTEST: line:'//trim(line)
+!!        enddo
+!!        call process_close(fp,ierr)
+!!        write(*,*)'READTEST: process closed with status ',ierr
+!!     end subroutine readit
+!!     !-------------------------------------------------------------------------------
+!!     subroutine writeit(cmd)
+!!     use M_process ,ONLY: process_open_write, process_writeline, streampointer, process_close
+!!     type(streampointer) :: fp       ! C file pointer returned by process_open()
+!!     character(len=*) :: cmd         ! command line executed to start process
+!!        character(len=4096) :: line  ! line of data to write (assumed long enough to hold any output line)
+!!        integer ierr
+!!        integer i
+!!        call process_open_write(cmd,fp,ierr)   ! open process to write to
+!!        write(*,*)'WRITETEST: process is opened'
+!!        ierr=0
+!!        do i=1,10
+!!           write(line,'("WRITETEST: line ",i0)')i
+!!           call process_writeline(line,fp,ierr)
+!!           if(ierr.lt.0)then
+!!              write(*,*)'WRITETEST: process write error ',ierr
+!!              exit
+!!           endif
+!!        enddo
+!!        call process_close(fp,ierr)
+!!        write(*,*)'WRITETEST: process closed with status ',ierr
+!!     end subroutine writeit
+!!     end program test
 !!
 !!##SEE ALSO
 !!    o PIPES: pipe(3c), popen(3c), pclose(3c), fflush(3c)
@@ -291,12 +291,10 @@
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 !>
 !! DESCRIPTION: record-oriented Fortran I/O interface to C procedures popen/pclose and fgets/fputs and process-related procedures
 !!##VERSION:     2.0.0, 20161105
 !! AUTHOR:      John S. Urban
-!===================================================================================================================================
 !-==================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !-==================================================================================================================================
@@ -307,7 +305,7 @@ module M_process
 use, intrinsic :: ISO_C_BINDING
 implicit none
 
-character(len=*),parameter::ident_1="@(#)M_process(3fm): call C process open,close,read,write functions"
+! ident_1="@(#)M_process(3fm): call C process open,close,read,write functions"
 
 PRIVATE
 PUBLIC  ::  process_open_read  ! (cmd,fp,ierr)                  ! open process to read from
@@ -360,7 +358,6 @@ end interface
 !!    NULL is returned instead.
 !!##PORTABILITY
 !!    Note that fgets(3c) returns all of the data, including the newline.
-!===================================================================================================================================
 ! fgets
 interface
    function system_fgets(buf, siz, handle) bind(C, name='fgets')
@@ -402,7 +399,6 @@ end interface
 !!    PORTABILITY
 !!    ANSI  C  requires `fputs', but does not specify that the result on
 !!    success must be `0'; any non-negative value is permitted.
-!===================================================================================================================================
 interface
    function system_fputs(buf, handle) bind(C, name='fputs')
       use, intrinsic :: ISO_C_BINDING
@@ -445,7 +441,6 @@ end interface
 !!    specified by POSIX, and not all implementations follow POSIX rules.
 !!
 !!    No supporting OS subroutines are required.
-!===================================================================================================================================
 interface
    function fflush(handle) bind(C, name='fflush')
       use, intrinsic :: ISO_C_BINDING
@@ -461,7 +456,7 @@ contains
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()-
 !-----------------------------------------------------------------------------------------------------------------------------------
    subroutine process_open_read(cmd,fp,ierr)
-character(len=*),parameter::ident_2="@(#)M_process::process_open_read(3f): open process to read from"
+! ident_2="@(#)M_process::process_open_read(3f): open process to read from"
 
       character(len=*),intent(in)     :: cmd  ! shell command to start process with
       type(streampointer),intent(out) :: fp           ! file pointer returned for process
@@ -477,7 +472,7 @@ character(len=*),parameter::ident_2="@(#)M_process::process_open_read(3f): open 
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()-
 !-----------------------------------------------------------------------------------------------------------------------------------
    subroutine process_open_write(cmd,fp,ierr)
-character(len=*),parameter::ident_3="@(#)M_process::process_open_write(3f): open process to write to"
+! ident_3="@(#)M_process::process_open_write(3f): open process to write to"
 
       character(len=*),intent(in)     :: cmd  ! shell command to start process with
       type(streampointer),intent(out) :: fp           ! file pointer returned for process
@@ -503,9 +498,8 @@ character(len=*),parameter::ident_3="@(#)M_process::process_open_write(3f): open
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
    subroutine process_open(cmd,mode,fp,ierr)
-character(len=*),parameter::ident_4="@(#)M_process::process_open(3fp): open process"
+! ident_4="@(#)M_process::process_open(3fp): open process"
 
       character(len=*),intent(in)     :: cmd  ! shell command to start process with
       character(len=*),intent(in)     :: mode         ! read/write/mode parameter to pass to popen(3c)
@@ -530,7 +524,7 @@ character(len=*),parameter::ident_4="@(#)M_process::process_open(3fp): open proc
 !-----------------------------------------------------------------------------------------------------------------------------------
 subroutine process_close(fp,ierr)
 
-character(len=*),parameter::ident_5="@(#)M_process::process_close(3f): close process"
+! ident_5="@(#)M_process::process_close(3f): close process"
 
 type(streampointer) :: fp           ! file pointer returned for process ! DO NOT MAKE fp INTENT(IN)
 integer(c_int)      :: ios
@@ -559,7 +553,7 @@ end subroutine process_close
 !-----------------------------------------------------------------------------------------------------------------------------------
    subroutine process_readline(readfrom,fp,ierr)
 
-character(len=*),parameter::ident_6="@(#)M_process::process_readline(3f): read line from process"
+! ident_6="@(#)M_process::process_readline(3f): read line from process"
 
 ! readfrom length must be at least two
       character(len=*),intent(out)   :: readfrom
@@ -627,7 +621,7 @@ character(len=*),parameter::ident_6="@(#)M_process::process_readline(3f): read l
 !!
 !!   Read all output of a command to a single string
 !!
-!!       program test_process_readall
+!!      program test_process_readall
 !!       use M_process ,only: process_readall
 !!       implicit none
 !!       integer :: ierr
@@ -638,7 +632,7 @@ character(len=*),parameter::ident_6="@(#)M_process::process_readline(3f): read l
 !!
 !!   Read all output of a command to an array using split(3f)
 !!
-!!       program demo_process_readall
+!!      program demo_process_readall
 !!       use M_process ,only: process_readall
 !!       use M_strings ,only: split
 !!       implicit none
@@ -655,19 +649,19 @@ character(len=*),parameter::ident_6="@(#)M_process::process_readline(3f): read l
 !!
 !!   Results:
 !!
-!!       1     [Articles]
-!!       2     [LIBRARY]
-!!       3     [PC]
-!!       4     [SHIP]
-!!       5     [SPEC]
-!!       6     [crib.dat]
-!!       7     [doc]
-!!       8     [html]
-!!       9     [index.html]
-!!       10    [plan.txt]
-!!       11    [questions]
-!!       12    [scripts]
-!!       13    [tmp]
+!!       > 1     [Articles]
+!!       > 2     [LIBRARY]
+!!       > 3     [PC]
+!!       > 4     [SHIP]
+!!       > 5     [SPEC]
+!!       > 6     [crib.dat]
+!!       > 7     [doc]
+!!       > 8     [html]
+!!       > 9     [index.html]
+!!       > 10    [plan.txt]
+!!       > 11    [questions]
+!!       > 12    [scripts]
+!!       > 13    [tmp]
 !!
 !!##SEE ALSO
 !!    M_process(3fm)
@@ -675,10 +669,9 @@ character(len=*),parameter::ident_6="@(#)M_process::process_readline(3f): read l
 !!    John S. Urban
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
 function process_readall(cmd,delim,ierr)  result(string)      !! not hardened
 
-character(len=*),parameter::ident_7="@(#)M_process::process_readall(3f): read all lines from process"
+! ident_7="@(#)M_process::process_readall(3f): read all lines from process"
 
 character(len=*),intent(in)           :: cmd
 character(len=:),allocatable          :: string      !! assume will not run out of memory
@@ -732,7 +725,7 @@ end function process_readall
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()-
 !-----------------------------------------------------------------------------------------------------------------------------------
 subroutine process_writeline_scalar(writefrom,fp,ierr,trm)
-character(len=*),parameter::ident_8="@(#)M_process::process_writeline_scalar(3fp): write line to process"
+! ident_8="@(#)M_process::process_writeline_scalar(3fp): write line to process"
 character(len=*),intent(in)    :: writefrom
 type(streampointer),intent(in) :: fp
 integer,intent(out)            :: ierr
@@ -764,7 +757,7 @@ logical                        :: trm_local
 end subroutine process_writeline_scalar
 subroutine process_writeline_array(writefrom,fp,ierr)
 
-character(len=*),parameter::ident_9="@(#)M_process::process_writeline_array(3fp): write lines to process"
+! ident_9="@(#)M_process::process_writeline_array(3fp): write lines to process"
 
 character(len=*),intent(in)    :: writefrom(:)
 type(streampointer),intent(in) :: fp
