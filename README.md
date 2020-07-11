@@ -29,10 +29,15 @@ the document pages in the PROGRAMS/ sub-directory and run the unit tests.
 Alternatively, download the github repository and build it with 
 fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
 
-    fpm build
-    fpm test
+     git clone https://github.com/urbanjost/M_process.git
+     cd M_process
+     fpm build
+     fpm test
 
 or just list it as a dependency in your fpm.toml project file.
+
+     [dependencies]
+     M_process      = { git = "https://github.com/urbanjost/M_process.git" }
 
 ## SAMPLE PROGRAMS
 
