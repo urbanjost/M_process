@@ -3,7 +3,7 @@
      @mainpage M_process Fortran Module
 
      @section Introduction
-      time procedures that call the C procedure popen(3c) using the
+      procedures that call the C procedure popen(3c) using the
       intrinsic ISO_C_BINDING module in order to allow reading and
       writing from a process from Fortran.
 
