@@ -41,7 +41,7 @@ or just list it as a dependency in your fpm.toml project file.
 
 ## SAMPLE PROGRAMS
 
-The manpages contain a small sample programs that have been extracted
+The manpages contain small sample programs that have been extracted
 and placed in the PROGRAMS/ directory. 
 
 ## DOCUMENTATION
