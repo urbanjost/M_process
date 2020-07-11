@@ -1,0 +1,41 @@
+\hypertarget{interfacem__process_1_1system__fputs}{}\section{m\+\_\+process\+:\+:system\+\_\+fputs Interface Reference}
+\label{interfacem__process_1_1system__fputs}\index{m\+\_\+process\+::system\+\_\+fputs@{m\+\_\+process\+::system\+\_\+fputs}}
+
+
+\subsubsection*{N\+A\+ME}
+
+fputs(3fp) -\/ write a character string in a file or stream \subsubsection*{S\+Y\+N\+O\+P\+S\+IS} 
+
+
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+integer(c\+\_\+int) function \mbox{\hyperlink{interfacem__process_1_1system__fputs_a0a084cac4baf5058a79af7f6490c3a89}{system\+\_\+fputs}} (buf, handle)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{N\+A\+ME}
+
+fputs(3fp) -\/ write a character string in a file or stream \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
+
+\#include $<$stdio.\+h$>$
+
+int fputs(const char $\ast$\+S, F\+I\+L\+E $\ast$\+F\+P);
+
+\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
+
+`fputs' writes the string at S (but without the trailing null) to the file or stream identified by FP. R\+E\+T\+U\+R\+NS If successful, the result is `0'; otherwise, the result is `E\+OF'. P\+O\+R\+T\+A\+B\+I\+L\+I\+TY A\+N\+SI C requires `fputs', but does not specify that the result on success must be `0'; any non-\/negative value is permitted. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{interfacem__process_1_1system__fputs_a0a084cac4baf5058a79af7f6490c3a89}\label{interfacem__process_1_1system__fputs_a0a084cac4baf5058a79af7f6490c3a89}} 
+\index{m\+\_\+process\+::system\+\_\+fputs@{m\+\_\+process\+::system\+\_\+fputs}!system\+\_\+fputs@{system\+\_\+fputs}}
+\index{system\+\_\+fputs@{system\+\_\+fputs}!m\+\_\+process\+::system\+\_\+fputs@{m\+\_\+process\+::system\+\_\+fputs}}
+\subsubsection{\texorpdfstring{system\+\_\+fputs()}{system\_fputs()}}
+{\footnotesize\ttfamily integer(c\+\_\+int) function m\+\_\+process\+::system\+\_\+fputs\+::system\+\_\+fputs (\begin{DoxyParamCaption}\item[{character(kind=c\+\_\+char), dimension($\ast$)}]{buf,  }\item[{type (c\+\_\+ptr), value}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/urbanjs/venus/\+V600/github/\+M\+\_\+process/src/\mbox{\hyperlink{M__process_8f90}{M\+\_\+process.\+f90}}\end{DoxyCompactItemize}

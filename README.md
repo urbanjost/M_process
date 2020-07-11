@@ -1,38 +1,62 @@
-
 # M_process.f90 and associated files
+![process](images/M_process.gif)
 
 ## NAME
 
-   M_process - read and write lines to or from a process from Fortran via a C wrapper
+*M_process* - read and write lines to or from a process from Fortran via a C wrapper
 
 ## DESCRIPTION
 
-This package is a self-contained version of the M_process library from
-the GPF (General Purpose Fortran) package that has been extracted for
-those just interested in a library of string-related functions. In the
-GPF package this library is intertwined with several other large modules.
+The M_process Fortran module ( A fortran-lang.org [package](https://fortran-lang.org/packages/) )
+reads and writes from processes by calling the C popen(3c) procedure.
 
-    git clone https://github.com/urbanjost/M_process.git
-    cd M_process/src
-    # change Makefile if not using gfortran(1)
-    make
+## DOWNLOAD AND BUILD
+Just download the github repository, enter the src/ directory and run make:
 
-This will compile the M_process module and build all the example programs from
-the document pages in the PROGRAMS/ sub-directory.
+     git clone https://github.com/urbanjost/M_process.git
+     cd M_process/src
+     # change Makefile if not using gfortran(1)
+     make
+     # optionally
+     make test # run the unit tests
+     make run  # run all the demo programs from the manpages
+     make help # see other developer options
 
-<?
-<blockquote>
-<table cellpadding="3">
-<tr><td><a href="md/M_process.3.md">          M_process          </a></td><td> Fortran Module for calling process-related C functions from Fortran with the basic procedures:
-<table>
-<tr><td>  process_open_read  </td><td> open a process for reading</td></tr>
-<tr><td>  process_readline   </td><td> read a line from the process</td></tr>
-<tr><td>  process_open_write </td><td> open a process for writing</td></tr>
-<tr><td>  process_writeline  </td><td> write a line to the process</td></tr>
-<tr><td>  process_close      </td><td> close the process</td></tr>
-</table>
-</td>
-</tr>
+This will compile the M_process module and optionally build all the example programs from
+the document pages in the PROGRAMS/ sub-directory and run the unit tests.
 
-<tr><td><a href="md/process_readall.3.md">    process_readall    </a></td><td> read all output from the process</td></tr>
-</table>
+## SUPPORTS FPM
+Alternatively, download the github repository and build it with 
+fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
+
+    fpm build
+    fpm test
+
+or just list it as a dependency in your fpm.toml project file.
+
+## SAMPLE PROGRAMS
+
+The manpages contain a small sample programs that have been extracted
+and placed in the PROGRAMS/ directory. 
+
+## DOCUMENTATION
+There are currently several different ways to view the documentation ...
+
++ [BOOK_M_process](https://urbanjost.github.io/M_process/BOOK_M_process.html).
++ [manpage index](https://urbanjost.github.io/M_process/index.html)
++ [doxygen(1) output](https://urbanjost.github.io/M_process/doxygen_out/html/index.html).
+
+_and there are manpages_ in the distribution in man/.
+
+# RESPONSES
+
+Discussion is welcome here as well as at
+ - [Fortran Discourse](https://fortran-lang.discourse.group)
+ - [Fortran Wiki](http://fortranwiki.org)
+ - [Google Fortran newsgroup](https://groups.google.com/forum/#!forum/comp.lang.fortran)
+
+## ALTERNATIVES
+
+The Fortran Wiki [ fortranwiki.org ](http://fortranwiki.org) contains
+information on other libraries and modules that provide I/O from 
+procedures.

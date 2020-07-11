@@ -1,0 +1,47 @@
+\hypertarget{interfacem__process_1_1fflush}{}\section{m\+\_\+process\+:\+:fflush Interface Reference}
+\label{interfacem__process_1_1fflush}\index{m\+\_\+process\+::fflush@{m\+\_\+process\+::fflush}}
+
+
+\subsubsection*{N\+A\+ME}
+
+fflush(3fp) -\/ flush buffered file output \subsubsection*{S\+Y\+N\+O\+P\+S\+IS} 
+
+
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+integer(c\+\_\+int) function \mbox{\hyperlink{interfacem__process_1_1fflush_a77d0db933d548b3ee20b064e705a408e}{fflush}} (handle)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{N\+A\+ME}
+
+fflush(3fp) -\/ flush buffered file output \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
+
+Syntax\+:
+
+\#include $<$stdio.\+h$>$ int fflush(\+F\+I\+L\+E $\ast$\+F\+P); \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
+
+The `stdio' output functions can buffer output before delivering it to the host system, in order to minimize the overhead of system calls.
+
+Use `fflush' to deliver any such pending output (for the file or stream identified by FP) to the host system.
+
+If FP is `N\+U\+LL', `fflush' delivers pending output from all open files.
+
+Additionally, if FP is a seekable input stream visiting a file descriptor, set the position of the file descriptor to match next unread byte, useful for obeying P\+O\+S\+IX semantics when ending a process without consuming all input from the stream. R\+E\+T\+U\+R\+NS fflush returns \textquotesingle{}0\textquotesingle{} unless it encounters a write error; in that situation, it returns `E\+OF'. P\+O\+R\+T\+A\+B\+I\+L\+I\+TY A\+N\+SI C requires `fflush'. The behavior on input streams is only specified by P\+O\+S\+IX, and not all implementations follow P\+O\+S\+IX rules.
+
+No supporting OS subroutines are required. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{interfacem__process_1_1fflush_a77d0db933d548b3ee20b064e705a408e}\label{interfacem__process_1_1fflush_a77d0db933d548b3ee20b064e705a408e}} 
+\index{m\+\_\+process\+::fflush@{m\+\_\+process\+::fflush}!fflush@{fflush}}
+\index{fflush@{fflush}!m\+\_\+process\+::fflush@{m\+\_\+process\+::fflush}}
+\subsubsection{\texorpdfstring{fflush()}{fflush()}}
+{\footnotesize\ttfamily integer(c\+\_\+int) function m\+\_\+process\+::fflush\+::fflush (\begin{DoxyParamCaption}\item[{type (c\+\_\+ptr), value}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/urbanjs/venus/\+V600/github/\+M\+\_\+process/src/\mbox{\hyperlink{M__process_8f90}{M\+\_\+process.\+f90}}\end{DoxyCompactItemize}

@@ -1,0 +1,60 @@
+\hypertarget{M__process_8f90}{}\section{/home/urbanjs/venus/\+V600/github/\+M\+\_\+process/src/\+M\+\_\+process.f90 File Reference}
+\label{M__process_8f90}\index{/home/urbanjs/venus/\+V600/github/\+M\+\_\+process/src/\+M\+\_\+process.\+f90@{/home/urbanjs/venus/\+V600/github/\+M\+\_\+process/src/\+M\+\_\+process.\+f90}}
+\subsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structm__process_1_1streampointer}{m\+\_\+process\+::streampointer}}
+\item 
+interface \mbox{\hyperlink{interfacem__process_1_1process__writeline}{m\+\_\+process\+::process\+\_\+writeline}}
+\item 
+interface \mbox{\hyperlink{interfacem__process_1_1system__popen}{m\+\_\+process\+::system\+\_\+popen}}
+\item 
+interface \mbox{\hyperlink{interfacem__process_1_1system__fgets}{m\+\_\+process\+::system\+\_\+fgets}}
+\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
+
+fgets(3fp) -\/ get character string from a file or stream by calling fgets(3c) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfacem__process_1_1system__pclose}{m\+\_\+process\+::system\+\_\+pclose}}
+\item 
+interface \mbox{\hyperlink{interfacem__process_1_1system__fputs}{m\+\_\+process\+::system\+\_\+fputs}}
+\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
+
+fputs(3fp) -\/ write a character string in a file or stream \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfacem__process_1_1fflush}{m\+\_\+process\+::fflush}}
+\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
+
+fflush(3fp) -\/ flush buffered file output \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespacem__process}{m\+\_\+process}}
+\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
+
+M\+\_\+process(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} Fortran Module for calling process-\/related C functions from Fortran (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__process_aaaf4d1926258a4cec7da7fc61c38c79d}{m\+\_\+process\+::process\+\_\+open\+\_\+read}} (cmd, fp, ierr)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__process_aa6ed1404ab3472f5068ed15a7a01defc}{m\+\_\+process\+::process\+\_\+open\+\_\+write}} (cmd, fp, ierr)
+\item 
+subroutine, private \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{m\+\_\+process\+::process\+\_\+open}} (cmd, mode, fp, ierr)
+\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
+
+(L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespacem__process_ab4c5cad3fb46686f0c9b71c3a634f6ae}{m\+\_\+process\+::process\+\_\+close}} (fp, ierr)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__process_acbc72c5ed371430a471aa1f3010fbbda}{m\+\_\+process\+::process\+\_\+readline}} (readfrom, fp, ierr)
+\item 
+character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__process_a7dd759a1344789477ae1e205d7fa9a51}{m\+\_\+process\+::process\+\_\+readall}} (cmd, delim, ierr)
+\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
+
+process\+\_\+readall(3f) -\/ \mbox{[}M\+\_\+process\mbox{]} read all lines from process into single string (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacem__process_a72527c0ec0af26dcb14b8bfad6dcd482}{m\+\_\+process\+::process\+\_\+writeline\+\_\+scalar}} (writefrom, fp, ierr, trm)
+\item 
+subroutine \mbox{\hyperlink{namespacem__process_a08887a918eba167ceacddf58ca084270}{m\+\_\+process\+::process\+\_\+writeline\+\_\+array}} (writefrom, fp, ierr)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+logical, public \mbox{\hyperlink{namespacem__process_a0fabee8d01338d5523fbdea5c5f1e894}{m\+\_\+process\+::process\+\_\+debug}} =.false.
+\end{DoxyCompactItemize}
