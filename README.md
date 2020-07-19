@@ -13,6 +13,7 @@ reads and writes from processes by calling the C popen(3c) procedure.
 ## DOWNLOAD AND BUILD
 Just download the github repository, enter the src/ directory and run make:
 
+```bash
      git clone https://github.com/urbanjost/M_process.git
      cd M_process/src
      # change Makefile if not using gfortran(1)
@@ -21,6 +22,7 @@ Just download the github repository, enter the src/ directory and run make:
      make test # run the unit tests
      make run  # run all the demo programs from the manpages
      make help # see other developer options
+```
 
 This will compile the M_process module and optionally build all the example programs from
 the document pages in the PROGRAMS/ sub-directory and run the unit tests.
@@ -29,10 +31,12 @@ the document pages in the PROGRAMS/ sub-directory and run the unit tests.
 Alternatively, download the github repository and build it with 
 fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
 
+```bash
      git clone https://github.com/urbanjost/M_process.git
      cd M_process
      fpm build
      fpm test
+```
 
 or just list it as a dependency in your fpm.toml project file.
 

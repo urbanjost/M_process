@@ -6,7 +6,7 @@ PROGFILES = \
    ../PROGRAMS/demo_M_process/demo_m_process.f90        \
    ../PROGRAMS/demo_process_readall/demo_process_readall.f90  \
    $(NULL)
-TESTFILES = ../test/test_suite.f90
+TESTFILES = ../test/test_suite_M_process.f90
 TEST = ${TESTFILES:.f90=}
 PROG = ${PROGFILES:.f90=}
 SRCS =  M_process.f90 
