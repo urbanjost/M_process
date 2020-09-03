@@ -4,6 +4,7 @@ license = "Public Domain"
 author = "John S. Urban"
 maintainer = "urbanjost@comcast.net"
 copyright = "2020 John S. Urban"
+description = "ISO_C_BINDING interface to popen(3c) and related system procedures "
 
 [[test]]
 name="test_suite"
