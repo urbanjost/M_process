@@ -34,8 +34,8 @@ Alternatively, download the github repository and build it with
 fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
 
 ```bash
-     git clone https://github.com/urbanjost/M_XXXXXXX.git
-     cd M_XXXXXXX
+     git clone https://github.com/urbanjost/M_process.git
+     cd M_process
      fpm build
      fpm test
 ```
@@ -43,7 +43,7 @@ fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/
 or just list it as a dependency in your fpm.toml project file.
 
      [dependencies]
-     M_XXXXXXX        = { git = "https://github.com/urbanjost/M_XXXXXXX.git" }
+     M_process        = { git = "https://github.com/urbanjost/M_process.git" }
 
 ## SAMPLE PROGRAMS
 
