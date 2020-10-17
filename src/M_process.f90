@@ -1119,7 +1119,6 @@ end function process_readall
 !-------------------------------------------------------------------------------
 !>
 !!##NAME
-!!##NAME
 !!    process_writeline(3fm) - [M_process] write to a process using a POSIX interface
 !!    (LICENSE:PD)
 !!
