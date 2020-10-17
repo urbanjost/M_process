@@ -92,7 +92,11 @@ Private Member Functions</h2></td></tr>
 <p>The &lsquo;stdio&rsquo; output functions can buffer output before delivering it to the host system, in order to minimize the overhead of system calls.</p>
 <p>Use &lsquo;fflush&rsquo; to deliver any such pending output (for the file or stream identified by FP) to the host system.</p>
 <p>If FP is &lsquo;NULL&rsquo;, &lsquo;fflush&rsquo; delivers pending output from all open files.</p>
-<p>Additionally, if FP is a seekable input stream visiting a file descriptor, set the position of the file descriptor to match next unread byte, useful for obeying POSIX semantics when ending a process without consuming all input from the stream. RETURNS fflush returns '0' unless it encounters a write error; in that situation, it returns &lsquo;EOF&rsquo;. PORTABILITY ANSI C requires &lsquo;fflush&rsquo;. The behavior on input streams is only specified by POSIX, and not all implementations follow POSIX rules.</p>
+<p>Additionally, if FP is a seekable input stream visiting a file descriptor, set the position of the file descriptor to match next unread byte, useful for obeying POSIX semantics when ending a process without consuming all input from the stream.</p>
+<h2>RETURNS</h2>
+<p>fflush returns '0' unless it encounters a write error; in that situation, it returns &lsquo;EOF&rsquo;.</p>
+<h2>PORTABILITY</h2>
+<p>ANSI C requires &lsquo;fflush&rsquo;. The behavior on input streams is only specified by POSIX, and not all implementations follow POSIX rules.</p>
 <p>No supporting OS subroutines are required. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a77d0db933d548b3ee20b064e705a408e"></a>

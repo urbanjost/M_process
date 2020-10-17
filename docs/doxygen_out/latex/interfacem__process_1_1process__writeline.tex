@@ -4,7 +4,11 @@
 \begin{DoxyCompactItemize}
 \item 
 subroutine \mbox{\hyperlink{interfacem__process_1_1process__writeline_a9e95166556bec54fd10568f01d02f34e}{process\+\_\+writeline\+\_\+scalar}} (writefrom, fp, ierr, trm)
-\item 
+\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
+
+\subsubsection*{N\+A\+ME}
+
+process\+\_\+writeline(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} write to a process using a P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{interfacem__process_1_1process__writeline_aa3543e9b23056b2f35869003f777f65d}{process\+\_\+writeline\+\_\+array}} (writefrom, fp, ierr)
 \end{DoxyCompactItemize}
 
@@ -23,6 +27,63 @@ subroutine \mbox{\hyperlink{interfacem__process_1_1process__writeline_aa3543e9b2
 {\footnotesize\ttfamily subroutine m\+\_\+process\+::process\+\_\+writeline\+::process\+\_\+writeline\+\_\+scalar (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{writefrom,  }\item[{type(\mbox{\hyperlink{structm__process_1_1streampointer}{streampointer}}), intent(in)}]{fp,  }\item[{integer, intent(out)}]{ierr,  }\item[{logical, intent(in), optional}]{trm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+
+\subsubsection*{N\+A\+ME}
+
+\subsubsection*{N\+A\+ME}
+
+process\+\_\+writeline(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} write to a process using a P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD) 
+
+\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
+
+\begin{DoxyVerb} subroutine process_writeline(string,fp,ierr)
+
+   character(len=*)    :: string
+   type(streampointer) :: fp
+   integer             :: ierr
+\end{DoxyVerb}
+
+
+\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
+
+The M\+\_\+process Fortran procedures use the I\+S\+O\+\_\+\+C\+\_\+\+B\+I\+N\+D\+I\+NG interface to define Fortran-\/callable versions of the C procedures popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-\/oriented wrapper routines are then used to create a simple Fortran-\/callable interface.
+
+A P\+O\+S\+IX C interface is generally available but may require using a Linux subwindow or an application such as Cyg\+Win on M\+S\+Windows platforms.
+
+See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.
+
+\subsubsection*{O\+P\+T\+I\+O\+NS}
+
+\begin{DoxyVerb}string   data line to to process
+fp       C file pointer returned by process_open_*()
+ierr     error flag returned.
+
+          o process_writeline(3f) : negative indicates an error
+          o process_readline(3f)  : Non-zero indicates an error
+
+maximum character value length is currently 4096
+\end{DoxyVerb}
+
+
+\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
+
+This example shows a routine to write lines to the stdin of a system process
+
+program demo\+\_\+process\+\_\+writeline use, intrinsic \+:\+: iso\+\_\+fortran\+\_\+env, only \+: \& \& stdin=$>$input\+\_\+unit, \& \& stdout=$>$output\+\_\+unit, \& \& stderr=$>$error\+\_\+unit use \mbox{\hyperlink{namespacem__process}{m\+\_\+process}} ,only\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use \mbox{\hyperlink{namespacem__process}{m\+\_\+process}} ,only\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:\+: fp ! line of data to write character(len=4096) \+:\+: line integer \+:\+: ierr integer \+:\+: i ! open process to write to call process\+\_\+open\+\_\+write(\textquotesingle{}cat -\/n\textquotesingle{},fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ! remember C and Fortran I/O are often independent of each other flush(stdout) ierr=0 line=\textquotesingle{}xxxxxxxxxxxxxxxxxxxxxxxxxxx\textquotesingle{} do i=1,10 ! write a line to the process call process\+\_\+writeline(trim(line),fp,ierr) if(ierr.\+lt.\+0)then write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+writeline
+
+Sample output\+:
+
+$>$W\+R\+I\+T\+E\+T\+E\+ST\+: process is opened with status 0 \begin{quote}
+1 xxxxxxxxxxxxxxxxxxxxxxxxxxx 2 xxxxxxxxxxxxxxxxxxxxxxxxxxx 3 xxxxxxxxxxxxxxxxxxxxxxxxxxx 4 xxxxxxxxxxxxxxxxxxxxxxxxxxx 5 xxxxxxxxxxxxxxxxxxxxxxxxxxx 6 xxxxxxxxxxxxxxxxxxxxxxxxxxx 7 xxxxxxxxxxxxxxxxxxxxxxxxxxx 8 xxxxxxxxxxxxxxxxxxxxxxxxxxx 9 xxxxxxxxxxxxxxxxxxxxxxxxxxx 10 xxxxxxxxxxxxxxxxxxxxxxxxxxx $>$W\+R\+I\+T\+E\+T\+E\+ST\+: process closed with status 0 \end{quote}
+
+
+\subsubsection*{S\+EE A\+L\+SO}
+
+o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \subsubsection*{A\+U\+T\+H\+OR}
+
+John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
+
+Public Domain 
 
 The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

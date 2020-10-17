@@ -29,7 +29,15 @@ Use `fflush' to deliver any such pending output (for the file or stream identifi
 
 If FP is `N\+U\+LL', `fflush' delivers pending output from all open files.
 
-Additionally, if FP is a seekable input stream visiting a file descriptor, set the position of the file descriptor to match next unread byte, useful for obeying P\+O\+S\+IX semantics when ending a process without consuming all input from the stream. R\+E\+T\+U\+R\+NS fflush returns \textquotesingle{}0\textquotesingle{} unless it encounters a write error; in that situation, it returns `E\+OF'. P\+O\+R\+T\+A\+B\+I\+L\+I\+TY A\+N\+SI C requires `fflush'. The behavior on input streams is only specified by P\+O\+S\+IX, and not all implementations follow P\+O\+S\+IX rules.
+Additionally, if FP is a seekable input stream visiting a file descriptor, set the position of the file descriptor to match next unread byte, useful for obeying P\+O\+S\+IX semantics when ending a process without consuming all input from the stream.
+
+\subsubsection*{R\+E\+T\+U\+R\+NS}
+
+fflush returns \textquotesingle{}0\textquotesingle{} unless it encounters a write error; in that situation, it returns `E\+OF'.
+
+\subsubsection*{P\+O\+R\+T\+A\+B\+I\+L\+I\+TY}
+
+A\+N\+SI C requires `fflush'. The behavior on input streams is only specified by P\+O\+S\+IX, and not all implementations follow P\+O\+S\+IX rules.
 
 No supporting OS subroutines are required. 
 

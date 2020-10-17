@@ -1,11 +1,11 @@
 'mainpage.txt
 /**
-     @mainpage M_process Fortran Module
+         @mainpage M_process Fortran Module
 
-     @section Introduction
+         @section Introduction
       procedures that call the C procedure popen(3c) using the
       intrinsic ISO_C_BINDING module in order to allow reading and
       writing from a process from Fortran.
 
-     @image html images/swirl.gif
+         @image html images/swirl.gif
 */'

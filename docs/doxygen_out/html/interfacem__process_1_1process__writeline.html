@@ -77,6 +77,9 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a9e95166556bec54fd10568f01d02f34e"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacem__process_1_1process__writeline.html#a9e95166556bec54fd10568f01d02f34e">process_writeline_scalar</a> (writefrom, fp, ierr, trm)</td></tr>
+<tr class="memdesc:a9e95166556bec54fd10568f01d02f34e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><h2>NAME</h2>
+<h2>NAME</h2>
+process_writeline(3fm) - [M_process] write to a process using a POSIX interface (LICENSE:PD)  <a href="#a9e95166556bec54fd10568f01d02f34e">More...</a><br /></td></tr>
 <tr class="separator:a9e95166556bec54fd10568f01d02f34e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3543e9b23056b2f35869003f777f65d"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacem__process_1_1process__writeline.html#aa3543e9b23056b2f35869003f777f65d">process_writeline_array</a> (writefrom, fp, ierr)</td></tr>
 <tr class="separator:aa3543e9b23056b2f35869003f777f65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,6 +172,40 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p><h2>NAME</h2>
+<h2>NAME</h2>
+process_writeline(3fm) - [M_process] write to a process using a POSIX interface (LICENSE:PD) </p>
+<h2>SYNOPSIS</h2>
+<pre class="fragment"> subroutine process_writeline(string,fp,ierr)
+
+   character(len=*)    :: string
+   type(streampointer) :: fp
+   integer             :: ierr
+</pre><h2>DESCRIPTION</h2>
+<p>The M_process Fortran procedures use the ISO_C_BINDING interface to define Fortran-callable versions of the C procedures popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-oriented wrapper routines are then used to create a simple Fortran-callable interface.</p>
+<p>A POSIX C interface is generally available but may require using a Linux subwindow or an application such as CygWin on MSWindows platforms.</p>
+<p>See "M_process" for an extended description.</p>
+<h2>OPTIONS</h2>
+<pre class="fragment">string   data line to to process
+fp       C file pointer returned by process_open_*()
+ierr     error flag returned.
+
+          o process_writeline(3f) : negative indicates an error
+          o process_readline(3f)  : Non-zero indicates an error
+
+maximum character value length is currently 4096
+</pre><h2>EXAMPLES</h2>
+<p>This example shows a routine to write lines to the stdin of a system process</p>
+<p>program demo_process_writeline use, intrinsic :: iso_fortran_env, only : &amp; &amp; stdin=&gt;input_unit, &amp; &amp; stdout=&gt;output_unit, &amp; &amp; stderr=&gt;error_unit use <a class="el" href="namespacem__process.html" title="NAMEM_process(3fm) - [M_process] Fortran Module for calling process-related C functions from Fortran ...">m_process</a> ,only: process_open_write, <a class="el" href="interfacem__process_1_1process__writeline.html">process_writeline</a> use <a class="el" href="namespacem__process.html" title="NAMEM_process(3fm) - [M_process] Fortran Module for calling process-related C functions from Fortran ...">m_process</a> ,only: streampointer, process_close implicit none type(streampointer) :: fp ! line of data to write character(len=4096) :: line integer :: ierr integer :: i ! open process to write to call process_open_write('cat -n',fp,ierr) write(*,*)'WRITETEST: process is opened with status ',ierr ! remember C and Fortran I/O are often independent of each other flush(stdout) ierr=0 line='xxxxxxxxxxxxxxxxxxxxxxxxxxx' do i=1,10 ! write a line to the process call process_writeline(trim(line),fp,ierr) if(ierr.lt.0)then write(*,*)'WRITETEST: ierr is ',ierr exit endif enddo call process_close(fp,ierr) write(*,*)'WRITETEST: process closed with status ',ierr end program demo_process_writeline</p>
+<p>Sample output:</p>
+<p>&gt;WRITETEST: process is opened with status 0 </p><blockquote class="doxtable">
+<p>1 xxxxxxxxxxxxxxxxxxxxxxxxxxx 2 xxxxxxxxxxxxxxxxxxxxxxxxxxx 3 xxxxxxxxxxxxxxxxxxxxxxxxxxx 4 xxxxxxxxxxxxxxxxxxxxxxxxxxx 5 xxxxxxxxxxxxxxxxxxxxxxxxxxx 6 xxxxxxxxxxxxxxxxxxxxxxxxxxx 7 xxxxxxxxxxxxxxxxxxxxxxxxxxx 8 xxxxxxxxxxxxxxxxxxxxxxxxxxx 9 xxxxxxxxxxxxxxxxxxxxxxxxxxx 10 xxxxxxxxxxxxxxxxxxxxxxxxxxx &gt;WRITETEST: process closed with status 0 </p>
+</blockquote>
+<h2>SEE ALSO</h2>
+<p>o PIPES: pipe(3c), popen(3c), pclose(3c), fflush(3c) o NAMED PIPES: mkfifo(3c), mknod(3c) o SUBPROCESSES: fork(3c) o OTHER: fflush(3c) </p><h2>AUTHOR</h2>
+<p>John S. Urban </p><h2>LICENSE</h2>
+<p>Public Domain </p>
 
 </div>
 </div>

@@ -25,7 +25,7 @@ Just download the github repository, enter the src/ directory and run make:
 ```
 
 This will compile the M_process module and optionally build all the example programs from
-the document pages in the PROGRAMS/ sub-directory and run the unit tests.
+the document pages in the test/demos/ sub-directory and run the unit tests.
 
 
 ## SUPPORTS FPM (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
@@ -42,19 +42,21 @@ fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/
 
 or just list it as a dependency in your fpm.toml project file.
 
+```toml
      [dependencies]
      M_process        = { git = "https://github.com/urbanjost/M_process.git" }
+```
 
 ## SAMPLE PROGRAMS
 
 The manpages contain small sample programs that have been extracted
-and placed in the PROGRAMS/ directory. 
+and placed in the test/demos/ directory. 
 
 ## DOCUMENTATION
 There are currently several different ways to view the documentation ...
 
 + [BOOK_M_process](https://urbanjost.github.io/M_process/BOOK_M_process.html).
-+ [manpage index](https://urbanjost.github.io/M_process/index.html)
++ [manpage index](https://urbanjost.github.io/M_process/man3.html)
 + [doxygen(1) output](https://urbanjost.github.io/M_process/doxygen_out/html/index.html).
 
 _and there are manpages_ in the distribution in man/.

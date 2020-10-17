@@ -3,10 +3,15 @@ NULL=
 #   ../PROGRAMS/demo_M_process/demo_M_process.f90 
 #   had to remove capital M from program name because of fpm bug 20200711
 PROGFILES = \
-   ../PROGRAMS/demo_M_process/demo_m_process.f90        \
-   ../PROGRAMS/demo_process_readall/demo_process_readall.f90  \
+   ../test/demos/M_process/M_process.f90 \
+   ../test/demos/process_close/process_close.f90 \
+   ../test/demos/process_open_read/process_open_read.f90 \
+   ../test/demos/process_open_write/process_open_write.f90 \
+   ../test/demos/process_readall/process_readall.f90 \
+   ../test/demos/process_readline/process_readline.f90 \
+   ../test/demos/process_writeline/process_writeline.f90 \
    $(NULL)
-TESTFILES = ../test/test_suite_M_process.f90
+TESTFILES = ../test/test_suite/test_suite_M_process.f90
 TEST = ${TESTFILES:.f90=}
 PROG = ${PROGFILES:.f90=}
 SRCS =  M_process.f90 
@@ -22,16 +27,16 @@ all: $(PROG) $(CPROG)
 $(PROG): $(OBJS)
 	-$(F90) $(FFLAGS) $@.f90 -o $@ $(OBJS) $(LIBS)||echo "ouch: $@.f90 "
 clean:
-	rm -f $(PROG) $(CPROG) $(OBJS) *.mod sqlite1.db
+	rm -f $(PROG) $(CPROG) $(OBJS) $(TEST) *.mod sqlite1.db
 .PHONY: help
 help:
-	: make    '-- build M_time module'
-	: run     '-- run manpage demo programs and test program'
-	: test    '-- run test program'
-	: man     '-- show all manpages as text'
-	: clean   '-- clean directory of object files and executables'
-	: doxygen '-- run doxygen(1) if you have it'
-	: help    '-- display this text'
+	: make         '-- build M_time module'
+	: make run     '-- run manpage demo programs and test program'
+	: make test    '-- run test program'
+	: make man     '-- show all manpages as text'
+	: make clean   '-- clean directory of object files and executables'
+	: make doxygen '-- run doxygen(1) if you have it'
+	: make help    '-- display this text'
 .PHONY: run
 run: $(PROG)
 	# run everything
