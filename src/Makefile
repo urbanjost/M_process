@@ -1,7 +1,5 @@
 #@(#) Makefile started by makeout(1) 2019-12-16 14:36:23
 NULL=
-#   ../PROGRAMS/demo_M_process/demo_M_process.f90 
-#   had to remove capital M from program name because of fpm bug 20200711
 PROGFILES = \
    ../test/demos/M_process/M_process.f90 \
    ../test/demos/process_close/process_close.f90 \

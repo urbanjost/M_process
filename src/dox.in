@@ -839,7 +839,7 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = ./doxygen_out/./doc/ ./html/ ./man/ ./scripts/ M_fixedform.f90 M_ncurses.f90 ./PROGRAMS/what.f90 
+EXCLUDE                = ./doxygen_out/ ./doc/ ./test ./html/ ./man/ ./scripts/
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded

@@ -24,14 +24,15 @@ Just download the github repository, enter the src/ directory and run make:
      make help # see other developer options
 ```
 
-This will compile the M_process module and optionally build all the example programs from
-the document pages in the test/demos/ sub-directory and run the unit tests.
-
+This will compile the M_process module and optionally build all the
+example programs from the document pages in the test/demos/ sub-directory
+and run the unit tests.
 
 ## SUPPORTS FPM (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
 
-Alternatively, download the github repository and build it with 
-fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
+Alternatively, download the github repository and
+build it with fpm ( as described at [Fortran Package
+Manager](https://github.com/fortran-lang/fpm) )
 
 ```bash
      git clone https://github.com/urbanjost/M_process.git
@@ -59,7 +60,9 @@ There are currently several different ways to view the documentation ...
 + [manpage index](https://urbanjost.github.io/M_process/man3.html)
 + [doxygen(1) output](https://urbanjost.github.io/M_process/doxygen_out/html/index.html).
 
-_and there are manpages_ in the distribution in man/.
+_and there are manpages_ in the distribution in 
++ [manpage.tgz](https://urbanjost.github.io/M_process/manpage.tgz) or
++ [manpage.zip](https://urbanjost.github.io/M_process/manpage.zip)
 
 # RESPONSES
 
