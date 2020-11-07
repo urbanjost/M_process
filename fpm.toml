@@ -1,3 +1,4 @@
+# TOML file for fpm as described at https://github.com/fortran-lang/fpm/blob/master/manifest-reference.md
 name = "M_process"
 version = "0.1.0"
 license = "Public Domain"
@@ -5,6 +6,15 @@ author = "John S. Urban"
 maintainer = "urbanjost@comcast.net"
 copyright = "2020 John S. Urban"
 description = "ISO_C_BINDING interface to popen(3c) and related system procedures "
+
+#######################
+# temporary
+# Added because Fortran version does not work with test.dependencies yet
+[library]
+source-dir="src"
+[dev-dependencies]
+M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
+#######################
 
 [[executable]]
 name="main"
@@ -15,6 +25,8 @@ main="main.f90"
 name="test_suite"
 source-dir="test/test_suite"
 main="test_suite_M_process.f90"
+[test.dependencies]
+M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
 
 [[test]]
 name="M_process"

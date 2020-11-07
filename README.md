@@ -19,7 +19,7 @@ Just download the github repository, enter the src/ directory and run make:
      # change Makefile if not using gfortran(1)
      make
      # optionally
-     make test # run the unit tests
+     make test # run the unit tests (needs M_msg(3f) module)
      make run  # run all the demo programs from the manpages
      make help # see other developer options
 ```
