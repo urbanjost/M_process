@@ -14,12 +14,39 @@ TEST = ${TESTFILES:.f90=}
 PROG = ${PROGFILES:.f90=}
 SRCS =  M_process.f90 
 OBJS =  M_process.o 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # platform-specific values you will probably change
 # 
 LIBS := 
-F90 := gfortran
+CC := cc
+CFLAGS := -O
+FC := gfortran
 FFLAGS := -O
 LDFLAGS := 
+# 
+# You can either ignore it, or disable the "may be used uninitialized"
+# warnings with -Wno-maybe-uninitialized or compile with optimizations
+# (-O1 and more).
+gfortran: F90=gfortran
+gfortran: F90FLAGS := -g -O -Wall -std=f2018 -Wextra -Wno-maybe-uninitialized -Wno-uninitialized
+gfortran: all
+	@echo built with $(F90)
+
+nvfortran: F90=nvfortran
+nvfortran: F90FLAGS := -Minform=inform -Mbackslash -traceback
+nvfortran: all
+	@echo built with $(F90)
+
+ifort: F90=ifort
+ifort: F90FLAGS := -warn all -traceback
+ifort: all
+	@echo built with $(F90)
+
+nagfor: F90=nagfor
+nagfor: F90FLAGS := -C all
+nagfor: all
+	@echo built with $(F90)
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 all: $(PROG) $(CPROG)
 	@echo "That's all folks!"
 $(PROG): $(OBJS)
