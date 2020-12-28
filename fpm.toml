@@ -7,58 +7,9 @@ maintainer = "urbanjost@comcast.net"
 copyright = "2020 John S. Urban"
 description = "ISO_C_BINDING interface to popen(3c) and related system procedures "
 
-#######################
-# temporary
-# Added because Fortran version does not work with test.dependencies yet
-[library]
-source-dir="src"
-[dev-dependencies]
-M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
-#######################
-
-[[executable]]
-name="main"
-source-dir="app/"
-main="main.f90"
-
 [[test]]
 name="test_suite"
-source-dir="test/test_suite"
+source-dir="test"
 main="test_suite_M_process.f90"
 [test.dependencies]
 M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
-
-[[test]]
-name="M_process"
-source-dir="test/demos/M_process/"
-main="M_process.f90"
-
-[[test]]
-name="process_close"
-source-dir="test/demos/process_close/"
-main="process_close.f90"
-
-[[test]]
-name="process_open_read"
-source-dir="test/demos/process_open_read/"
-main="process_open_read.f90"
-
-[[test]]
-name="process_open_write"
-source-dir="test/demos/process_open_write/"
-main="process_open_write.f90"
-
-[[test]]
-name="process_readall"
-source-dir="test/demos/process_readall/"
-main="process_readall.f90"
-
-[[test]]
-name="process_readline"
-source-dir="test/demos/process_readline/"
-main="process_readline.f90"
-
-[[test]]
-name="process_writeline"
-source-dir="test/demos/process_writeline/"
-main="process_writeline.f90"

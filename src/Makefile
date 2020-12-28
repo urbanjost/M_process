@@ -1,15 +1,15 @@
 #@(#) Makefile started by makeout(1) 2019-12-16 14:36:23
 NULL=
 PROGFILES = \
-   ../test/demos/M_process/M_process.f90 \
-   ../test/demos/process_close/process_close.f90 \
-   ../test/demos/process_open_read/process_open_read.f90 \
-   ../test/demos/process_open_write/process_open_write.f90 \
-   ../test/demos/process_readall/process_readall.f90 \
-   ../test/demos/process_readline/process_readline.f90 \
-   ../test/demos/process_writeline/process_writeline.f90 \
+   ../example/demo_M_process.f90 \
+   ../example/demo_process_close.f90 \
+   ../example/demo_process_open_read.f90 \
+   ../example/demo_process_open_write.f90 \
+   ../example/demo_process_readall.f90 \
+   ../example/demo_process_readline.f90 \
+   ../example/demo_process_writeline.f90 \
    $(NULL)
-TESTFILES = ../test/test_suite/test_suite_M_process.f90
+TESTFILES = ../test/test_suite_M_process.f90
 TEST = ${TESTFILES:.f90=}
 PROG = ${PROGFILES:.f90=}
 SRCS =  M_process.f90 

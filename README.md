@@ -32,13 +32,13 @@ Just download the github repository, enter the src/ directory and run make:
      make F90=nvfortran nvfortran
 
      # optionally
-     make test # run the unit tests (needs M_msg(3f) module)
-     make run  # run all the demo programs from the manpages
-     make help # see other developer options
+     make test           # run the unit tests (needs M_msg(3f) module)
+     make run  --example # run all the demo programs from the manpages
+     make help           # see other developer options
 ```
 
 This will compile the M_process module and optionally build all the
-example programs from the document pages in the test/demos/ sub-directory
+example programs from the document pages in the example/ sub-directory
 and run the unit tests.
 
 ## SUPPORTS FPM (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
@@ -64,7 +64,7 @@ or just list it as a dependency in your fpm.toml project file.
 ## SAMPLE PROGRAMS
 
 The manpages contain small sample programs that have been extracted
-and placed in the test/demos/ directory. 
+and placed in the example/ directory. 
 
 ## DOCUMENTATION
 There are currently several different ways to view the documentation ...
