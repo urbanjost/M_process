@@ -1,92 +1,58 @@
-\hypertarget{namespacem__process}{}\section{m\+\_\+process Module Reference}
-\label{namespacem__process}\index{m\+\_\+process@{m\+\_\+process}}
-
-
-\subsubsection*{N\+A\+ME}
-
-M\+\_\+process(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} Fortran Module for calling process-\/related C functions from Fortran (L\+I\+C\+E\+N\+SE\+:PD)  
-
-
-\subsection*{Data Types}
+\hypertarget{namespacem__process}{}\doxysection{m\+\_\+process Module Reference}
+\label{namespacem__process}\index{m\_process@{m\_process}}
+\doxysubsection*{Data Types}
 \begin{DoxyCompactItemize}
 \item 
 interface \mbox{\hyperlink{interfacem__process_1_1fflush}{fflush}}
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-fflush(3fp) -\/ flush buffered file output \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+\item 
 interface \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}}
 \item 
 type \mbox{\hyperlink{structm__process_1_1streampointer}{streampointer}}
 \item 
 interface \mbox{\hyperlink{interfacem__process_1_1system__fgets}{system\+\_\+fgets}}
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-fgets(3fp) -\/ get character string from a file or stream by calling fgets(3c) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+\item 
 interface \mbox{\hyperlink{interfacem__process_1_1system__fputs}{system\+\_\+fputs}}
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-fputs(3fp) -\/ write a character string in a file or stream \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+\item 
 interface \mbox{\hyperlink{interfacem__process_1_1system__pclose}{system\+\_\+pclose}}
 \item 
 interface \mbox{\hyperlink{interfacem__process_1_1system__popen}{system\+\_\+popen}}
 \end{DoxyCompactItemize}
-\subsection*{Functions/\+Subroutines}
+\doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
 subroutine, public \mbox{\hyperlink{namespacem__process_aaaf4d1926258a4cec7da7fc61c38c79d}{process\+\_\+open\+\_\+read}} (cmd, fp, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-process\+\_\+open\+\_\+read(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} open a process for reading using P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+\item 
 subroutine, public \mbox{\hyperlink{namespacem__process_aa6ed1404ab3472f5068ed15a7a01defc}{process\+\_\+open\+\_\+write}} (cmd, fp, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-process\+\_\+open\+\_\+write(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} open a process for writing using a P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+\item 
 subroutine, private \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open}} (cmd, mode, fp, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-(L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+\item 
 subroutine, public \mbox{\hyperlink{namespacem__process_ab4c5cad3fb46686f0c9b71c3a634f6ae}{process\+\_\+close}} (fp, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-process\+\_\+close(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} close a process being written to or read from (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+\item 
 subroutine, public \mbox{\hyperlink{namespacem__process_acbc72c5ed371430a471aa1f3010fbbda}{process\+\_\+readline}} (readfrom, fp, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-process\+\_\+readline(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} read a line of output from a system command as a character variable (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+\item 
 character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__process_a7dd759a1344789477ae1e205d7fa9a51}{process\+\_\+readall}} (cmd, delim, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-process\+\_\+readall(3f) -\/ \mbox{[}M\+\_\+process\mbox{]} read all lines from process into single string (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+\item 
 subroutine \mbox{\hyperlink{namespacem__process_a72527c0ec0af26dcb14b8bfad6dcd482}{process\+\_\+writeline\+\_\+scalar}} (writefrom, fp, ierr, trm)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-process\+\_\+writeline(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} write to a process using a P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+\item 
 subroutine \mbox{\hyperlink{namespacem__process_a08887a918eba167ceacddf58ca084270}{process\+\_\+writeline\+\_\+array}} (writefrom, fp, ierr)
 \end{DoxyCompactItemize}
-\subsection*{Variables}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 logical, public \mbox{\hyperlink{namespacem__process_a0fabee8d01338d5523fbdea5c5f1e894}{process\+\_\+debug}} =.false.
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-\subsubsection*{N\+A\+ME}
-
-M\+\_\+process(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} Fortran Module for calling process-\/related C functions from Fortran (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
+\doxysubsection{Detailed Description}
+\hypertarget{namespacem__process_autotoc_md0}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__process_autotoc_md0}
+M\+\_\+process(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} Fortran Module for calling process-\/related C functions from Fortran (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__process_autotoc_md1}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__process_autotoc_md1}
 \begin{DoxyVerb} use M_process, only : process_open_read, process_open_write, process_close
 
  use M_process, only : process_readline, process_readall, process_writeline
 
  use M_process, only : streampointer, process_debug
 \end{DoxyVerb}
-
-
-\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
+\hypertarget{namespacem__process_autotoc_md2}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__process_autotoc_md2}
 Module M\+\_\+process(3f) lets Fortran code read/write lines from/to processes.
 
 These Fortran procedures use the I\+S\+O\+\_\+\+C\+\_\+\+B\+I\+N\+D\+I\+NG interface to define Fortran-\/callable versions of the C procedures popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-\/oriented wrapper routines are then used to create a simple Fortran-\/callable interface.
@@ -111,10 +77,7 @@ The procedures defined are\+:
 
 where the variable types are
 
-character(len=$\ast$) \+:\+: cmd type(streampointer) \+:\+: fp character(len=$\ast$) \+:\+: string integer \+:\+: ierr
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
+character(len=$\ast$) \+:: cmd type(streampointer) \+:: fp character(len=$\ast$) \+:: string integer \+:: ierr\hypertarget{namespacem__process_autotoc_md3}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__process_autotoc_md3}
 \begin{DoxyVerb}cmd      command passed to system to start process
 fp       C file pointer returned by process_open_*()
 string   data line to send or receive from process
@@ -125,31 +88,28 @@ ierr     error flag returned.
 
 maximum character value length is currently 4096
 \end{DoxyVerb}
-
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
+\hypertarget{namespacem__process_autotoc_md4}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__process_autotoc_md4}
 An example that places all the output of a command into a single string variable (see process\+\_\+readall(3) for an even simpler way to do this) ...
 
-program read\+\_\+ex use M\+\_\+process ,only\+: process\+\_\+open\+\_\+read, process\+\_\+readline use M\+\_\+process ,only\+: streampointer, process\+\_\+close implicit none ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:\+: fp ! check status of calls to process module routines integer \+:\+: ierr ! hold results, assuming sufficient memory is available character(len=\+:),allocatable \+:\+: string ! long enough to hold any expected line character(len=4096) \+:\+: line string=\textquotesingle{}\textquotesingle{} !\#\#\#! open process to read from call process\+\_\+open\+\_\+read(\textquotesingle{}ls\textquotesingle{},fp,ierr) !\#\#\#! read output of process till end do call process\+\_\+readline(line,fp,ierr) if(ierr.\+ne.\+0)exit !\#\#\#! append output lines together string=string//trim(line)//\textquotesingle{} \textquotesingle{} write($\ast$,$\ast$)\textquotesingle{}\mbox{[}\textquotesingle{}//string//\textquotesingle{}\mbox{]}\textquotesingle{} enddo write($\ast$,$\ast$)trim(string) !\#\#\#! Wrap up call process\+\_\+close(fp,ierr) end program read\+\_\+ex
+program read\+\_\+ex use M\+\_\+process ,only\+: process\+\_\+open\+\_\+read, process\+\_\+readline use M\+\_\+process ,only\+: streampointer, process\+\_\+close implicit none ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:: fp ! check status of calls to process module routines integer \+:: ierr ! hold results, assuming sufficient memory is available character(len=\+:),allocatable \+:: string ! long enough to hold any expected line character(len=4096) \+:: line string=\textquotesingle{}\textquotesingle{} !\#\#\#! open process to read from call process\+\_\+open\+\_\+read(\textquotesingle{}ls\textquotesingle{},fp,ierr) !\#\#\#! read output of process till end do call process\+\_\+readline(line,fp,ierr) if(ierr.\+ne.\+0)exit !\#\#\#! append output lines together string=string//trim(line)//\textquotesingle{} \textquotesingle{} write($\ast$,$\ast$)\textquotesingle{}\mbox{[}\textquotesingle{}//string//\textquotesingle{}\mbox{]}\textquotesingle{} enddo write($\ast$,$\ast$)trim(string) !\#\#\#! Wrap up call process\+\_\+close(fp,ierr) end program read\+\_\+ex
 
 When calling a line-\/mode program from another program the most natural way is to open a process and write to it.
 
 Following is an example program that calls the M\+\_\+process module to start a plotting program called gnuplot(1) and give it enough commands to generate a plot. It then lets you interactively interact with the gnuplot(1) program or continue on in the program.
 
-program gnuplot\+Example use M\+\_\+process ,only\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use M\+\_\+process ,only\+: streampointer, process\+\_\+close implicit none ! ! Example of Fortran writing G\+N\+U\+P\+L\+OT command and data file. ! !$\ast$! line of data to write !$\ast$! (assumed long enough to hold any command line) character(len=4096) \+:\+: line !$\ast$! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:\+: fp !$\ast$! check status of calls to process module routines integer \+:\+: ierr !$\ast$! DO loop counter integer \+:\+: i !$\ast$! number of points to put into curve to be plotted integer,parameter \+:\+: n=50 !$\ast$! arrays to fill with curve data to be plotted real \+:\+: x(n),y(n) integer \+:\+: ios !$\ast$! Define sample X,Y array. do i=1,n !$\ast$! set X() values as whole numbers 1 to N x(i)=i !$\ast$! y(i)=(x(i)+0.5)$\ast$$\ast$2 enddo !$\ast$! Write the Gnu\+Plot commands !$\ast$! open process to write to (ie. start gnuplot(1) program) call process\+\_\+open\+\_\+write(\textquotesingle{}gnuplot\textquotesingle{},fp,ierr) !$\ast$! create in-\/line dataset \$\+S\+E\+T1 call \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}}(\textquotesingle{}\$\+S\+E\+T1 $<$$<$E\+OD\textquotesingle{},fp,ierr) do i=1,n !$\ast$! Write the X,Y array as coordinates to be plotted. write(line,\textquotesingle{}(2(f10.\+3,1x))\textquotesingle{})x(i),y(i) call process\+\_\+writeline(line,fp,ierr) enddo
+program gnuplot\+Example use M\+\_\+process ,only\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use M\+\_\+process ,only\+: streampointer, process\+\_\+close implicit none ! ! Example of Fortran writing G\+N\+U\+P\+L\+OT command and data file. ! !$\ast$! line of data to write !$\ast$! (assumed long enough to hold any command line) character(len=4096) \+:: line !$\ast$! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:: fp !$\ast$! check status of calls to process module routines integer \+:: ierr !$\ast$! DO loop counter integer \+:: i !$\ast$! number of points to put into curve to be plotted integer,parameter \+:: n=50 !$\ast$! arrays to fill with curve data to be plotted real \+:: x(n),y(n) integer \+:: ios !$\ast$! Define sample X,Y array. do i=1,n !$\ast$! set X() values as whole numbers 1 to N x(i)=i !$\ast$! y(i)=(x(i)+0.\+5)$\ast$$\ast$2 enddo !$\ast$! Write the Gnu\+Plot commands !$\ast$! open process to write to (ie. start gnuplot(1) program) call process\+\_\+open\+\_\+write(\textquotesingle{}gnuplot\textquotesingle{},fp,ierr) !$\ast$! create in-\/line dataset \$\+S\+E\+T1 call \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}}(\textquotesingle{}\$\+S\+E\+T1 $<$$<$E\+OD\textquotesingle{},fp,ierr) do i=1,n !$\ast$! Write the X,Y array as coordinates to be plotted. write(line,\textquotesingle{}(2(f10.\+3,1x))\textquotesingle{})x(i),y(i) call process\+\_\+writeline(line,fp,ierr) enddo
 
-call \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}}(\mbox{[}character(len=128) \+:\+: \& \&\textquotesingle{}E\+OD \textquotesingle{}, \& \&\textquotesingle{}set title \char`\"{} Example of G\+N\+U\+Plot data and command file generation\char`\"{}\textquotesingle{}, \& \&\textquotesingle{}set nokey\textquotesingle{} , \& \&\textquotesingle{}plot \$\+S\+E\+T1 with lines\textquotesingle{} , \& \&\textquotesingle{}\textquotesingle{}\mbox{]},fp,ierr)
+call \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}}(\mbox{[}character(len=128) \+:: \& \&\textquotesingle{}E\+OD \textquotesingle{}, \& \&\textquotesingle{}set title \char`\"{} Example of G\+N\+U\+Plot data and command file generation\char`\"{}\textquotesingle{}, \& \&\textquotesingle{}set nokey\textquotesingle{} , \& \&\textquotesingle{}plot \$\+S\+E\+T1 with lines\textquotesingle{} , \& \&\textquotesingle{}\textquotesingle{}\mbox{]},fp,ierr)
 
 !$\ast$! Additional gnuplot commands; in this case interactively entered write($\ast$,\textquotesingle{}(a)\textquotesingle{})\textquotesingle{}enter gnuplot commands or \char`\"{}.\char`\"{} to exit\textquotesingle{} do write($\ast$,\textquotesingle{}(a)\textquotesingle{},advance=\textquotesingle{}no\textquotesingle{})\textquotesingle{}gnu$>$$>$\textquotesingle{} read($\ast$,\textquotesingle{}(a)\textquotesingle{},iostat=ios)line if(line.\+eq.\textquotesingle{}.\textquotesingle{})exit call process\+\_\+writeline(trim(line),fp,ierr) enddo !$\ast$! Wrap up call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}C\+L\+O\+S\+ED T\+HE P\+R\+O\+C\+E\+SS. R\+E\+T\+U\+R\+N\+I\+NG TO P\+R\+O\+G\+R\+AM\textquotesingle{} end program gnuplot\+Example
 
 This program starts a bash shell that, among other things, calls sqlite3 and gnuplot. In this case the text is fixed to keep the example simple. More typically the text would be conditionally selected or generated by the program.
 
-program demo\+\_\+\+M\+\_\+process use M\+\_\+process ,only \+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use M\+\_\+process ,only \+: streampointer, process\+\_\+close implicit none ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:\+: fp ! check status of calls to process module routines integer \+:\+: ierr character(len=\+:),allocatable \+:\+: text(\+:)
+program demo\+\_\+\+M\+\_\+process use M\+\_\+process ,only \+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use M\+\_\+process ,only \+: streampointer, process\+\_\+close implicit none ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:: fp ! check status of calls to process module routines integer \+:: ierr character(len=\+:),allocatable \+:: text(\+:)
 
 ! open process to write to (ie. start gnuplot(1) program) !!call process\+\_\+open\+\_\+write(\textquotesingle{}cat\textquotesingle{},fp,ierr) ! open process to write to (ie. start gnuplot(1) program) call process\+\_\+open\+\_\+write(\textquotesingle{}bash\textquotesingle{},fp,ierr)
 
-text=\mbox{[}character(len=128) \+:\+: \& \char`\"{}rm -\/f sqlite1.\+db\char`\"{}, \& \char`\"{}sqlite3 sqlite1.\+db $<$$<$\textbackslash{}\+E\+O\+F\char`\"{}, \& \char`\"{}-\/-\/ $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$\char`\"{},\& \char`\"{}\+C\+R\+E\+A\+T\+E T\+A\+B\+L\+E I\+F N\+O\+T E\+X\+I\+S\+T\+S animals(               \char`\"{},\& \char`\"{}   name        T\+E\+X\+T   N\+O\+T N\+U\+L\+L   P\+R\+I\+M\+A\+R\+Y K\+E\+Y ,    \char`\"{},\& \char`\"{}   hair        I\+N\+T    N\+O\+T N\+U\+L\+L   ,                \char`\"{},\& \char`\"{}   mobility    I\+N\+T    N\+O\+T N\+U\+L\+L   ,                \char`\"{},\& \char`\"{}   vision      I\+N\+T    N\+O\+T N\+U\+L\+L   );               \char`\"{},\& \char`\"{}-\/-\/ $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$\char`\"{},\& \char`\"{}\+I\+N\+S\+E\+R\+T I\+N\+T\+O animals(\&
+text=\mbox{[}character(len=128) \+:: \& \char`\"{}rm -\/f sqlite1.\+db\char`\"{}, \& \char`\"{}sqlite3 sqlite1.\+db $<$$<$\textbackslash{}\+E\+O\+F\char`\"{}, \& \char`\"{}-\/-\/ $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$\char`\"{},\& \char`\"{}\+C\+R\+E\+A\+T\+E T\+A\+B\+L\+E I\+F N\+O\+T E\+X\+I\+S\+T\+S animals(               \char`\"{},\& \char`\"{}   name        T\+E\+X\+T   N\+O\+T N\+U\+L\+L   P\+R\+I\+M\+A\+R\+Y K\+E\+Y ,    \char`\"{},\& \char`\"{}   hair        I\+N\+T    N\+O\+T N\+U\+L\+L   ,                \char`\"{},\& \char`\"{}   mobility    I\+N\+T    N\+O\+T N\+U\+L\+L   ,                \char`\"{},\& \char`\"{}   vision      I\+N\+T    N\+O\+T N\+U\+L\+L   );               \char`\"{},\& \char`\"{}-\/-\/ $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$\char`\"{},\& \char`\"{}\+I\+N\+S\+E\+R\+T I\+N\+T\+O animals(\&
      \&name,hair,mobility,vision) V\+A\+L\+U\+E\+S(\textquotesingle{}kittens\textquotesingle{},4,5,1);\char`\"{},\& \char`\"{}\+I\+N\+S\+E\+R\+T I\+N\+T\+O animals(\&
      \&name,hair,mobility,vision) V\+A\+L\+U\+E\+S(\textquotesingle{}mice\textquotesingle{}   ,6,7,2);\char`\"{},\& \char`\"{}\+I\+N\+S\+E\+R\+T I\+N\+T\+O animals(\&
      \&name,hair,mobility,vision) V\+A\+L\+U\+E\+S(\textquotesingle{}rats\textquotesingle{}   ,2,3,3);\char`\"{},\& \char`\"{}-\/-\/ $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$\char`\"{},\& \char`\"{}.\+quit\char`\"{}, \& \char`\"{}\+E\+O\+F\char`\"{}, \& \char`\"{}\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\char`\"{},\& \char`\"{}sqlite3 -\/header -\/column sqlite1.\+db  \textquotesingle{}select $\ast$ from animals\textquotesingle{}\char`\"{},\& \char`\"{}sqlite3 sqlite1.\+db  \&
@@ -164,73 +124,47 @@ This example shows a routine to read the output of one command and then call ano
 
 program test implicit none call readit(\textquotesingle{}ls -\/l\textquotesingle{}) call writeit(\textquotesingle{}cat -\/n\textquotesingle{}) contains
 
-subroutine readit(cmd) use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+read, process\+\_\+readline use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:\+: fp ! command line executed to start process character(len=$\ast$) \+:\+: cmd ! line of data to read (assumed long enough to hold any input line) character(len=4096) \+:\+: line integer ierr ! open process to read from call process\+\_\+open\+\_\+read(cmd,fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ierr=0 do while(ierr .eq. 0) ! read a line from the process call process\+\_\+readline(line,fp,ierr) if(ierr.\+ne.\+0)then write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: line\+:\textquotesingle{}//trim(line) enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end subroutine readit !-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/--- subroutine writeit(cmd) use M\+\_\+process, only\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use M\+\_\+process, only\+: streampointer, process\+\_\+close ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:\+: fp ! command line executed to start process character(len=$\ast$) \+:\+: cmd ! line of data to write (assumed long enough to hold any output line) character(len=4096) \+:\+: line integer \+:\+: ierr integer \+:\+: i ! open process to write to call process\+\_\+open\+\_\+write(cmd,fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process is opened\textquotesingle{} ierr=0 do i=1,10 write(line,\textquotesingle{}(\char`\"{}\+W\+R\+I\+T\+E\+T\+E\+S\+T\+: line \char`\"{},i0)\textquotesingle{})i call process\+\_\+writeline(line,fp,ierr) if(ierr.\+lt.\+0)then write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process write error \textquotesingle{},ierr exit endif enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end subroutine writeit end program test
-
-\subsubsection*{S\+EE A\+L\+SO}
-
-o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
+subroutine readit(cmd) use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+read, process\+\_\+readline use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:: fp ! command line executed to start process character(len=$\ast$) \+:: cmd ! line of data to read (assumed long enough to hold any input line) character(len=4096) \+:: line integer ierr ! open process to read from call process\+\_\+open\+\_\+read(cmd,fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ierr=0 do while(ierr .eq. 0) ! read a line from the process call process\+\_\+readline(line,fp,ierr) if(ierr.\+ne.\+0)then write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: line\+:\textquotesingle{}//trim(line) enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end subroutine readit !-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/--- subroutine writeit(cmd) use M\+\_\+process, only\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use M\+\_\+process, only\+: streampointer, process\+\_\+close ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:: fp ! command line executed to start process character(len=$\ast$) \+:: cmd ! line of data to write (assumed long enough to hold any output line) character(len=4096) \+:: line integer \+:: ierr integer \+:: i ! open process to write to call process\+\_\+open\+\_\+write(cmd,fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process is opened\textquotesingle{} ierr=0 do i=1,10 write(line,\textquotesingle{}(\char`\"{}\+W\+R\+I\+T\+E\+T\+E\+S\+T\+: line \char`\"{},i0)\textquotesingle{})i call process\+\_\+writeline(line,fp,ierr) if(ierr.\+lt.\+0)then write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process write error \textquotesingle{},ierr exit endif enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end subroutine writeit end program test\hypertarget{namespacem__process_autotoc_md5}{}\doxysubsubsection{S\+E\+E A\+L\+SO}\label{namespacem__process_autotoc_md5}
+o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \hypertarget{namespacem__process_autotoc_md6}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__process_autotoc_md6}
+John S. Urban \hypertarget{namespacem__process_autotoc_md7}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__process_autotoc_md7}
 Public Domain
 
-D\+E\+S\+C\+R\+I\+P\+T\+I\+ON\+: record-\/oriented Fortran I/O interface to C popen,pclose,fgets,fputs \subsubsection*{V\+E\+R\+S\+I\+ON\+: 2.\+0.\+0, 20161105}
-
+D\+E\+S\+C\+R\+I\+P\+T\+I\+ON\+: record-\/oriented Fortran I/O interface to C popen,pclose,fgets,fputs \hypertarget{namespacem__process_autotoc_md8}{}\doxysubsubsection{V\+E\+R\+S\+I\+O\+N\+:     2.\+0.\+0, 20161105}\label{namespacem__process_autotoc_md8}
 A\+U\+T\+H\+OR\+: John S. Urban 
 
-\subsection{Function/\+Subroutine Documentation}
+\doxysubsection{Function/\+Subroutine Documentation}
 \mbox{\Hypertarget{namespacem__process_ab4c5cad3fb46686f0c9b71c3a634f6ae}\label{namespacem__process_ab4c5cad3fb46686f0c9b71c3a634f6ae}} 
-\index{m\+\_\+process@{m\+\_\+process}!process\+\_\+close@{process\+\_\+close}}
-\index{process\+\_\+close@{process\+\_\+close}!m\+\_\+process@{m\+\_\+process}}
-\subsubsection{\texorpdfstring{process\+\_\+close()}{process\_close()}}
+\index{m\_process@{m\_process}!process\_close@{process\_close}}
+\index{process\_close@{process\_close}!m\_process@{m\_process}}
+\doxysubsubsection{\texorpdfstring{process\_close()}{process\_close()}}
 {\footnotesize\ttfamily subroutine, public m\+\_\+process\+::process\+\_\+close (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structm__process_1_1streampointer}{streampointer}})}]{fp,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})}
 
-
-
-\subsubsection*{N\+A\+ME}
-
-process\+\_\+close(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} close a process being written to or read from (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
+\hypertarget{namespacem__process_autotoc_md44}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__process_autotoc_md44}
+process\+\_\+close(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} close a process being written to or read from (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__process_autotoc_md45}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__process_autotoc_md45}
 \begin{DoxyVerb} subroutine process_close(fp,ierr)
 
    type(streampointer) :: fp
    integer             :: ierr
 \end{DoxyVerb}
-
-
-\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
+\hypertarget{namespacem__process_autotoc_md46}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__process_autotoc_md46}
 The M\+\_\+process Fortran procedures use the I\+S\+O\+\_\+\+C\+\_\+\+B\+I\+N\+D\+I\+NG interface to define Fortran-\/callable versions of the C procedures popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-\/oriented wrapper routines are then used to create a simple Fortran-\/callable interface.
 
 A P\+O\+S\+IX C interface is generally available but may require using a Linux subwindow or an application such as Cyg\+Win on M\+S\+Windows platforms.
 
-See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
+See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.\hypertarget{namespacem__process_autotoc_md47}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__process_autotoc_md47}
 \begin{DoxyVerb}fp       C file pointer returned by process_open_*()
 ierr     error flag returned.
 \end{DoxyVerb}
-
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
+\hypertarget{namespacem__process_autotoc_md48}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__process_autotoc_md48}
 This example shows a simple open and close of a process
 
-program demo\+\_\+process\+\_\+close use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+read, process\+\_\+open\+\_\+write use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:\+: fp integer \+:\+: ierr ! open process to read from call process\+\_\+open\+\_\+read(\textquotesingle{}ls -\/l\textquotesingle{},fp,ierr) write($\ast$,$\ast$)\textquotesingle{}C\+L\+O\+SE \+: process is opened with status \textquotesingle{},ierr call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}C\+L\+O\+SE \+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+close
+program demo\+\_\+process\+\_\+close use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+read, process\+\_\+open\+\_\+write use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:: fp integer \+:: ierr ! open process to read from call process\+\_\+open\+\_\+read(\textquotesingle{}ls -\/l\textquotesingle{},fp,ierr) write($\ast$,$\ast$)\textquotesingle{}C\+L\+O\+SE \+: process is opened with status \textquotesingle{},ierr call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}C\+L\+O\+SE \+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+close
 
 Sample output\+:
 
-C\+L\+O\+SE \+: process is opened with status 0 C\+L\+O\+SE \+: process closed with status 13
-
-\subsubsection*{S\+EE A\+L\+SO}
-
-o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
+C\+L\+O\+SE \+: process is opened with status 0 C\+L\+O\+SE \+: process closed with status 13\hypertarget{namespacem__process_autotoc_md49}{}\doxysubsubsection{S\+E\+E A\+L\+SO}\label{namespacem__process_autotoc_md49}
+o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \hypertarget{namespacem__process_autotoc_md50}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__process_autotoc_md50}
+John S. Urban \hypertarget{namespacem__process_autotoc_md51}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__process_autotoc_md51}
 Public Domain 
 
 References process\+\_\+debug.
@@ -243,25 +177,17 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}\label{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}} 
-\index{m\+\_\+process@{m\+\_\+process}!process\+\_\+open@{process\+\_\+open}}
-\index{process\+\_\+open@{process\+\_\+open}!m\+\_\+process@{m\+\_\+process}}
-\subsubsection{\texorpdfstring{process\+\_\+open()}{process\_open()}}
+\index{m\_process@{m\_process}!process\_open@{process\_open}}
+\index{process\_open@{process\_open}!m\_process@{m\_process}}
+\doxysubsubsection{\texorpdfstring{process\_open()}{process\_open()}}
 {\footnotesize\ttfamily subroutine, private m\+\_\+process\+::process\+\_\+open (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{cmd,  }\item[{character(len=$\ast$), intent(in)}]{mode,  }\item[{type(\mbox{\hyperlink{structm__process_1_1streampointer}{streampointer}}), intent(out)}]{fp,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
-\subsubsection*{N\+A\+ME}
-
-(L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-\subsubsection*{E\+X\+A\+M\+P\+LE}
-
-\subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
+\hypertarget{namespacem__process_autotoc_md38}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__process_autotoc_md38}
+(L\+I\+C\+E\+N\+SE\+:PD) \hypertarget{namespacem__process_autotoc_md39}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__process_autotoc_md39}
+\hypertarget{namespacem__process_autotoc_md40}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__process_autotoc_md40}
+\hypertarget{namespacem__process_autotoc_md41}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__process_autotoc_md41}
+\hypertarget{namespacem__process_autotoc_md42}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__process_autotoc_md42}
+John S. Urban \hypertarget{namespacem__process_autotoc_md43}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__process_autotoc_md43}
 Public Domain 
 
 References process\+\_\+debug.
@@ -274,37 +200,25 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__process_aaaf4d1926258a4cec7da7fc61c38c79d}\label{namespacem__process_aaaf4d1926258a4cec7da7fc61c38c79d}} 
-\index{m\+\_\+process@{m\+\_\+process}!process\+\_\+open\+\_\+read@{process\+\_\+open\+\_\+read}}
-\index{process\+\_\+open\+\_\+read@{process\+\_\+open\+\_\+read}!m\+\_\+process@{m\+\_\+process}}
-\subsubsection{\texorpdfstring{process\+\_\+open\+\_\+read()}{process\_open\_read()}}
+\index{m\_process@{m\_process}!process\_open\_read@{process\_open\_read}}
+\index{process\_open\_read@{process\_open\_read}!m\_process@{m\_process}}
+\doxysubsubsection{\texorpdfstring{process\_open\_read()}{process\_open\_read()}}
 {\footnotesize\ttfamily subroutine, public m\+\_\+process\+::process\+\_\+open\+\_\+read (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{cmd,  }\item[{type(\mbox{\hyperlink{structm__process_1_1streampointer}{streampointer}}), intent(out)}]{fp,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})}
 
-
-
-\subsubsection*{N\+A\+ME}
-
-process\+\_\+open\+\_\+read(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} open a process for reading using P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
+\hypertarget{namespacem__process_autotoc_md22}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__process_autotoc_md22}
+process\+\_\+open\+\_\+read(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} open a process for reading using P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__process_autotoc_md23}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__process_autotoc_md23}
 \begin{DoxyVerb} subroutine process_open_read(cmd,fp,ierr)
 
    character(len=*)    :: cmd
    type(streampointer) :: fp
    integer             :: ierr
 \end{DoxyVerb}
-
-
-\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
+\hypertarget{namespacem__process_autotoc_md24}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__process_autotoc_md24}
 The M\+\_\+process Fortran procedures use the I\+S\+O\+\_\+\+C\+\_\+\+B\+I\+N\+D\+I\+NG interface to define Fortran-\/callable versions of the C procedures popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-\/oriented wrapper routines are then used to create a simple Fortran-\/callable interface.
 
 A P\+O\+S\+IX C interface is generally available but may require using a Linux subwindow or an application such as Cyg\+Win on M\+S\+Windows platforms.
 
-See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
+See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.\hypertarget{namespacem__process_autotoc_md25}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__process_autotoc_md25}
 \begin{DoxyVerb}cmd      command passed to system to start process
 fp       C file pointer returned by process_open_*()
 ierr     error flag returned.
@@ -314,24 +228,16 @@ ierr     error flag returned.
 
 maximum character value length is currently 4096
 \end{DoxyVerb}
-
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
+\hypertarget{namespacem__process_autotoc_md26}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__process_autotoc_md26}
 This example shows a routine to read the output of a system command.
 
-program demo\+\_\+process\+\_\+open\+\_\+read use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+read, process\+\_\+readline use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:\+: fp ! line of data to read (assumed long enough to hold any output line) character(len=4096) \+:\+: line integer \+:\+: ierr ! open process to read from call process\+\_\+open\+\_\+read(\textquotesingle{}ls -\/l\textquotesingle{},fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ierr=0 do while(ierr .eq. 0) ! read a line from the process call process\+\_\+readline(line,fp,ierr) if(ierr.\+ne.\+0)then write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: \textquotesingle{},trim(line) enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+open\+\_\+read
+program demo\+\_\+process\+\_\+open\+\_\+read use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+read, process\+\_\+readline use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:: fp ! line of data to read (assumed long enough to hold any output line) character(len=4096) \+:: line integer \+:: ierr ! open process to read from call process\+\_\+open\+\_\+read(\textquotesingle{}ls -\/l\textquotesingle{},fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ierr=0 do while(ierr .eq. 0) ! read a line from the process call process\+\_\+readline(line,fp,ierr) if(ierr.\+ne.\+0)then write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: \textquotesingle{},trim(line) enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+open\+\_\+read
 
 Sample output\+:
 
-R\+E\+A\+D\+T\+E\+ST\+: process is opened with status 0 R\+E\+A\+D\+T\+E\+ST\+: total 108 R\+E\+A\+D\+T\+E\+ST\+: -\/rw-\/r--r--. 1 urbanjs urbanjs 3731 Oct 17 14\+:49 build.\+sh R\+E\+A\+D\+T\+E\+ST\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 56633 Oct 17 14\+:50 build.\+sh.\+log R\+E\+A\+D\+T\+E\+ST\+: drwxrwxr-\/x. 3 urbanjs urbanjs 4096 Oct 17 14\+:50 doc R\+E\+A\+D\+T\+E\+ST\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 39459 Oct 17 15\+:16 M\+\_\+process.\+ff R\+E\+A\+D\+T\+E\+ST\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 826 Oct 17 15\+:17 xx.\+f90 R\+E\+A\+D\+T\+E\+ST\+: ierr is -\/1 R\+E\+A\+D\+T\+E\+ST\+: process closed with status 0
-
-\subsubsection*{S\+EE A\+L\+SO}
-
-o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
+R\+E\+A\+D\+T\+E\+ST\+: process is opened with status 0 R\+E\+A\+D\+T\+E\+ST\+: total 108 R\+E\+A\+D\+T\+E\+ST\+: -\/rw-\/r--r--. 1 urbanjs urbanjs 3731 Oct 17 14\+:49 build.\+sh R\+E\+A\+D\+T\+E\+ST\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 56633 Oct 17 14\+:50 build.\+sh.\+log R\+E\+A\+D\+T\+E\+ST\+: drwxrwxr-\/x. 3 urbanjs urbanjs 4096 Oct 17 14\+:50 doc R\+E\+A\+D\+T\+E\+ST\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 39459 Oct 17 15\+:16 M\+\_\+process.\+ff R\+E\+A\+D\+T\+E\+ST\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 826 Oct 17 15\+:17 xx.\+f90 R\+E\+A\+D\+T\+E\+ST\+: ierr is -\/1 R\+E\+A\+D\+T\+E\+ST\+: process closed with status 0\hypertarget{namespacem__process_autotoc_md27}{}\doxysubsubsection{S\+E\+E A\+L\+SO}\label{namespacem__process_autotoc_md27}
+o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \hypertarget{namespacem__process_autotoc_md28}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__process_autotoc_md28}
+John S. Urban \hypertarget{namespacem__process_autotoc_md29}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__process_autotoc_md29}
 Public Domain 
 
 References process\+\_\+open().
@@ -351,37 +257,25 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__process_aa6ed1404ab3472f5068ed15a7a01defc}\label{namespacem__process_aa6ed1404ab3472f5068ed15a7a01defc}} 
-\index{m\+\_\+process@{m\+\_\+process}!process\+\_\+open\+\_\+write@{process\+\_\+open\+\_\+write}}
-\index{process\+\_\+open\+\_\+write@{process\+\_\+open\+\_\+write}!m\+\_\+process@{m\+\_\+process}}
-\subsubsection{\texorpdfstring{process\+\_\+open\+\_\+write()}{process\_open\_write()}}
+\index{m\_process@{m\_process}!process\_open\_write@{process\_open\_write}}
+\index{process\_open\_write@{process\_open\_write}!m\_process@{m\_process}}
+\doxysubsubsection{\texorpdfstring{process\_open\_write()}{process\_open\_write()}}
 {\footnotesize\ttfamily subroutine, public m\+\_\+process\+::process\+\_\+open\+\_\+write (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{cmd,  }\item[{type(\mbox{\hyperlink{structm__process_1_1streampointer}{streampointer}}), intent(out)}]{fp,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})}
 
-
-
-\subsubsection*{N\+A\+ME}
-
-process\+\_\+open\+\_\+write(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} open a process for writing using a P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
+\hypertarget{namespacem__process_autotoc_md30}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__process_autotoc_md30}
+process\+\_\+open\+\_\+write(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} open a process for writing using a P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__process_autotoc_md31}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__process_autotoc_md31}
 \begin{DoxyVerb} subroutine process_open_write(cmd,fp,ierr)
 
    character(len=*)    :: cmd
    type(streampointer) :: fp
    integer             :: ierr
 \end{DoxyVerb}
-
-
-\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
+\hypertarget{namespacem__process_autotoc_md32}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__process_autotoc_md32}
 The M\+\_\+process Fortran procedures use the I\+S\+O\+\_\+\+C\+\_\+\+B\+I\+N\+D\+I\+NG interface to define Fortran-\/callable versions of the C procedures popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-\/oriented wrapper routines are then used to create a simple Fortran-\/callable interface.
 
 A P\+O\+S\+IX C interface is generally available but may require using a Linux subwindow or an application such as Cyg\+Win on M\+S\+Windows platforms.
 
-See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
+See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.\hypertarget{namespacem__process_autotoc_md33}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__process_autotoc_md33}
 \begin{DoxyVerb}cmd      command passed to system to start process
 fp       C file pointer returned by process_open_*()
 ierr     error flag returned.
@@ -391,26 +285,18 @@ ierr     error flag returned.
 
 maximum character value length is currently 4096
 \end{DoxyVerb}
-
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
+\hypertarget{namespacem__process_autotoc_md34}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__process_autotoc_md34}
 This example shows a routine to write lines to the stdin of a system process
 
-program demo\+\_\+process\+\_\+open\+\_\+write use, intrinsic \+:\+: iso\+\_\+fortran\+\_\+env, only \+: \& \& stdin=$>$input\+\_\+unit, \& \& stdout=$>$output\+\_\+unit, \& \& stderr=$>$error\+\_\+unit use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:\+: fp ! line of data to write character(len=4096) \+:\+: line integer \+:\+: ierr integer \+:\+: i ! open process to write to call process\+\_\+open\+\_\+write(\textquotesingle{}cat -\/n\textquotesingle{},fp,ierr) write(stdout,$\ast$)\textquotesingle{}O\+P\+E\+N\+W\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ! remember C and Fortran I/O are often independent of each other flush(stdout) ierr=0 line=\textquotesingle{}xxxxxxxxxxxxxxxxxxxxxxxxxxx\textquotesingle{} do i=1,10 ! write a line to the process call process\+\_\+writeline(trim(line),fp,ierr) if(ierr.\+lt.\+0)then write(stdout,$\ast$)\textquotesingle{}O\+P\+E\+N\+W\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif enddo call process\+\_\+close(fp,ierr) write(stdout,$\ast$)\textquotesingle{}O\+P\+E\+N\+W\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+open\+\_\+write
+program demo\+\_\+process\+\_\+open\+\_\+write use, intrinsic \+:: iso\+\_\+fortran\+\_\+env, only \+: \& \& stdin=$>$input\+\_\+unit, \& \& stdout=$>$output\+\_\+unit, \& \& stderr=$>$error\+\_\+unit use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:: fp ! line of data to write character(len=4096) \+:: line integer \+:: ierr integer \+:: i ! open process to write to call process\+\_\+open\+\_\+write(\textquotesingle{}cat -\/n\textquotesingle{},fp,ierr) write(stdout,$\ast$)\textquotesingle{}O\+P\+E\+N\+W\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ! remember C and Fortran I/O are often independent of each other flush(stdout) ierr=0 line=\textquotesingle{}xxxxxxxxxxxxxxxxxxxxxxxxxxx\textquotesingle{} do i=1,10 ! write a line to the process call process\+\_\+writeline(trim(line),fp,ierr) if(ierr.\+lt.\+0)then write(stdout,$\ast$)\textquotesingle{}O\+P\+E\+N\+W\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif enddo call process\+\_\+close(fp,ierr) write(stdout,$\ast$)\textquotesingle{}O\+P\+E\+N\+W\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+open\+\_\+write
 
 Sample output\+:
 
 $>$O\+P\+E\+N\+W\+T\+E\+ST\+: process is opened with status 0 \begin{quote}
 1 xxxxxxxxxxxxxxxxxxxxxxxxxxx 2 xxxxxxxxxxxxxxxxxxxxxxxxxxx 3 xxxxxxxxxxxxxxxxxxxxxxxxxxx 4 xxxxxxxxxxxxxxxxxxxxxxxxxxx 5 xxxxxxxxxxxxxxxxxxxxxxxxxxx 6 xxxxxxxxxxxxxxxxxxxxxxxxxxx 7 xxxxxxxxxxxxxxxxxxxxxxxxxxx 8 xxxxxxxxxxxxxxxxxxxxxxxxxxx 9 xxxxxxxxxxxxxxxxxxxxxxxxxxx 10 xxxxxxxxxxxxxxxxxxxxxxxxxxx $>$O\+P\+E\+N\+W\+T\+E\+ST\+: process closed with status 0 \end{quote}
-
-
-\subsubsection*{S\+EE A\+L\+SO}
-
-o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
+\hypertarget{namespacem__process_autotoc_md35}{}\doxysubsubsection{S\+E\+E A\+L\+SO}\label{namespacem__process_autotoc_md35}
+o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \hypertarget{namespacem__process_autotoc_md36}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__process_autotoc_md36}
+John S. Urban \hypertarget{namespacem__process_autotoc_md37}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__process_autotoc_md37}
 Public Domain 
 
 References process\+\_\+open().
@@ -423,34 +309,31 @@ Here is the call graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__process_a7dd759a1344789477ae1e205d7fa9a51}\label{namespacem__process_a7dd759a1344789477ae1e205d7fa9a51}} 
-\index{m\+\_\+process@{m\+\_\+process}!process\+\_\+readall@{process\+\_\+readall}}
-\index{process\+\_\+readall@{process\+\_\+readall}!m\+\_\+process@{m\+\_\+process}}
-\subsubsection{\texorpdfstring{process\+\_\+readall()}{process\_readall()}}
+\index{m\_process@{m\_process}!process\_readall@{process\_readall}}
+\index{process\_readall@{process\_readall}!m\_process@{m\_process}}
+\doxysubsubsection{\texorpdfstring{process\_readall()}{process\_readall()}}
 {\footnotesize\ttfamily character(len=\+:) function, allocatable, public m\+\_\+process\+::process\+\_\+readall (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{cmd,  }\item[{character(len=$\ast$), intent(in), optional}]{delim,  }\item[{integer, intent(out), optional}]{ierr }\end{DoxyParamCaption})}
 
-
-
-\subsubsection*{N\+A\+ME}
-
-process\+\_\+readall(3f) -\/ \mbox{[}M\+\_\+process\mbox{]} read all lines from process into single string (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
+\hypertarget{namespacem__process_autotoc_md60}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__process_autotoc_md60}
+process\+\_\+readall(3f) -\/ \mbox{[}M\+\_\+process\mbox{]} read all lines from process into single string (L\+I\+C\+E\+N\+SE\+:PD) \hypertarget{namespacem__process_autotoc_md61}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__process_autotoc_md61}
 syntax\+:
 
 function process\+\_\+readall(cmd,delim,ierr) result(string)
 
-character(len=$\ast$),intent(in) \+:\+: cmd character(len=$\ast$),intent(in),optional \+:\+: delim integer,intent(out),optional \+:\+: ierr character(len=\+:),allocatable \+:\+: string \subsubsection*{O\+P\+T\+I\+O\+NS}
-
-cmd command to pass to system delim delimiter to place between output lines when they are concatenated. Defaults to a space ierr check status of call. \subsubsection*{R\+E\+S\+U\+L\+TS}
-
-process\+\_\+readall Assuming sufficient memory is available all the output of the system command are concatenated into a string with spaces added between the output lines of the command. \subsubsection*{E\+X\+A\+M\+P\+LE}
-
+character(len=$\ast$),intent(in) \+:: cmd character(len=$\ast$),intent(in),optional \+:: delim integer,intent(out),optional \+:: ierr character(len=\+:),allocatable \+:: string \hypertarget{namespacem__process_autotoc_md62}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__process_autotoc_md62}
+cmd command to pass to system delim delimiter to place between output lines when they are concatenated. Defaults to a space ierr check status of call. \hypertarget{namespacem__process_autotoc_md63}{}\doxysubsubsection{R\+E\+S\+U\+L\+TS}\label{namespacem__process_autotoc_md63}
+process\+\_\+readall Assuming sufficient memory is available all the output of the system command are concatenated into a string with spaces added between the output lines of the command. \hypertarget{namespacem__process_autotoc_md64}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__process_autotoc_md64}
 Read all output of a command to a single string
 
-program test\+\_\+process\+\_\+readall use M\+\_\+process ,only\+: process\+\_\+readall implicit none integer \+:\+: ierr character(len=\+:),allocatable \+:\+: string string=process\+\_\+readall(\textquotesingle{}ls\textquotesingle{},ierr=ierr) write($\ast$,$\ast$)ierr,string end program test\+\_\+process\+\_\+readall
+program demo\+\_\+process\+\_\+readall use M\+\_\+process, only\+: process\+\_\+readall implicit none integer \+:: ierr character(len=\+:),allocatable \+:: string string=process\+\_\+readall(\textquotesingle{}ls\textquotesingle{},ierr=ierr) write($\ast$,$\ast$)ierr,string end program demo\+\_\+process\+\_\+readall
+
+Results\+:
+
+app build docs example fpm.\+toml L\+I\+C\+E\+N\+SE man R\+E\+A\+D\+M\+E.\+md src test
 
 Read all output of a command to an array using split(3f)
 
-program demo\+\_\+process\+\_\+readall use M\+\_\+process ,only\+: process\+\_\+readall !!use M\+\_\+strings ,only\+: split implicit none integer \+:\+: ierr integer \+:\+: i character(len=\+:),allocatable \+:\+: string character(len=\+:),allocatable \+:\+: array(\+:) string=process\+\_\+readall(\textquotesingle{}ls\textquotesingle{},delim=N\+E\+W\+\_\+\+L\+I\+NE(\char`\"{}\+A\char`\"{}),ierr=ierr) !!call split(string,array,delimiters=N\+E\+W\+\_\+\+L\+I\+NE(\char`\"{}\+A\char`\"{})) !!do i=1,size(array) !! write($\ast$,\textquotesingle{}(i0,t10,\char`\"{}\mbox{[}\char`\"{},a,\char`\"{}\mbox{]}\char`\"{})\textquotesingle{})i,trim(array(i)) !!enddo !!write($\ast$,$\ast$)string=process\+\_\+readall(\& !!\& \textquotesingle{}ls\textquotesingle{},delim=N\+E\+W\+\_\+\+L\+I\+NE(\char`\"{}\+A\char`\"{}),ierr=ierr) write($\ast$,$\ast$)string end program demo\+\_\+process\+\_\+readall
+program test\+\_\+process\+\_\+readall use M\+\_\+process ,only\+: process\+\_\+readall use M\+\_\+strings ,only\+: split implicit none integer \+:: ierr integer \+:: i character(len=\+:),allocatable \+:: string character(len=\+:),allocatable \+:: array(\+:) string=process\+\_\+readall(\textquotesingle{}ls\textquotesingle{},delim=N\+E\+W\+\_\+\+L\+I\+NE(\char`\"{}\+A\char`\"{}),ierr=ierr) call split(string,array,delimiters=N\+E\+W\+\_\+\+L\+I\+NE(\char`\"{}\+A\char`\"{})) do i=1,size(array) write($\ast$,\textquotesingle{}(i0,t10,\char`\"{}\mbox{[}\char`\"{},a,\char`\"{}\mbox{]}\char`\"{})\textquotesingle{})i,trim(array(i)) enddo write($\ast$,$\ast$)string=process\+\_\+readall(\& \& \textquotesingle{}ls\textquotesingle{},delim=N\+E\+W\+\_\+\+L\+I\+NE(\char`\"{}\+A\char`\"{}),ierr=ierr) write($\ast$,$\ast$)string end program test\+\_\+process\+\_\+readall
 
 Results\+: \begin{DoxyVerb}> 1     [Articles]
 > 2     [LIBRARY]
@@ -466,14 +349,9 @@ Results\+: \begin{DoxyVerb}> 1     [Articles]
 > 12    [scripts]
 > 13    [tmp]
 \end{DoxyVerb}
-
-
-\subsubsection*{S\+EE A\+L\+SO}
-
-M\+\_\+process(3fm) \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
+\hypertarget{namespacem__process_autotoc_md65}{}\doxysubsubsection{S\+E\+E A\+L\+SO}\label{namespacem__process_autotoc_md65}
+M\+\_\+process(3fm) \hypertarget{namespacem__process_autotoc_md66}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__process_autotoc_md66}
+John S. Urban \hypertarget{namespacem__process_autotoc_md67}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__process_autotoc_md67}
 Public Domain 
 
 References process\+\_\+close(), process\+\_\+open\+\_\+read(), and process\+\_\+readline().
@@ -486,37 +364,25 @@ Here is the call graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__process_acbc72c5ed371430a471aa1f3010fbbda}\label{namespacem__process_acbc72c5ed371430a471aa1f3010fbbda}} 
-\index{m\+\_\+process@{m\+\_\+process}!process\+\_\+readline@{process\+\_\+readline}}
-\index{process\+\_\+readline@{process\+\_\+readline}!m\+\_\+process@{m\+\_\+process}}
-\subsubsection{\texorpdfstring{process\+\_\+readline()}{process\_readline()}}
+\index{m\_process@{m\_process}!process\_readline@{process\_readline}}
+\index{process\_readline@{process\_readline}!m\_process@{m\_process}}
+\doxysubsubsection{\texorpdfstring{process\_readline()}{process\_readline()}}
 {\footnotesize\ttfamily subroutine, public m\+\_\+process\+::process\+\_\+readline (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(out)}]{readfrom,  }\item[{type(\mbox{\hyperlink{structm__process_1_1streampointer}{streampointer}}), intent(in)}]{fp,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})}
 
-
-
-\subsubsection*{N\+A\+ME}
-
-process\+\_\+readline(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} read a line of output from a system command as a character variable (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
+\hypertarget{namespacem__process_autotoc_md52}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__process_autotoc_md52}
+process\+\_\+readline(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} read a line of output from a system command as a character variable (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__process_autotoc_md53}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__process_autotoc_md53}
 \begin{DoxyVerb} subroutine process_readline(string,fp,ierr)
 
    character(len=*)    :: string
    type(streampointer) :: fp
    integer             :: ierr
 \end{DoxyVerb}
-
-
-\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
+\hypertarget{namespacem__process_autotoc_md54}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__process_autotoc_md54}
 The M\+\_\+process Fortran procedures use the I\+S\+O\+\_\+\+C\+\_\+\+B\+I\+N\+D\+I\+NG interface to define Fortran-\/callable versions of the C procedures popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-\/oriented wrapper routines are then used to create a simple Fortran-\/callable interface.
 
 A P\+O\+S\+IX C interface is generally available but may require using a Linux subwindow or an application such as Cyg\+Win on M\+S\+Windows platforms.
 
-See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
+See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.\hypertarget{namespacem__process_autotoc_md55}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__process_autotoc_md55}
 \begin{DoxyVerb}string   data line to receive from process
 fp       C file pointer returned by process_open_*()
 ierr     error flag returned.
@@ -526,24 +392,16 @@ ierr     error flag returned.
 
 maximum character value length is currently 4096
 \end{DoxyVerb}
-
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
+\hypertarget{namespacem__process_autotoc_md56}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__process_autotoc_md56}
 This example shows a routine reading the output of a system command.
 
-program demo\+\_\+process\+\_\+readline use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+read, process\+\_\+readline use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:\+: fp ! line of data to read (assumed long enough to hold any output line) character(len=4096) \+:\+: line integer \+:\+: ierr ! open process to read from call process\+\_\+open\+\_\+read(\textquotesingle{}ls -\/l\textquotesingle{},fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+L\+I\+NE\+: process is opened with status \textquotesingle{},ierr ierr=0 do while(ierr .eq. 0) ! read a line from the process call process\+\_\+readline(line,fp,ierr) if(ierr.\+ne.\+0)then write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+L\+I\+NE\+: ierr is \textquotesingle{},ierr exit endif write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+L\+I\+NE\+: \textquotesingle{},trim(line) enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+L\+I\+NE\+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+readline
+program demo\+\_\+process\+\_\+readline use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+read, process\+\_\+readline use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:: fp ! line of data to read (assumed long enough to hold any output line) character(len=4096) \+:: line integer \+:: ierr ! open process to read from call process\+\_\+open\+\_\+read(\textquotesingle{}ls -\/l\textquotesingle{},fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+L\+I\+NE\+: process is opened with status \textquotesingle{},ierr ierr=0 do while(ierr .eq. 0) ! read a line from the process call process\+\_\+readline(line,fp,ierr) if(ierr.\+ne.\+0)then write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+L\+I\+NE\+: ierr is \textquotesingle{},ierr exit endif write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+L\+I\+NE\+: \textquotesingle{},trim(line) enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+L\+I\+NE\+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+readline
 
 Sample output\+:
 
-R\+E\+A\+D\+L\+I\+NE\+: process is opened with status 0 R\+E\+A\+D\+L\+I\+NE\+: total 108 R\+E\+A\+D\+L\+I\+NE\+: -\/rw-\/r--r--. 1 urbanjs urbanjs 3731 Oct 17 14\+:49 build.\+sh R\+E\+A\+D\+L\+I\+NE\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 56633 Oct 17 14\+:50 build.\+sh.\+log R\+E\+A\+D\+L\+I\+NE\+: drwxrwxr-\/x. 3 urbanjs urbanjs 4096 Oct 17 14\+:50 doc R\+E\+A\+D\+L\+I\+NE\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 39459 Oct 17 15\+:16 M\+\_\+process.\+ff R\+E\+A\+D\+L\+I\+NE\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 826 Oct 17 15\+:17 xx.\+f90 R\+E\+A\+D\+L\+I\+NE\+: ierr is -\/1 R\+E\+A\+D\+L\+I\+NE\+: process closed with status 0
-
-\subsubsection*{S\+EE A\+L\+SO}
-
-o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
+R\+E\+A\+D\+L\+I\+NE\+: process is opened with status 0 R\+E\+A\+D\+L\+I\+NE\+: total 108 R\+E\+A\+D\+L\+I\+NE\+: -\/rw-\/r--r--. 1 urbanjs urbanjs 3731 Oct 17 14\+:49 build.\+sh R\+E\+A\+D\+L\+I\+NE\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 56633 Oct 17 14\+:50 build.\+sh.\+log R\+E\+A\+D\+L\+I\+NE\+: drwxrwxr-\/x. 3 urbanjs urbanjs 4096 Oct 17 14\+:50 doc R\+E\+A\+D\+L\+I\+NE\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 39459 Oct 17 15\+:16 M\+\_\+process.\+ff R\+E\+A\+D\+L\+I\+NE\+: -\/rw-\/rw-\/r--. 1 urbanjs urbanjs 826 Oct 17 15\+:17 xx.\+f90 R\+E\+A\+D\+L\+I\+NE\+: ierr is -\/1 R\+E\+A\+D\+L\+I\+NE\+: process closed with status 0\hypertarget{namespacem__process_autotoc_md57}{}\doxysubsubsection{S\+E\+E A\+L\+SO}\label{namespacem__process_autotoc_md57}
+o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \hypertarget{namespacem__process_autotoc_md58}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__process_autotoc_md58}
+John S. Urban \hypertarget{namespacem__process_autotoc_md59}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__process_autotoc_md59}
 Public Domain 
 
 References process\+\_\+debug.
@@ -556,9 +414,9 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__process_a08887a918eba167ceacddf58ca084270}\label{namespacem__process_a08887a918eba167ceacddf58ca084270}} 
-\index{m\+\_\+process@{m\+\_\+process}!process\+\_\+writeline\+\_\+array@{process\+\_\+writeline\+\_\+array}}
-\index{process\+\_\+writeline\+\_\+array@{process\+\_\+writeline\+\_\+array}!m\+\_\+process@{m\+\_\+process}}
-\subsubsection{\texorpdfstring{process\+\_\+writeline\+\_\+array()}{process\_writeline\_array()}}
+\index{m\_process@{m\_process}!process\_writeline\_array@{process\_writeline\_array}}
+\index{process\_writeline\_array@{process\_writeline\_array}!m\_process@{m\_process}}
+\doxysubsubsection{\texorpdfstring{process\_writeline\_array()}{process\_writeline\_array()}}
 {\footnotesize\ttfamily subroutine m\+\_\+process\+::process\+\_\+writeline\+\_\+array (\begin{DoxyParamCaption}\item[{character(len=$\ast$), dimension(\+:), intent(in)}]{writefrom,  }\item[{type(\mbox{\hyperlink{structm__process_1_1streampointer}{streampointer}}), intent(in)}]{fp,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
@@ -573,37 +431,25 @@ Here is the call graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__process_a72527c0ec0af26dcb14b8bfad6dcd482}\label{namespacem__process_a72527c0ec0af26dcb14b8bfad6dcd482}} 
-\index{m\+\_\+process@{m\+\_\+process}!process\+\_\+writeline\+\_\+scalar@{process\+\_\+writeline\+\_\+scalar}}
-\index{process\+\_\+writeline\+\_\+scalar@{process\+\_\+writeline\+\_\+scalar}!m\+\_\+process@{m\+\_\+process}}
-\subsubsection{\texorpdfstring{process\+\_\+writeline\+\_\+scalar()}{process\_writeline\_scalar()}}
+\index{m\_process@{m\_process}!process\_writeline\_scalar@{process\_writeline\_scalar}}
+\index{process\_writeline\_scalar@{process\_writeline\_scalar}!m\_process@{m\_process}}
+\doxysubsubsection{\texorpdfstring{process\_writeline\_scalar()}{process\_writeline\_scalar()}}
 {\footnotesize\ttfamily subroutine m\+\_\+process\+::process\+\_\+writeline\+\_\+scalar (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{writefrom,  }\item[{type(\mbox{\hyperlink{structm__process_1_1streampointer}{streampointer}}), intent(in)}]{fp,  }\item[{integer, intent(out)}]{ierr,  }\item[{logical, intent(in), optional}]{trm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
-\subsubsection*{N\+A\+ME}
-
-process\+\_\+writeline(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} write to a process using a P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
+\hypertarget{namespacem__process_autotoc_md68}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__process_autotoc_md68}
+process\+\_\+writeline(3fm) -\/ \mbox{[}M\+\_\+process\mbox{]} write to a process using a P\+O\+S\+IX interface (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__process_autotoc_md69}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__process_autotoc_md69}
 \begin{DoxyVerb} subroutine process_writeline(string,fp,ierr)
 
    character(len=*)    :: string
    type(streampointer) :: fp
    integer             :: ierr
 \end{DoxyVerb}
-
-
-\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
+\hypertarget{namespacem__process_autotoc_md70}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__process_autotoc_md70}
 The M\+\_\+process Fortran procedures use the I\+S\+O\+\_\+\+C\+\_\+\+B\+I\+N\+D\+I\+NG interface to define Fortran-\/callable versions of the C procedures popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-\/oriented wrapper routines are then used to create a simple Fortran-\/callable interface.
 
 A P\+O\+S\+IX C interface is generally available but may require using a Linux subwindow or an application such as Cyg\+Win on M\+S\+Windows platforms.
 
-See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
+See \char`\"{}\+M\+\_\+process\char`\"{} for an extended description.\hypertarget{namespacem__process_autotoc_md71}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__process_autotoc_md71}
 \begin{DoxyVerb}string   data line to to process
 fp       C file pointer returned by process_open_*()
 ierr     error flag returned.
@@ -613,26 +459,18 @@ ierr     error flag returned.
 
 maximum character value length is currently 4096
 \end{DoxyVerb}
-
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
+\hypertarget{namespacem__process_autotoc_md72}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__process_autotoc_md72}
 This example shows a routine to write lines to the stdin of a system process
 
-program demo\+\_\+process\+\_\+writeline use, intrinsic \+:\+: iso\+\_\+fortran\+\_\+env, only \+: \& \& stdin=$>$input\+\_\+unit, \& \& stdout=$>$output\+\_\+unit, \& \& stderr=$>$error\+\_\+unit use \mbox{\hyperlink{namespacem__process}{m\+\_\+process}} ,only\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use \mbox{\hyperlink{namespacem__process}{m\+\_\+process}} ,only\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:\+: fp ! line of data to write character(len=4096) \+:\+: line integer \+:\+: ierr integer \+:\+: i ! open process to write to call process\+\_\+open\+\_\+write(\textquotesingle{}cat -\/n\textquotesingle{},fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ! remember C and Fortran I/O are often independent of each other flush(stdout) ierr=0 line=\textquotesingle{}xxxxxxxxxxxxxxxxxxxxxxxxxxx\textquotesingle{} do i=1,10 ! write a line to the process call process\+\_\+writeline(trim(line),fp,ierr) if(ierr.\+lt.\+0)then write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+writeline
+program demo\+\_\+process\+\_\+writeline use, intrinsic \+:: iso\+\_\+fortran\+\_\+env, only \+: \& \& stdin=$>$input\+\_\+unit, \& \& stdout=$>$output\+\_\+unit, \& \& stderr=$>$error\+\_\+unit use \mbox{\hyperlink{namespacem__process}{m\+\_\+process}} ,only\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use \mbox{\hyperlink{namespacem__process}{m\+\_\+process}} ,only\+: streampointer, process\+\_\+close implicit none type(streampointer) \+:: fp ! line of data to write character(len=4096) \+:: line integer \+:: ierr integer \+:: i ! open process to write to call process\+\_\+open\+\_\+write(\textquotesingle{}cat -\/n\textquotesingle{},fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ! remember C and Fortran I/O are often independent of each other flush(stdout) ierr=0 line=\textquotesingle{}xxxxxxxxxxxxxxxxxxxxxxxxxxx\textquotesingle{} do i=1,10 ! write a line to the process call process\+\_\+writeline(trim(line),fp,ierr) if(ierr.\+lt.\+0)then write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end program demo\+\_\+process\+\_\+writeline
 
 Sample output\+:
 
 $>$W\+R\+I\+T\+E\+T\+E\+ST\+: process is opened with status 0 \begin{quote}
 1 xxxxxxxxxxxxxxxxxxxxxxxxxxx 2 xxxxxxxxxxxxxxxxxxxxxxxxxxx 3 xxxxxxxxxxxxxxxxxxxxxxxxxxx 4 xxxxxxxxxxxxxxxxxxxxxxxxxxx 5 xxxxxxxxxxxxxxxxxxxxxxxxxxx 6 xxxxxxxxxxxxxxxxxxxxxxxxxxx 7 xxxxxxxxxxxxxxxxxxxxxxxxxxx 8 xxxxxxxxxxxxxxxxxxxxxxxxxxx 9 xxxxxxxxxxxxxxxxxxxxxxxxxxx 10 xxxxxxxxxxxxxxxxxxxxxxxxxxx $>$W\+R\+I\+T\+E\+T\+E\+ST\+: process closed with status 0 \end{quote}
-
-
-\subsubsection*{S\+EE A\+L\+SO}
-
-o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
+\hypertarget{namespacem__process_autotoc_md73}{}\doxysubsubsection{S\+E\+E A\+L\+SO}\label{namespacem__process_autotoc_md73}
+o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \hypertarget{namespacem__process_autotoc_md74}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__process_autotoc_md74}
+John S. Urban \hypertarget{namespacem__process_autotoc_md75}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__process_autotoc_md75}
 Public Domain 
 
 References process\+\_\+debug.
@@ -646,10 +484,10 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
-\subsection{Variable Documentation}
+\doxysubsection{Variable Documentation}
 \mbox{\Hypertarget{namespacem__process_a0fabee8d01338d5523fbdea5c5f1e894}\label{namespacem__process_a0fabee8d01338d5523fbdea5c5f1e894}} 
-\index{m\+\_\+process@{m\+\_\+process}!process\+\_\+debug@{process\+\_\+debug}}
-\index{process\+\_\+debug@{process\+\_\+debug}!m\+\_\+process@{m\+\_\+process}}
-\subsubsection{\texorpdfstring{process\+\_\+debug}{process\_debug}}
+\index{m\_process@{m\_process}!process\_debug@{process\_debug}}
+\index{process\_debug@{process\_debug}!m\_process@{m\_process}}
+\doxysubsubsection{\texorpdfstring{process\_debug}{process\_debug}}
 {\footnotesize\ttfamily logical, public m\+\_\+process\+::process\+\_\+debug =.false.}
 

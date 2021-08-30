@@ -1,39 +1,27 @@
-\hypertarget{interfacem__process_1_1system__fgets}{}\section{m\+\_\+process\+:\+:system\+\_\+fgets Interface Reference}
-\label{interfacem__process_1_1system__fgets}\index{m\+\_\+process\+::system\+\_\+fgets@{m\+\_\+process\+::system\+\_\+fgets}}
-
-
-\subsubsection*{N\+A\+ME}
-
-fgets(3fp) -\/ get character string from a file or stream by calling fgets(3c) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS} 
-
-
-\subsection*{Private Member Functions}
+\hypertarget{interfacem__process_1_1system__fgets}{}\doxysection{m\+\_\+process\+::system\+\_\+fgets Interface Reference}
+\label{interfacem__process_1_1system__fgets}\index{m\_process::system\_fgets@{m\_process::system\_fgets}}
+\doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 type(c\+\_\+ptr) function \mbox{\hyperlink{interfacem__process_1_1system__fgets_a33f5f4ba1ea0fe4e0b757d7fa5e8a571}{system\+\_\+fgets}} (buf, siz, handle)
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-\subsubsection*{N\+A\+ME}
-
-fgets(3fp) -\/ get character string from a file or stream by calling fgets(3c) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
+\doxysubsection{Detailed Description}
+\hypertarget{interfacem__process_1_1system__fgets_autotoc_md9}{}\doxysubsubsection{N\+A\+ME}\label{interfacem__process_1_1system__fgets_autotoc_md9}
+fgets(3fp) -\/ get character string from a file or stream by calling fgets(3c) \hypertarget{interfacem__process_1_1system__fgets_autotoc_md10}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{interfacem__process_1_1system__fgets_autotoc_md10}
 \#include $<$stdio.\+h$>$
 
-char $\ast$fgets(char $\ast$\+B\+UF, int N, F\+I\+LE $\ast$\+FP); \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-Reads at most N-\/1 characters from FP until a newline is found. The characters including to the newline are stored in B\+UF. The buffer is terminated with a 0. \subsubsection*{R\+E\+T\+U\+R\+NS}
-
-fgets(3c) returns the buffer passed to it, with the data filled in. If end of file occurs with some data already accumulated, the data is returned with no other indication. If no data are read, N\+U\+LL is returned instead. \subsubsection*{P\+O\+R\+T\+A\+B\+I\+L\+I\+TY}
-
+char $\ast$fgets(char $\ast$\+B\+UF, int N, F\+I\+LE $\ast$\+FP); \hypertarget{interfacem__process_1_1system__fgets_autotoc_md11}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{interfacem__process_1_1system__fgets_autotoc_md11}
+Reads at most N-\/1 characters from FP until a newline is found. The characters including to the newline are stored in B\+UF. The buffer is terminated with a 0. \hypertarget{interfacem__process_1_1system__fgets_autotoc_md12}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{interfacem__process_1_1system__fgets_autotoc_md12}
+fgets(3c) returns the buffer passed to it, with the data filled in. If end of file occurs with some data already accumulated, the data is returned with no other indication. If no data are read, N\+U\+LL is returned instead. \hypertarget{interfacem__process_1_1system__fgets_autotoc_md13}{}\doxysubsubsection{P\+O\+R\+T\+A\+B\+I\+L\+I\+TY}\label{interfacem__process_1_1system__fgets_autotoc_md13}
 Note that fgets(3c) returns all of the data, including the newline. 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{interfacem__process_1_1system__fgets_a33f5f4ba1ea0fe4e0b757d7fa5e8a571}\label{interfacem__process_1_1system__fgets_a33f5f4ba1ea0fe4e0b757d7fa5e8a571}} 
-\index{m\+\_\+process\+::system\+\_\+fgets@{m\+\_\+process\+::system\+\_\+fgets}!system\+\_\+fgets@{system\+\_\+fgets}}
-\index{system\+\_\+fgets@{system\+\_\+fgets}!m\+\_\+process\+::system\+\_\+fgets@{m\+\_\+process\+::system\+\_\+fgets}}
-\subsubsection{\texorpdfstring{system\+\_\+fgets()}{system\_fgets()}}
+\index{m\_process::system\_fgets@{m\_process::system\_fgets}!system\_fgets@{system\_fgets}}
+\index{system\_fgets@{system\_fgets}!m\_process::system\_fgets@{m\_process::system\_fgets}}
+\doxysubsubsection{\texorpdfstring{system\_fgets()}{system\_fgets()}}
 {\footnotesize\ttfamily type (c\+\_\+ptr) function m\+\_\+process\+::system\+\_\+fgets\+::system\+\_\+fgets (\begin{DoxyParamCaption}\item[{character(kind=c\+\_\+char), dimension($\ast$)}]{buf,  }\item[{integer(kind=c\+\_\+int), value}]{siz,  }\item[{type (c\+\_\+ptr), value}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 

@@ -342,16 +342,16 @@ implicit none
 
 ! ident_1="@(#)M_process(3fm): call C process open,close,read,write functions"
 
-PRIVATE
-PUBLIC  :: process_open_read  ! (cmd,fp,ierr)     ! open process to read from
-PUBLIC  :: process_open_write ! (cmd,fp,ierr)     ! open process to write to
-PUBLIC  :: process_close      ! (fp,ierr)         ! close process
-PUBLIC  :: process_readline   ! (string,fp,ierr)  ! read line from process
-PUBLIC  :: process_readall    ! (cmd,ierr) result(string) ! read all lines from
-PUBLIC  :: process_writeline  ! (string,fp,ierr)  ! write line to process
-PRIVATE :: process_open       ! (fp,ierr)         ! open process
+private
+public  :: process_open_read  ! (cmd,fp,ierr)     ! open process to read from
+public  :: process_open_write ! (cmd,fp,ierr)     ! open process to write to
+public  :: process_close      ! (fp,ierr)         ! close process
+public  :: process_readline   ! (string,fp,ierr)  ! read line from process
+public  :: process_readall    ! (cmd,ierr) result(string) ! read all lines from
+public  :: process_writeline  ! (string,fp,ierr)  ! write line to process
+private :: process_open       ! (fp,ierr)         ! open process
 
-logical, PUBLIC ::  process_debug=.false.
+logical, public ::  process_debug=.false.
 
 type, public       :: streampointer
    type (c_ptr)    :: handle = c_null_ptr
@@ -1009,34 +1009,38 @@ end subroutine process_readline
 !!
 !!   Read all output of a command to a single string
 !!
-!!      program test_process_readall
-!!       use M_process ,only: process_readall
-!!       implicit none
-!!       integer :: ierr
-!!       character(len=:),allocatable :: string
+!!     program demo_process_readall
+!!      use M_process, only: process_readall
+!!      implicit none
+!!      integer :: ierr
+!!      character(len=:),allocatable :: string
 !!          string=process_readall('ls',ierr=ierr)
 !!          write(*,*)ierr,string
-!!       end program test_process_readall
+!!      end program demo_process_readall
+!!
+!!   Results:
+!!
+!!    app build docs example fpm.toml LICENSE man README.md src test
 !!
 !!   Read all output of a command to an array using split(3f)
 !!
-!!      program demo_process_readall
+!!      program test_process_readall
 !!       use M_process ,only: process_readall
-!!       !!use M_strings ,only: split
+!!       use M_strings ,only: split
 !!       implicit none
 !!       integer                      :: ierr
 !!       integer                      :: i
 !!       character(len=:),allocatable :: string
 !!       character(len=:),allocatable :: array(:)
 !!          string=process_readall('ls',delim=NEW_LINE("A"),ierr=ierr)
-!!          !!call split(string,array,delimiters=NEW_LINE("A"))
-!!          !!do i=1,size(array)
-!!          !!   write(*,'(i0,t10,"[",a,"]")')i,trim(array(i))
-!!          !!enddo
-!!          !!write(*,*)string=process_readall(&
-!!          !!& 'ls',delim=NEW_LINE("A"),ierr=ierr)
+!!          call split(string,array,delimiters=NEW_LINE("A"))
+!!          do i=1,size(array)
+!!             write(*,'(i0,t10,"[",a,"]")')i,trim(array(i))
+!!          enddo
+!!          write(*,*)string=process_readall(&
+!!          & 'ls',delim=NEW_LINE("A"),ierr=ierr)
 !!          write(*,*)string
-!!       end program demo_process_readall
+!!       end program test_process_readall
 !!
 !!   Results:
 !!

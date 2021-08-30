@@ -1,5 +1,6 @@
 <map id="m_process::process_open" name="m_process::process_open">
-<area shape="rect" id="node2" href="$namespacem__process.html#aaaf4d1926258a4cec7da7fc61c38c79d" title="NAMEprocess_open_read(3fm) &#45; [M_process] open a process for reading using POSIX interface (LICENSE:PD..." alt="" coords="243,5,393,47"/>
-<area shape="rect" id="node4" href="$namespacem__process.html#aa6ed1404ab3472f5068ed15a7a01defc" title="NAMEprocess_open_write(3fm) &#45; [M_process] open a process for writing using a POSIX interface (LICENSE..." alt="" coords="243,71,393,112"/>
-<area shape="rect" id="node3" href="$namespacem__process.html#a7dd759a1344789477ae1e205d7fa9a51" title="NAMEprocess_readall(3f) &#45; [M_process] read all lines from process into single string (LICENSE:PD) SYN..." alt="" coords="441,5,592,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="403,46,592,73"/>
+<area shape="rect" id="node2" href="$namespacem__process.html#aaaf4d1926258a4cec7da7fc61c38c79d" title=" " alt="" coords="204,5,355,47"/>
+<area shape="rect" id="node4" href="$namespacem__process.html#aa6ed1404ab3472f5068ed15a7a01defc" title=" " alt="" coords="204,71,355,112"/>
+<area shape="rect" id="node3" href="$namespacem__process.html#a7dd759a1344789477ae1e205d7fa9a51" title=" " alt="" coords="5,5,156,47"/>
 </map>

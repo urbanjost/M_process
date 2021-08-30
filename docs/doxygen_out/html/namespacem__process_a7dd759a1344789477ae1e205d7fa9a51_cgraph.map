@@ -1,6 +1,7 @@
 <map id="m_process::process_readall" name="m_process::process_readall">
-<area shape="rect" id="node2" href="$namespacem__process.html#ab4c5cad3fb46686f0c9b71c3a634f6ae" title="NAMEprocess_close(3fm) &#45; [M_process] close a process being written to or read from (LICENSE:PD) ..." alt="" coords="204,5,355,47"/>
-<area shape="rect" id="node3" href="$namespacem__process.html#aaaf4d1926258a4cec7da7fc61c38c79d" title="NAMEprocess_open_read(3fm) &#45; [M_process] open a process for reading using POSIX interface (LICENSE:PD..." alt="" coords="204,71,355,112"/>
-<area shape="rect" id="node5" href="$namespacem__process.html#acbc72c5ed371430a471aa1f3010fbbda" title="NAMEprocess_readline(3fm) &#45; [M_process] read a line of output from a system command as a character va..." alt="" coords="204,136,355,177"/>
-<area shape="rect" id="node4" href="$namespacem__process.html#a3c0f543a9ceff2671041d73660f60a59" title="NAME(LICENSE:PD) SYNOPSIS" alt="" coords="403,78,592,105"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,156,112"/>
+<area shape="rect" id="node2" href="$namespacem__process.html#ab4c5cad3fb46686f0c9b71c3a634f6ae" title=" " alt="" coords="204,5,355,47"/>
+<area shape="rect" id="node3" href="$namespacem__process.html#aaaf4d1926258a4cec7da7fc61c38c79d" title=" " alt="" coords="204,71,355,112"/>
+<area shape="rect" id="node5" href="$namespacem__process.html#acbc72c5ed371430a471aa1f3010fbbda" title=" " alt="" coords="204,136,355,177"/>
+<area shape="rect" id="node4" href="$namespacem__process.html#a3c0f543a9ceff2671041d73660f60a59" title=" " alt="" coords="403,78,592,105"/>
 </map>
