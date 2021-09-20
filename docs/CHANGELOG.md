@@ -19,7 +19,7 @@ checked ...
    - [x] demo program for public procedures
    - [x] developer documents (ford(1))
    - [x] CI/CD(Continious Integration/Development) verification (github actions)
-   - [ ] registered in fpm(1) repository
+   - [x] registered in fpm(1) repository
 
 ---
 **2019-12-16**  John S. Urban  <https://github.com/urbanjost>
