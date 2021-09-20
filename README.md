@@ -75,7 +75,6 @@ There are currently several different ways to view the documentation ...
 
 + [BOOK_M_process](https://urbanjost.github.io/M_process/BOOK_M_process.html).
 + [manpage index](https://urbanjost.github.io/M_process/man3.html)
-+ [doxygen(1) output](https://urbanjost.github.io/M_process/doxygen_out/html/index.html).
 
 _and there are manpages_ in the distribution in 
 + [manpage.tgz](https://urbanjost.github.io/M_process/manpage.tgz) or
@@ -84,9 +83,7 @@ _and there are manpages_ in the distribution in
 
 ### DEVELOPER
    + [ford(1) output](https://urbanjost.github.io/M_uuid/fpm-ford/index.html).
-<!--
-   - [doxygen(1) output](https://urbanjost.github.io/M_uuid/doxygen_out/html/index.html).
--->
+   + [doxygen(1) output](https://urbanjost.github.io/M_process/doxygen_out/html/index.html).
    + [github action status](docs/STATUS.md) 
 
 ## ALTERNATIVES
