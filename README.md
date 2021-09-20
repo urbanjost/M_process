@@ -10,6 +10,9 @@
 The M_process Fortran module ( A fortran-lang.org [package](https://fortran-lang.org/packages/) )
 reads and writes from processes by calling the C popen(3c) procedure.
 
+__NB. These procedures require a platform that supports POSIX routines
+and the popen(3c) procedure in particular__.
+
 ## DOWNLOAD AND BUILD
 Just download the github repository, enter the src/ directory and run make:
 
@@ -77,16 +80,16 @@ There are currently several different ways to view the documentation ...
 _and there are manpages_ in the distribution in 
 + [manpage.tgz](https://urbanjost.github.io/M_process/manpage.tgz) or
 + [manpage.zip](https://urbanjost.github.io/M_process/manpage.zip)
++ [CHANGELOG](docs/CHANGELOG.md) provides a history of significant changes
 
-# RESPONSES
-
-Discussion is welcome here as well as at
- - [Fortran Discourse](https://fortran-lang.discourse.group)
- - [Fortran Wiki](http://fortranwiki.org)
- - [Google Fortran newsgroup](https://groups.google.com/forum/#!forum/comp.lang.fortran)
+### DEVELOPER
+   + [ford(1) output](https://urbanjost.github.io/M_uuid/fpm-ford/index.html).
+<!--
+   - [doxygen(1) output](https://urbanjost.github.io/M_uuid/doxygen_out/html/index.html).
+-->
+   + [github action status](docs/STATUS.md) 
 
 ## ALTERNATIVES
 
 The Fortran Wiki [ fortranwiki.org ](http://fortranwiki.org) contains
-information on other libraries and modules that provide I/O from 
-procedures.
+information on other libraries and modules that provide access to processes and threads.
