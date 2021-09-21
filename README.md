@@ -44,7 +44,7 @@ This will compile the M_process module and optionally build all the
 example programs from the document pages in the example/ sub-directory
 and run the unit tests.
 
-## SUPPORTS FPM ![fpm](docs/images/fpm_logo.gif)
+## SUPPORTS FPM ![fpm](docs/images/fpm_logo.gif) ![fpm](docs/images/fpm.gif) ![fpm](docs/images/FPM.gif) ![fpm](docs/images/FPM_GLOW.gif)
 #### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
 
 Alternatively, download the github repository and
