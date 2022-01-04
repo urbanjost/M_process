@@ -65,7 +65,7 @@ or just list it as a dependency in your fpm.toml project file.
      M_process        = { git = "https://github.com/urbanjost/M_process.git" }
 ```
 
-## SAMPLE PROGRAMS
+## DEMO PROGRAMS![demos](docs/images/demo.gif)
 
 The manpages contain small sample programs that have been extracted
 and placed in the example/ directory. 
