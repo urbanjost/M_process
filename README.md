@@ -21,11 +21,11 @@ Just download the github repository, enter the src/ directory and run make:
      cd M_process/src
 
      # change Makefile if not using one of the listed compilers
-     
+
      # for gfortran
      make clean
      make F90=gfortran gfortran
-     
+
      # for ifort
      make clean
      make F90=ifort ifort
@@ -35,9 +35,9 @@ Just download the github repository, enter the src/ directory and run make:
      make F90=nvfortran nvfortran
 
      # optionally
-     make test           # run the unit tests (needs M_msg(3f) module)
-     make run  --example # run all the demo programs from the manpages
-     make help           # see other developer options
+     make test               # run the unit tests (needs M_msg(3f) module)
+     make run  --example "*" # run all the demo programs from the manpages
+     make help               # see other developer options
 ```
 
 This will compile the M_process module and optionally build all the
@@ -68,15 +68,17 @@ or just list it as a dependency in your fpm.toml project file.
 ## DEMO PROGRAMS![demos](docs/images/demo.gif)
 
 The manpages contain small sample programs that have been extracted
-and placed in the example/ directory. 
+and placed in the example/ directory.
 
-## DOCUMENTATION
+## DOCUMENTATION   ![docs](docs/images/docs.gif)
+
+### USER
 There are currently several different ways to view the documentation ...
 
 + [BOOK_M_process](https://urbanjost.github.io/M_process/BOOK_M_process.html).
 + [manpage index](https://urbanjost.github.io/M_process/man3.html)
 
-_and there are manpages_ in the distribution in 
+_and there are manpages_ in the distribution in
 + [manpage.tgz](https://urbanjost.github.io/M_process/manpage.tgz) or
 + [manpage.zip](https://urbanjost.github.io/M_process/manpage.zip)
 + [CHANGELOG](docs/CHANGELOG.md) provides a history of significant changes
@@ -84,7 +86,7 @@ _and there are manpages_ in the distribution in
 ### DEVELOPER
    + [ford(1) output](https://urbanjost.github.io/M_uuid/fpm-ford/index.html).
    + [doxygen(1) output](https://urbanjost.github.io/M_process/doxygen_out/html/index.html).
-   + [github action status](docs/STATUS.md) 
+   + [github action status](docs/STATUS.md)
 
 ## ALTERNATIVES
 
