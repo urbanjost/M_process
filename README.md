@@ -36,7 +36,7 @@ Just download the github repository, enter the src/ directory and run make:
 
      # optionally
      make test               # run the unit tests (needs M_msg(3f) module)
-     make run  --example "*" # run all the demo programs from the manpages
+     make run  --example "*" # run all the demo programs from the man-pages
      make help               # see other developer options
 ```
 
@@ -67,7 +67,7 @@ or just list it as a dependency in your fpm.toml project file.
 
 ## DEMO PROGRAMS![demos](docs/images/demo.gif)
 
-The manpages contain small sample programs that have been extracted
+The man-pages contain small sample programs that have been extracted
 and placed in the example/ directory.
 
 ## DOCUMENTATION   ![docs](docs/images/docs.gif)
@@ -78,7 +78,7 @@ There are currently several different ways to view the documentation ...
 + [BOOK_M_process](https://urbanjost.github.io/M_process/BOOK_M_process.html).
 + [manpage index](https://urbanjost.github.io/M_process/man3.html)
 
-_and there are manpages_ in the distribution in
+_and there are man-pages_ in the distribution in
 + [manpage.tgz](https://urbanjost.github.io/M_process/manpage.tgz) or
 + [manpage.zip](https://urbanjost.github.io/M_process/manpage.zip)
 + [CHANGELOG](docs/CHANGELOG.md) provides a history of significant changes
