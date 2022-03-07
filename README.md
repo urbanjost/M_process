@@ -13,7 +13,7 @@ reads and writes from processes by calling the C popen(3c) procedure.
 __NB. These procedures require a platform that supports POSIX routines
 and the popen(3c) procedure in particular__.
 
-## DOWNLOAD AND BUILD
+## DOWNLOAD and BUILD using make(1)![GNU](docs/images/gnu.gif)
 Just download the github repository, enter the src/ directory and run make:
 
 ```bash
