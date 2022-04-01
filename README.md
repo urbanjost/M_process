@@ -84,7 +84,7 @@ _and there are man-pages_ in the distribution in
 + [CHANGELOG](docs/CHANGELOG.md) provides a history of significant changes
 
 ### DEVELOPER
-   + [ford(1) output](https://urbanjost.github.io/M_uuid/fpm-ford/index.html).
+   + [ford(1) output](https://urbanjost.github.io/M_process/fpm-ford/index.html).
    + [doxygen(1) output](https://urbanjost.github.io/M_process/doxygen_out/html/index.html).
    + [github action status](docs/STATUS.md)
 
