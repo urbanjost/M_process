@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
-   <meta name="description" content="easy project">
+   <meta name="description" content="call POSIX popen(3c) routine from Fortran">
     
-    <meta name="author" content="John Doe" >
+    <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
 
-    <title>demo_M_process &ndash; easy</title>
+    <title>demo_M_process &ndash; M_process</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../index.html">easy </a>
+          <a class="navbar-brand" href="../index.html">M_process </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 8.6% of total for programs.">13 statements</a>
+    title=" 6.4% of total for programs.">13 statements</a>
      </li> 
      
      
@@ -173,9 +173,9 @@
   <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../program/demo_m_process.html#variable-fp~8">fp</a>
+      <a class="list-group-item" href="../program/demo_m_process.html#variable-fp~9">fp</a>
       
-      <a class="list-group-item" href="../program/demo_m_process.html#variable-ierr~10">ierr</a>
+      <a class="list-group-item" href="../program/demo_m_process.html#variable-ierr~11">ierr</a>
       
       <a class="list-group-item" href="../program/demo_m_process.html#variable-text">text</a>
       
@@ -256,9 +256,9 @@
   <div id="vars-1" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../program/demo_m_process.html#variable-fp~8">fp</a>
+      <a class="list-group-item" href="../program/demo_m_process.html#variable-fp~9">fp</a>
       
-      <a class="list-group-item" href="../program/demo_m_process.html#variable-ierr~10">ierr</a>
+      <a class="list-group-item" href="../program/demo_m_process.html#variable-ierr~11">ierr</a>
       
       <a class="list-group-item" href="../program/demo_m_process.html#variable-text">text</a>
       
@@ -318,7 +318,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-fp~8"></span>type(<a href='../type/streampointer.html'>streampointer</a>)</td>
+  <td><span class="anchor" id="variable-fp~9"></span>type(<a href='../type/streampointer.html'>streampointer</a>)</td>
   
   
   <td></td><td>::</td>
@@ -332,7 +332,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-ierr~10"></span>integer</td>
+  <td><span class="anchor" id="variable-ierr~11"></span>integer</td>
   
   
   <td></td><td>::</td>
@@ -377,79 +377,79 @@
     
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="highlight"><pre><span></span>          <span class="k">program </span><span class="n">demo_M_process</span>
-           <span class="k">use </span><span class="n">M_process</span> <span class="p">,</span><span class="k">only</span> <span class="p">:</span> <span class="n">process_open_write</span><span class="p">,</span> <span class="n">process_writeline</span>
-           <span class="k">use </span><span class="n">M_process</span> <span class="p">,</span><span class="k">only</span> <span class="p">:</span> <span class="n">streampointer</span><span class="p">,</span> <span class="n">process_close</span>
-           <span class="k">implicit none</span>
-           <span class="c">! C file pointer returned by process_open()</span>
-           <span class="k">type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fp</span>
-           <span class="c">! check status of calls to process module routines</span>
-           <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ierr</span>
-           <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">text</span><span class="p">(:)</span>
+    <div class="highlight"><pre><span></span>     <span class="k">program </span><span class="n">demo_M_process</span>
+      <span class="k">use </span><span class="n">M_process</span> <span class="p">,</span><span class="k">only</span> <span class="p">:</span> <span class="n">process_open_write</span><span class="p">,</span> <span class="n">process_writeline</span>
+      <span class="k">use </span><span class="n">M_process</span> <span class="p">,</span><span class="k">only</span> <span class="p">:</span> <span class="n">streampointer</span><span class="p">,</span> <span class="n">process_close</span>
+      <span class="k">implicit none</span>
+      <span class="c">! C file pointer returned by process_open()</span>
+      <span class="k">type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fp</span>
+      <span class="c">! check status of calls to process module routines</span>
+      <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ierr</span>
+      <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">text</span><span class="p">(:)</span>
 
-           <span class="c">! open process to write to (ie. start gnuplot(1) program)</span>
-           <span class="c">!!call process_open_write(&#39;cat&#39;,fp,ierr)</span>
-           <span class="c">! open process to write to (ie. start gnuplot(1) program)</span>
-           <span class="k">call </span><span class="n">process_open_write</span><span class="p">(</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+      <span class="c">! open process to write to (ie. start gnuplot(1) program)</span>
+      <span class="c">!!call process_open_write(&#39;cat&#39;,fp,ierr)</span>
+      <span class="c">! open process to write to (ie. start gnuplot(1) program)</span>
+      <span class="k">call </span><span class="n">process_open_write</span><span class="p">(</span><span class="s1">&#39;bash&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 
-           <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span> <span class="kd">::</span> <span class="p">&amp;</span>
-           <span class="s2">&quot;rm -f sqlite1.db&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
-           <span class="s2">&quot;sqlite3 sqlite1.db &lt;&lt;\EOF&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
-           <span class="s2">&quot;-- ***********************************************&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;CREATE TABLE IF NOT EXISTS animals(               &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;   name        TEXT   NOT NULL   PRIMARY KEY ,    &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;   hair        INT    NOT NULL   ,                &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;   mobility    INT    NOT NULL   ,                &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;   vision      INT    NOT NULL   );               &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;-- ***********************************************&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;INSERT INTO animals(&amp;</span>
-<span class="s2">           &amp;name,hair,mobility,vision) VALUES(&#39;kittens&#39;,4,5,1);&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;INSERT INTO animals(&amp;</span>
-<span class="s2">           &amp;name,hair,mobility,vision) VALUES(&#39;mice&#39;   ,6,7,2);&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;INSERT INTO animals(&amp;</span>
-<span class="s2">           &amp;name,hair,mobility,vision) VALUES(&#39;rats&#39;   ,2,3,3);&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;-- ***********************************************&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;.quit&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
-           <span class="s2">&quot;EOF&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
-           <span class="s2">&quot;##################################################&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;sqlite3 -header -column sqlite1.db  &#39;select * from animals&#39;&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;sqlite3 sqlite1.db  &amp;</span>
-<span class="s2">           &amp;&#39;select name, hair, mobility, vision from animals&#39;&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;##################################################&quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;gnuplot --persist &lt;&lt;\EOF                          &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;#set terminal gif                                 &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;#set output &#39;M_process.3.gif&#39;                     &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;#set terminal png                                 &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;#set output &#39;bar.png&#39;                             &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;#set terminal pdf enhanced                        &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;#set output &#39;bar.pdf&#39;                             &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;#set style data lines                             &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;set datafile separator &quot;&quot;|&quot;&quot;                      &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;set style data histogram                          &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;set style histogram cluster gap 1                 &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;set style fill solid border rgb &quot;&quot;black&quot;&quot;         &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;set auto x                                        &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;set yrange [0:*]                                  &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;plot &quot;&quot;&lt; sqlite3 sqlite1.db  &amp;</span>
-<span class="s2">           &amp;&#39;select name, hair, mobility, vision  from animals&#39;&quot;&quot; \  &quot;</span><span class="p">,</span> <span class="p">&amp;</span>
-           <span class="s2">&quot;      using 2:xtic(1) title &quot;&quot;hair&quot;&quot;,  \          &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;   &#39;&#39; using 4:xtic(1) title &quot;&quot;vision&quot;&quot;, \         &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;   &#39;&#39; using 3:xtic(1) title &quot;&quot;mobility&quot;&quot;          &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;quit                                              &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot;EOF                                               &quot;</span><span class="p">,&amp;</span>
-           <span class="s2">&quot; &quot;</span><span class="p">]</span>
+      <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span> <span class="kd">::</span> <span class="p">&amp;</span>
+      <span class="s2">&quot;rm -f sqlite1.db&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="s2">&quot;sqlite3 sqlite1.db &lt;&lt;\EOF&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="s2">&quot;-- ***********************************************&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;CREATE TABLE IF NOT EXISTS animals(               &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;   name        TEXT   NOT NULL   PRIMARY KEY ,    &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;   hair        INT    NOT NULL   ,                &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;   mobility    INT    NOT NULL   ,                &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;   vision      INT    NOT NULL   );               &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;-- ***********************************************&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;INSERT INTO animals(&amp;</span>
+<span class="s2">      &amp;name,hair,mobility,vision) VALUES(&#39;kittens&#39;,4,5,1);&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;INSERT INTO animals(&amp;</span>
+<span class="s2">      &amp;name,hair,mobility,vision) VALUES(&#39;mice&#39;   ,6,7,2);&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;INSERT INTO animals(&amp;</span>
+<span class="s2">      &amp;name,hair,mobility,vision) VALUES(&#39;rats&#39;   ,2,3,3);&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;-- ***********************************************&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;.quit&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="s2">&quot;EOF&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="s2">&quot;##################################################&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;sqlite3 -header -column sqlite1.db  &#39;select * from animals&#39;&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;sqlite3 sqlite1.db  &amp;</span>
+<span class="s2">      &amp;&#39;select name, hair, mobility, vision from animals&#39;&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;##################################################&quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;gnuplot --persist &lt;&lt;\EOF                          &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;#set terminal gif                                 &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;#set output &#39;M_process.3.gif&#39;                     &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;#set terminal png                                 &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;#set output &#39;bar.png&#39;                             &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;#set terminal pdf enhanced                        &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;#set output &#39;bar.pdf&#39;                             &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;#set style data lines                             &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;########################################          &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;set datafile separator &quot;&quot;|&quot;&quot;                      &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;set style data histogram                          &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;set style histogram cluster gap 1                 &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;set style fill solid border rgb &quot;&quot;black&quot;&quot;         &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;set auto x                                        &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;set yrange [0:*]                                  &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;plot &quot;&quot;&lt; sqlite3 sqlite1.db  &amp;</span>
+<span class="s2">      &amp;&#39;select name, hair, mobility, vision  from animals&#39;&quot;&quot; \  &quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="s2">&quot;      using 2:xtic(1) title &quot;&quot;hair&quot;&quot;,  \          &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;   &#39;&#39; using 4:xtic(1) title &quot;&quot;vision&quot;&quot;, \         &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;   &#39;&#39; using 3:xtic(1) title &quot;&quot;mobility&quot;&quot;          &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;quit                                              &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot;EOF                                               &quot;</span><span class="p">,&amp;</span>
+      <span class="s2">&quot; &quot;</span><span class="p">]</span>
 
-              <span class="c">!!write(*,&#39;(a)&#39;)text</span>
-              <span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-              <span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-              <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s1">&#39;CLOSED THE PROCESS. RETURNING TO PROGRAM&#39;</span>
+         <span class="c">!!write(*,&#39;(a)&#39;)text</span>
+         <span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+         <span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+         <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s1">&#39;CLOSED THE PROCESS. RETURNING TO PROGRAM&#39;</span>
 
-              <span class="k">end program </span><span class="n">demo_M_process</span>
+    <span class="k">end program </span><span class="n">demo_M_process</span>
 </pre></div>
 
     </section>
@@ -464,16 +464,16 @@
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+        <div class="col-xs-6 col-md-4"><p>&copy; 2022 
                                           </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-09-20 19:17  
+             on 2022-06-18 03:47  
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> easy was developed by John Doe</p></div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_process was developed by John S. Urban</p></div>
       </div>
       <br>
       </div> <!-- /container -->    

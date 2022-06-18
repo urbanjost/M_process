@@ -2,8 +2,8 @@ $IFDEF F90
 $!------------------------------------------------------------------------------
 $BLOCK COMMENT -file M_process.3m_process.man
 NAME
-   M_process(3fm) - [M_process::INTRO] Fortran Module for calling process-related
-   C functions from Fortran
+   M_process(3fm) - [M_process::INTRO] Fortran Module for calling
+                    process-related C functions from Fortran
    (LICENSE:PD)
 
 SYNOPSIS
@@ -1131,7 +1131,8 @@ end function process_readall
 !-------------------------------------------------------------------------------
 $BLOCK COMMENT -file process_writeline.3m_process.man
 NAME
-   process_writeline(3fm) - [M_process] write to a process using a POSIX interface
+   process_writeline(3fm) - [M_process] write to a process using a
+                            POSIX interface
    (LICENSE:PD)
 
 SYNOPSIS

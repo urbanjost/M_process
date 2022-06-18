@@ -120,11 +120,68 @@ text=\mbox{[}character(len=128) \+:: \& \char`\"{}rm -\/f sqlite1.\+db\char`\"{}
 
 end program demo\+\_\+\+M\+\_\+process
 
-This example shows a routine to read the output of one command and then call another command to write that output to.
+This example shows a routine to read the output of one command and then call another command to write that output to. \begin{DoxyVerb} program test
+ implicit none
+   call readit('ls -l')
+   call writeit('cat -n')
+ contains
 
-program test implicit none call readit(\textquotesingle{}ls -\/l\textquotesingle{}) call writeit(\textquotesingle{}cat -\/n\textquotesingle{}) contains
-
-subroutine readit(cmd) use M\+\_\+process ,O\+N\+LY\+: process\+\_\+open\+\_\+read, process\+\_\+readline use M\+\_\+process ,O\+N\+LY\+: streampointer, process\+\_\+close ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:: fp ! command line executed to start process character(len=$\ast$) \+:: cmd ! line of data to read (assumed long enough to hold any input line) character(len=4096) \+:: line integer ierr ! open process to read from call process\+\_\+open\+\_\+read(cmd,fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process is opened with status \textquotesingle{},ierr ierr=0 do while(ierr .eq. 0) ! read a line from the process call process\+\_\+readline(line,fp,ierr) if(ierr.\+ne.\+0)then write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: ierr is \textquotesingle{},ierr exit endif write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: line\+:\textquotesingle{}//trim(line) enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}R\+E\+A\+D\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end subroutine readit !-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/--- subroutine writeit(cmd) use M\+\_\+process, only\+: process\+\_\+open\+\_\+write, \mbox{\hyperlink{interfacem__process_1_1process__writeline}{process\+\_\+writeline}} use M\+\_\+process, only\+: streampointer, process\+\_\+close ! C file pointer returned by \mbox{\hyperlink{namespacem__process_a3c0f543a9ceff2671041d73660f60a59}{process\+\_\+open()}} type(streampointer) \+:: fp ! command line executed to start process character(len=$\ast$) \+:: cmd ! line of data to write (assumed long enough to hold any output line) character(len=4096) \+:: line integer \+:: ierr integer \+:: i ! open process to write to call process\+\_\+open\+\_\+write(cmd,fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process is opened\textquotesingle{} ierr=0 do i=1,10 write(line,\textquotesingle{}(\char`\"{}\+W\+R\+I\+T\+E\+T\+E\+S\+T\+: line \char`\"{},i0)\textquotesingle{})i call process\+\_\+writeline(line,fp,ierr) if(ierr.\+lt.\+0)then write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process write error \textquotesingle{},ierr exit endif enddo call process\+\_\+close(fp,ierr) write($\ast$,$\ast$)\textquotesingle{}W\+R\+I\+T\+E\+T\+E\+ST\+: process closed with status \textquotesingle{},ierr end subroutine writeit end program test\hypertarget{namespacem__process_autotoc_md5}{}\doxysubsubsection{S\+E\+E A\+L\+SO}\label{namespacem__process_autotoc_md5}
+ subroutine readit(cmd)
+ use M_process ,ONLY: process_open_read, process_readline
+ use M_process ,ONLY: streampointer, process_close
+ ! C file pointer returned by process_open()
+ type(streampointer) :: fp
+ ! command line executed to start process
+ character(len=*)    :: cmd
+ ! line of data to read (assumed long enough to hold any input line)
+ character(len=4096) :: line
+ integer ierr
+   ! open process to read from
+   call process_open_read(cmd,fp,ierr)
+   write(*,*)'READTEST: process is opened with status ',ierr
+   ierr=0
+   do while(ierr .eq. 0)
+     ! read a line from the process
+     call process_readline(line,fp,ierr)
+     if(ierr.ne.0)then
+       write(*,*)'READTEST: ierr is ',ierr
+       exit
+     endif
+     write(*,*)'READTEST: line:'//trim(line)
+   enddo
+   call process_close(fp,ierr)
+   write(*,*)'READTEST: process closed with status ',ierr
+ end subroutine readit
+ !---------------------------------------------------------------------
+ subroutine writeit(cmd)
+ use M_process, only: process_open_write, process_writeline
+ use M_process, only: streampointer, process_close
+ ! C file pointer returned by process_open()
+ type(streampointer) :: fp
+ ! command line executed to start process
+ character(len=*)    :: cmd
+ ! line of data to write (assumed long enough to hold any output line)
+ character(len=4096) :: line
+ integer             :: ierr
+ integer             :: i
+   ! open process to write to
+   call process_open_write(cmd,fp,ierr)
+   write(*,*)'WRITETEST: process is opened'
+   ierr=0
+   do i=1,10
+     write(line,'("WRITETEST: line ",i0)')i
+     call process_writeline(line,fp,ierr)
+     if(ierr.lt.0)then
+       write(*,*)'WRITETEST: process write error ',ierr
+       exit
+     endif
+   enddo
+   call process_close(fp,ierr)
+   write(*,*)'WRITETEST: process closed with status ',ierr
+ end subroutine writeit
+ end program test
+\end{DoxyVerb}
+\hypertarget{namespacem__process_autotoc_md5}{}\doxysubsubsection{S\+E\+E A\+L\+SO}\label{namespacem__process_autotoc_md5}
 o P\+I\+P\+ES\+: pipe(3c), popen(3c), pclose(3c), fflush(3c) o N\+A\+M\+ED P\+I\+P\+ES\+: mkfifo(3c), mknod(3c) o S\+U\+B\+P\+R\+O\+C\+E\+S\+S\+ES\+: fork(3c) o O\+T\+H\+ER\+: fflush(3c) \hypertarget{namespacem__process_autotoc_md6}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__process_autotoc_md6}
 John S. Urban \hypertarget{namespacem__process_autotoc_md7}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__process_autotoc_md7}
 Public Domain
@@ -169,7 +226,8 @@ Public Domain
 
 References process\+\_\+debug.
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -192,7 +250,8 @@ Public Domain
 
 References process\+\_\+debug.
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -242,14 +301,16 @@ Public Domain
 
 References process\+\_\+open().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__process_aaaf4d1926258a4cec7da7fc61c38c79d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -301,7 +362,8 @@ Public Domain
 
 References process\+\_\+open().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -356,7 +418,8 @@ Public Domain
 
 References process\+\_\+close(), process\+\_\+open\+\_\+read(), and process\+\_\+readline().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -406,7 +469,8 @@ Public Domain
 
 References process\+\_\+debug.
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -423,7 +487,8 @@ Here is the caller graph for this function\+:\nopagebreak
 
 References process\+\_\+debug, and process\+\_\+writeline\+\_\+scalar().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -475,7 +540,8 @@ Public Domain
 
 References process\+\_\+debug.
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

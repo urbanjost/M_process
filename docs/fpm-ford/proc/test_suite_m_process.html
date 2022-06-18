@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
-   <meta name="description" content="easy project">
+   <meta name="description" content="call POSIX popen(3c) routine from Fortran">
     
-    <meta name="author" content="John Doe" >
+    <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
 
-    <title>test_suite_M_process &ndash; easy</title>
+    <title>test_suite_M_process &ndash; M_process</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../index.html">easy </a>
+          <a class="navbar-brand" href="../index.html">M_process </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="61.5% of total for procedures.">166 statements</a>
+    title="55.0% of total for procedures.">166 statements</a>
      </li> 
      
      
@@ -685,7 +685,7 @@ subroutine test_process_writeline_scalar()
    <span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
    <span class="c">! check expected file</span>
    <span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span>
-   <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span>
+   <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span>
       <span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span>
       <span class="k">if</span><span class="p">(</span><span class="n">ios</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">exit</span>
 <span class="k">      call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">lines</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="s1">&#39;got &#39;</span><span class="p">,</span><span class="n">line</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span>
@@ -717,7 +717,7 @@ subroutine test_process_writeline_scalar()
    <span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
    <span class="c">! check expected file</span>
    <span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span>
-   <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span>
+   <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
       <span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span>
       <span class="k">if</span><span class="p">(</span><span class="n">ios</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">exit</span>
 <span class="k">      call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_scalar&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">lines</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">line</span><span class="p">)</span>
@@ -744,16 +744,16 @@ subroutine test_process_writeline_scalar()
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+        <div class="col-xs-6 col-md-4"><p>&copy; 2022 
                                           </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-09-20 19:17  
+             on 2022-06-18 03:47  
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> easy was developed by John Doe</p></div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_process was developed by John S. Urban</p></div>
       </div>
       <br>
       </div> <!-- /container -->    

@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
-   <meta name="description" content="easy project">
+   <meta name="description" content="call POSIX popen(3c) routine from Fortran">
     
-    <meta name="author" content="John Doe" >
+    <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
 
-    <title>demo_process_writeline &ndash; easy</title>
+    <title>demo_process_writeline &ndash; M_process</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../index.html">easy </a>
+          <a class="navbar-brand" href="../index.html">M_process </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="15.9% of total for programs.">24 statements</a>
+    title="11.8% of total for programs.">24 statements</a>
      </li> 
      
      
@@ -173,13 +173,13 @@
   <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-fp~7">fp</a>
+      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-fp~8">fp</a>
       
-      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-i~4">i</a>
+      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-i~6">i</a>
       
-      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-ierr~9">ierr</a>
+      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-ierr~10">ierr</a>
       
-      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-line~2">line</a>
+      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-line~3">line</a>
       
     </div>
   </div>
@@ -260,13 +260,13 @@
   <div id="vars-1" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-fp~7">fp</a>
+      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-fp~8">fp</a>
       
-      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-i~4">i</a>
+      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-i~6">i</a>
       
-      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-ierr~9">ierr</a>
+      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-ierr~10">ierr</a>
       
-      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-line~2">line</a>
+      <a class="list-group-item" href="../program/demo_process_writeline.html#variable-line~3">line</a>
       
     </div>
   </div>
@@ -324,7 +324,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-fp~7"></span>type(<a href='../type/streampointer.html'>streampointer</a>)</td>
+  <td><span class="anchor" id="variable-fp~8"></span>type(<a href='../type/streampointer.html'>streampointer</a>)</td>
   
   
   <td></td><td>::</td>
@@ -338,7 +338,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-i~4"></span>integer</td>
+  <td><span class="anchor" id="variable-i~6"></span>integer</td>
   
   
   <td></td><td>::</td>
@@ -352,7 +352,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-ierr~9"></span>integer</td>
+  <td><span class="anchor" id="variable-ierr~10"></span>integer</td>
   
   
   <td></td><td>::</td>
@@ -366,7 +366,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-line~2"></span>character(len=4096)</td>
+  <td><span class="anchor" id="variable-line~3"></span>character(len=4096)</td>
   
   
   <td></td><td>::</td>
@@ -397,37 +397,37 @@
     
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="highlight"><pre><span></span>         <span class="k">program </span><span class="n">demo_process_writeline</span>
-         <span class="k">use</span><span class="p">,</span> <span class="k">intrinsic</span> <span class="kd">::</span> <span class="n">iso_fortran_env</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="p">&amp;</span>
-            <span class="p">&amp;</span> <span class="n">stdin</span><span class="o">=&gt;</span><span class="n">input_unit</span><span class="p">,</span> <span class="p">&amp;</span>
-            <span class="p">&amp;</span> <span class="n">stdout</span><span class="o">=&gt;</span><span class="n">output_unit</span><span class="p">,</span> <span class="p">&amp;</span>
-            <span class="p">&amp;</span> <span class="n">stderr</span><span class="o">=&gt;</span><span class="n">error_unit</span>
-         <span class="k">use </span><span class="n">m_process</span> <span class="p">,</span><span class="k">only</span><span class="p">:</span> <span class="n">process_open_write</span><span class="p">,</span> <span class="n">process_writeline</span>
-         <span class="k">use </span><span class="n">m_process</span> <span class="p">,</span><span class="k">only</span><span class="p">:</span> <span class="n">streampointer</span><span class="p">,</span> <span class="n">process_close</span>
-         <span class="k">implicit none</span>
-<span class="k">         type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fp</span>
-         <span class="c">! line of data to write</span>
-         <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span> <span class="kd">::</span> <span class="n">line</span>
-         <span class="kt">integer</span>             <span class="kd">::</span> <span class="n">ierr</span>
-         <span class="kt">integer</span>             <span class="kd">::</span> <span class="n">i</span>
-           <span class="c">! open process to write to</span>
-           <span class="k">call </span><span class="n">process_open_write</span><span class="p">(</span><span class="s1">&#39;cat -n&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-           <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;WRITETEST: process is opened with status &#39;</span><span class="p">,</span><span class="n">ierr</span>
-           <span class="c">! remember C and Fortran I/O are often independent of each other</span>
-           <span class="nb">flush</span><span class="p">(</span><span class="n">stdout</span><span class="p">)</span>
-           <span class="n">ierr</span><span class="o">=</span><span class="mi">0</span>
-           <span class="n">line</span><span class="o">=</span><span class="s1">&#39;xxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span>
-           <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span>
-             <span class="c">! write a line to the process</span>
-             <span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-             <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
-<span class="k">               write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;WRITETEST: ierr is &#39;</span><span class="p">,</span><span class="n">ierr</span>
-               <span class="k">exit</span>
-<span class="k">             endif</span>
-<span class="k">           enddo</span>
-<span class="k">           call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-           <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;WRITETEST: process closed with status &#39;</span><span class="p">,</span><span class="n">ierr</span>
-         <span class="k">end program </span><span class="n">demo_process_writeline</span>
+    <div class="highlight"><pre><span></span>    <span class="k">program </span><span class="n">demo_process_writeline</span>
+    <span class="k">use</span><span class="p">,</span> <span class="k">intrinsic</span> <span class="kd">::</span> <span class="n">iso_fortran_env</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="p">&amp;</span>
+       <span class="p">&amp;</span> <span class="n">stdin</span><span class="o">=&gt;</span><span class="n">input_unit</span><span class="p">,</span> <span class="p">&amp;</span>
+       <span class="p">&amp;</span> <span class="n">stdout</span><span class="o">=&gt;</span><span class="n">output_unit</span><span class="p">,</span> <span class="p">&amp;</span>
+       <span class="p">&amp;</span> <span class="n">stderr</span><span class="o">=&gt;</span><span class="n">error_unit</span>
+    <span class="k">use </span><span class="n">m_process</span> <span class="p">,</span><span class="k">only</span><span class="p">:</span> <span class="n">process_open_write</span><span class="p">,</span> <span class="n">process_writeline</span>
+    <span class="k">use </span><span class="n">m_process</span> <span class="p">,</span><span class="k">only</span><span class="p">:</span> <span class="n">streampointer</span><span class="p">,</span> <span class="n">process_close</span>
+    <span class="k">implicit none</span>
+<span class="k">    type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fp</span>
+    <span class="c">! line of data to write</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span> <span class="kd">::</span> <span class="n">line</span>
+    <span class="kt">integer</span>             <span class="kd">::</span> <span class="n">ierr</span>
+    <span class="kt">integer</span>             <span class="kd">::</span> <span class="n">i</span>
+      <span class="c">! open process to write to</span>
+      <span class="k">call </span><span class="n">process_open_write</span><span class="p">(</span><span class="s1">&#39;cat -n&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+      <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;WRITETEST: process is opened with status &#39;</span><span class="p">,</span><span class="n">ierr</span>
+      <span class="c">! remember C and Fortran I/O are often independent of each other</span>
+      <span class="nb">flush</span><span class="p">(</span><span class="n">stdout</span><span class="p">)</span>
+      <span class="n">ierr</span><span class="o">=</span><span class="mi">0</span>
+      <span class="n">line</span><span class="o">=</span><span class="s1">&#39;xxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;</span>
+      <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span>
+        <span class="c">! write a line to the process</span>
+        <span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;WRITETEST: ierr is &#39;</span><span class="p">,</span><span class="n">ierr</span>
+          <span class="k">exit</span>
+<span class="k">        endif</span>
+<span class="k">      enddo</span>
+<span class="k">      call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+      <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;WRITETEST: process closed with status &#39;</span><span class="p">,</span><span class="n">ierr</span>
+    <span class="k">end program </span><span class="n">demo_process_writeline</span>
 </pre></div>
 
     </section>
@@ -442,16 +442,16 @@
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+        <div class="col-xs-6 col-md-4"><p>&copy; 2022 
                                           </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-09-20 19:17  
+             on 2022-06-18 03:47  
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> easy was developed by John Doe</p></div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_process was developed by John S. Urban</p></div>
       </div>
       <br>
       </div> <!-- /container -->    

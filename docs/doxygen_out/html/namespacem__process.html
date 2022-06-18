@@ -169,10 +169,67 @@ EXAMPLES</h2>
      &amp;'select name, hair, mobility, vision  from animals'"" \  ", &amp; "      using 2:xtic(1) title ""hair"",  \          ",&amp; "   '' using 4:xtic(1) title ""vision"", \         ",&amp; "   '' using 3:xtic(1) title ""mobility""          ",&amp; "quit                                              ",&amp; "EOF                                               ",&amp; " "]</p>
 <p>!!write(*,'(a)')text call process_writeline(text,fp,ierr) call process_close(fp,ierr) write(*,'(a)')'CLOSED THE PROCESS. RETURNING TO PROGRAM'</p>
 <p>end program demo_M_process</p>
-<p>This example shows a routine to read the output of one command and then call another command to write that output to.</p>
-<p>program test implicit none call readit('ls -l') call writeit('cat -n') contains</p>
-<p>subroutine readit(cmd) use M_process ,ONLY: process_open_read, process_readline use M_process ,ONLY: streampointer, process_close ! C file pointer returned by <a class="el" href="namespacem__process.html#a3c0f543a9ceff2671041d73660f60a59">process_open()</a> type(streampointer) :: fp ! command line executed to start process character(len=*) :: cmd ! line of data to read (assumed long enough to hold any input line) character(len=4096) :: line integer ierr ! open process to read from call process_open_read(cmd,fp,ierr) write(*,*)'READTEST: process is opened with status ',ierr ierr=0 do while(ierr .eq. 0) ! read a line from the process call process_readline(line,fp,ierr) if(ierr.ne.0)then write(*,*)'READTEST: ierr is ',ierr exit endif write(*,*)'READTEST: line:'//trim(line) enddo call process_close(fp,ierr) write(*,*)'READTEST: process closed with status ',ierr end subroutine readit !------------------------------------------------------------------&mdash; subroutine writeit(cmd) use M_process, only: process_open_write, <a class="el" href="interfacem__process_1_1process__writeline.html">process_writeline</a> use M_process, only: streampointer, process_close ! C file pointer returned by <a class="el" href="namespacem__process.html#a3c0f543a9ceff2671041d73660f60a59">process_open()</a> type(streampointer) :: fp ! command line executed to start process character(len=*) :: cmd ! line of data to write (assumed long enough to hold any output line) character(len=4096) :: line integer :: ierr integer :: i ! open process to write to call process_open_write(cmd,fp,ierr) write(*,*)'WRITETEST: process is opened' ierr=0 do i=1,10 write(line,'("WRITETEST: line ",i0)')i call process_writeline(line,fp,ierr) if(ierr.lt.0)then write(*,*)'WRITETEST: process write error ',ierr exit endif enddo call process_close(fp,ierr) write(*,*)'WRITETEST: process closed with status ',ierr end subroutine writeit end program test</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<p>This example shows a routine to read the output of one command and then call another command to write that output to. </p><pre class="fragment"> program test
+ implicit none
+   call readit('ls -l')
+   call writeit('cat -n')
+ contains
+
+ subroutine readit(cmd)
+ use M_process ,ONLY: process_open_read, process_readline
+ use M_process ,ONLY: streampointer, process_close
+ ! C file pointer returned by process_open()
+ type(streampointer) :: fp
+ ! command line executed to start process
+ character(len=*)    :: cmd
+ ! line of data to read (assumed long enough to hold any input line)
+ character(len=4096) :: line
+ integer ierr
+   ! open process to read from
+   call process_open_read(cmd,fp,ierr)
+   write(*,*)'READTEST: process is opened with status ',ierr
+   ierr=0
+   do while(ierr .eq. 0)
+     ! read a line from the process
+     call process_readline(line,fp,ierr)
+     if(ierr.ne.0)then
+       write(*,*)'READTEST: ierr is ',ierr
+       exit
+     endif
+     write(*,*)'READTEST: line:'//trim(line)
+   enddo
+   call process_close(fp,ierr)
+   write(*,*)'READTEST: process closed with status ',ierr
+ end subroutine readit
+ !---------------------------------------------------------------------
+ subroutine writeit(cmd)
+ use M_process, only: process_open_write, process_writeline
+ use M_process, only: streampointer, process_close
+ ! C file pointer returned by process_open()
+ type(streampointer) :: fp
+ ! command line executed to start process
+ character(len=*)    :: cmd
+ ! line of data to write (assumed long enough to hold any output line)
+ character(len=4096) :: line
+ integer             :: ierr
+ integer             :: i
+   ! open process to write to
+   call process_open_write(cmd,fp,ierr)
+   write(*,*)'WRITETEST: process is opened'
+   ierr=0
+   do i=1,10
+     write(line,'("WRITETEST: line ",i0)')i
+     call process_writeline(line,fp,ierr)
+     if(ierr.lt.0)then
+       write(*,*)'WRITETEST: process write error ',ierr
+       exit
+     endif
+   enddo
+   call process_close(fp,ierr)
+   write(*,*)'WRITETEST: process closed with status ',ierr
+ end subroutine writeit
+ end program test
+</pre><h2><a class="anchor" id="autotoc_md5"></a>
 SEE ALSO</h2>
 <p>o PIPES: pipe(3c), popen(3c), pclose(3c), fflush(3c) o NAMED PIPES: mkfifo(3c), mknod(3c) o SUBPROCESSES: fork(3c) o OTHER: fflush(3c) </p>
 <h2><a class="anchor" id="autotoc_md6"></a>
