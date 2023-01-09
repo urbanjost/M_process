@@ -79,8 +79,8 @@ There are currently several different ways to view the documentation ...
 + [manpage index](https://urbanjost.github.io/M_process/man3.html)
 
 _and there are man-pages_ in the distribution in
-+ [manpage.tgz](https://urbanjost.github.io/M_process/manpage.tgz) or
-+ [manpage.zip](https://urbanjost.github.io/M_process/manpage.zip)
++ [manpages.tgz](https://urbanjost.github.io/M_process/manpages.tgz) or
++ [manpages.zip](https://urbanjost.github.io/M_process/manpages.zip)
 + [CHANGELOG](docs/CHANGELOG.md) provides a history of significant changes
 
 ### DEVELOPER
