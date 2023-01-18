@@ -1,11 +1,11 @@
 # M_process.f90 and associated files
 ![process](images/M_process.gif)
 
-## NAME
+## Name
 
 *M_process* - read and write lines to or from a process from Fortran via a C wrapper
 
-## DESCRIPTION
+## Description
 
 The M_process Fortran module ( A fortran-lang.org [package](https://fortran-lang.org/packages/) )
 reads and writes from processes by calling the C popen(3c) procedure.
@@ -13,7 +13,7 @@ reads and writes from processes by calling the C popen(3c) procedure.
 __NB. These procedures require a platform that supports POSIX routines
 and the popen(3c) procedure in particular__.
 
-## DOWNLOAD and BUILD using make(1)![GNU](docs/images/gnu.gif)
+## Download and Build using make(1)![GNU](docs/images/gnu.gif)
 Just download the github repository, enter the src/ directory and run make:
 
 ```bash
@@ -44,7 +44,7 @@ This will compile the M_process module and optionally build all the
 example programs from the document pages in the example/ sub-directory
 and run the unit tests.
 
-## SUPPORTS FPM ![fpm](docs/images/fpm_logo.gif)
+## Supports FPM ![fpm](docs/images/fpm_logo.gif)
 #### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
 
 Alternatively, download the github repository and
@@ -65,14 +65,14 @@ or just list it as a dependency in your fpm.toml project file.
      M_process        = { git = "https://github.com/urbanjost/M_process.git" }
 ```
 
-## DEMO PROGRAMS![demos](docs/images/demo.gif)
+## Demo Programs![demos](docs/images/demo.gif)
 
 The man-pages contain small sample programs that have been extracted
-and placed in the example/ directory.
+and placed in the [example/](example/) directory.
 
-## DOCUMENTATION   ![docs](docs/images/docs.gif)
+## Documentation   ![docs](docs/images/docs.gif)
 
-### USER
+### User
 There are currently several different ways to view the documentation ...
 
 + [BOOK_M_process](https://urbanjost.github.io/M_process/BOOK_M_process.html).
@@ -83,12 +83,12 @@ _and there are man-pages_ in the distribution in
 + [manpages.zip](https://urbanjost.github.io/M_process/manpages.zip)
 + [CHANGELOG](docs/CHANGELOG.md) provides a history of significant changes
 
-### DEVELOPER
+### Developer
    + [ford(1) output](https://urbanjost.github.io/M_process/fpm-ford/index.html).
    + [doxygen(1) output](https://urbanjost.github.io/M_process/doxygen_out/html/index.html).
    + [github action status](docs/STATUS.md)
 
-## ALTERNATIVES
+## Alternatives
 
 The Fortran Wiki [ fortranwiki.org ](http://fortranwiki.org) contains
 information on other libraries and modules that provide access to processes and threads.
