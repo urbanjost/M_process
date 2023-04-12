@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="call POSIX popen(3c) routine from Fortran">
+    
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="./favicon.png">
+
+    <title> M_process </title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/pygments.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/local.css" rel="stylesheet">
+    
+    <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="./js/jquery-2.1.3.min.js"></script>
+    <script src="./js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">M_process </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="./lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="./lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="./lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="./lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="./lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="./search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <p>call POSIX popen(3c) routine from Fortran</p>
+        	 
+	<p> Find us on&hellip;</p>
+        <p>
+        	 
+          <a class="btn btn-lg btn-primary" href="https://github.com/urbanjost/M_process" role="button">GitHub</a>
+			 
+			 
+			 
+			 
+	         
+			 
+        </p>
+      </div>
+
+      <div class="row" id='text'>
+		  
+        <div class="col-md-8">
+		  
+          <h1>M_process</h1>
+          <h1 id="m_processf90-and-associated-files">M_process.f90 and associated files</h1>
+<p><img alt="process" src="images/M_process.gif"></p>
+<h2 id="name">NAME</h2>
+<p><em>M_process</em> - read and write lines to or from a process from Fortran via a C wrapper</p>
+<h2 id="description">DESCRIPTION</h2>
+<p>The M_process Fortran module ( A fortran-lang.org <a href="https://fortran-lang.org/packages/">package</a> )
+reads and writes from processes by calling the C popen(3c) procedure.</p>
+<p><strong>NB. These procedures require a platform that supports POSIX routines
+and the popen(3c) procedure in particular</strong>.</p>
+<h2 id="download-and-build-using-make1">DOWNLOAD and BUILD using make(1)<img alt="GNU" src="docs/images/gnu.gif"></h2>
+<p>Just download the github repository, enter the src/ directory and run make:</p>
+<div class="codehilite"><pre><span></span><code>     git clone https://github.com/urbanjost/M_process.git
+     <span class="nb">cd</span> M_process/src
+
+     <span class="c1"># change Makefile if not using one of the listed compilers</span>
+
+     <span class="c1"># for gfortran</span>
+     make clean
+     make <span class="nv">F90</span><span class="o">=</span>gfortran gfortran
+
+     <span class="c1"># for ifort</span>
+     make clean
+     make <span class="nv">F90</span><span class="o">=</span>ifort ifort
+
+     <span class="c1"># for nvfortran</span>
+     make clean
+     make <span class="nv">F90</span><span class="o">=</span>nvfortran nvfortran
+
+     <span class="c1"># optionally</span>
+     make <span class="nb">test</span>               <span class="c1"># run the unit tests (needs M_msg(3f) module)</span>
+     make run  --example <span class="s2">&quot;*&quot;</span> <span class="c1"># run all the demo programs from the man-pages</span>
+     make <span class="nb">help</span>               <span class="c1"># see other developer options</span>
+</code></pre></div>
+
+<p>This will compile the M_process module and optionally build all the
+example programs from the document pages in the example/ sub-directory
+and run the unit tests.</p>
+<h2 id="supports-fpm">SUPPORTS FPM <img alt="fpm" src="docs/images/fpm_logo.gif"></h2>
+<h4 id="registered-at-the-fpm1-registry">(registered at the <a href="https://github.com/fortran-lang/fpm-registry">fpm(1) registry</a> )</h4>
+<p>Alternatively, download the github repository and
+build it with fpm ( as described at <a href="https://github.com/fortran-lang/fpm">Fortran Package
+Manager</a> )</p>
+<div class="codehilite"><pre><span></span><code>     git clone https://github.com/urbanjost/M_process.git
+     <span class="nb">cd</span> M_process
+     fpm build
+     fpm <span class="nb">test</span>
+</code></pre></div>
+
+<p>or just list it as a dependency in your fpm.toml project file.</p>
+<div class="codehilite"><pre><span></span><code>     <span class="k">[dependencies]</span>
+     <span class="n">M_process</span>        <span class="o">=</span> <span class="p">{</span> <span class="n">git</span> <span class="o">=</span> <span class="s">&quot;https://github.com/urbanjost/M_process.git&quot;</span> <span class="p">}</span>
+</code></pre></div>
+
+<h2 id="demo-programs">DEMO PROGRAMS<img alt="demos" src="docs/images/demo.gif"></h2>
+<p>The man-pages contain small sample programs that have been extracted
+and placed in the example/ directory.</p>
+<h2 id="documentation">DOCUMENTATION   <img alt="docs" src="docs/images/docs.gif"></h2>
+<h3 id="user">USER</h3>
+<p>There are currently several different ways to view the documentation &hellip;</p>
+<ul>
+<li><a href="https://urbanjost.github.io/M_process/BOOK_M_process.html">BOOK_M_process</a>.</li>
+<li><a href="https://urbanjost.github.io/M_process/man3.html">manpage index</a></li>
+</ul>
+<p><em>and there are man-pages</em> in the distribution in
++ <a href="https://urbanjost.github.io/M_process/manpage.tgz">manpage.tgz</a> or
++ <a href="https://urbanjost.github.io/M_process/manpage.zip">manpage.zip</a>
++ <a href="docs/CHANGELOG.md">CHANGELOG</a> provides a history of significant changes</p>
+<h3 id="developer">DEVELOPER</h3>
+<ul>
+<li><a href="https://urbanjost.github.io/M_process/fpm-ford/index.html">ford(1) output</a>.</li>
+<li><a href="https://urbanjost.github.io/M_process/doxygen_out/html/index.html">doxygen(1) output</a>.</li>
+<li><a href="docs/STATUS.md">github action status</a></li>
+</ul>
+<h2 id="alternatives">ALTERNATIVES</h2>
+<p>The Fortran Wiki <a href="http://fortranwiki.org"> fortranwiki.org </a> contains
+information on other libraries and modules that provide access to processes and threads.</p>
+<hr>
+        </div>
+		  
+        <div class="col-md-4">
+	  <div class="well">
+          <h2>Developer Info</h2>
+          <h4>John S. Urban</h4>
+          
+          
+			   
+            <div class="text-center"><div class="btn-group" role="group">
+              
+              
+              
+              <a class="btn btn-lg btn-primary" href="https://github.com/urbanjost/M_process"><i class="fa fa-github fa-lg"></i></a>
+				  
+				  
+              
+              
+              
+              
+            </div></div>
+            
+       </div>
+       </div>
+       
+      </div>
+      
+      
+      
+      
+		
+      <div class="row">
+        <div class="col-xs-6 col-sm-3">
+              <h3>Source Files</h3>
+              <ul>
+                
+                  
+                    <li><a href='./sourcefile/demo_m_process.f90.html'>demo_M_process.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/demo_process_close.f90.html'>demo_process_close.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/demo_process_open_read.f90.html'>demo_process_open_read.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/demo_process_open_write.f90.html'>demo_process_open_write.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/demo_process_readall.f90.html'>demo_process_readall.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/demo_process_readline.f90.html'>demo_process_readline.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/demo_process_writeline.f90.html'>demo_process_writeline.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/gnuplot_example.f90.html'>gnuplot_example.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/m_process.f90.html'>M_process.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/main.f90.html'>main.f90</a></li>
+                  
+                
+                  
+                    <li><a href="./lists/files.html"><em>All source files&hellip;</em></a></li>
+                  
+                
+              </ul>
+          </div>
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Modules</h3>
+              <ul>
+                
+                  
+                    <li><a href='./module/m_process.html'>M_process</a></li>
+                  
+                
+              </ul>
+          </div>
+          
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Procedures</h3>
+              <ul>
+                
+                  
+                    <li><a href='./proc/plotit.html'>plotit</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/process_close.html'>process_close</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/process_open_read.html'>process_open_read</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/process_open_write.html'>process_open_write</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/process_readall.html'>process_readall</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/process_readline.html'>process_readline</a></li>
+                  
+                
+                  
+                    <li><a href='./interface/process_writeline.html'>process_writeline</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/test_suite_m_process.html'>test_suite_M_process</a></li>
+                  
+                
+              </ul>
+          </div>
+          
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Derived Types</h3>
+              <ul>
+                
+                  
+                    <li><a href='./type/streampointer.html'>streampointer</a></li>
+                  
+                
+              </ul>
+          </div>
+          
+      </div>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2022 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2022-06-18 03:47  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_process was developed by John S. Urban</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="./js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="./tipuesearch/tipuesearch_content.js"></script>
+    <script src="./tipuesearch/tipuesearch_set.js"></script>
+    <script src="./tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>
