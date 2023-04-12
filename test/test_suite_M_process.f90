@@ -3,7 +3,8 @@ use M_msg
 use :: M_verify,  only : unit_check_command, unit_check_keep_going, unit_check_level
 use :: M_verify,  only : unit_check_stop
 implicit none
-external test_suite_M_process
+!external test_suite_M_process
+interface; subroutine test_suite_M_process(); end ; end interface
    unit_check_command=''
    unit_check_keep_going=.true.
    unit_check_level=0
