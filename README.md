@@ -35,7 +35,7 @@ Just download the github repository, enter the src/ directory and run make:
      make F90=nvfortran nvfortran
 
      # optionally
-     make test               # run the unit tests (needs M_msg(3f) module)
+     make test               # run the unit tests (needs M_framework(3f) module)
      make run  --example "*" # run all the demo programs from the man-pages
      make help               # see other developer options
 ```
