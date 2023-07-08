@@ -7,7 +7,7 @@ output_dir: docs/fpm-ford
 project: M_process
 summary: call POSIX popen(3c) routine from Fortran
 project_github: https://github.com/urbanjost/M_process
-project_download:
+project_download: https://github.com/urbanjost/M_process/archive/refs/heads/master.zip
 author: John S. Urban
 author_email: urbanjost@comcast.net
 github: https://github.com/urbanjost/M_process
