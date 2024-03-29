@@ -1,80 +1,67 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="call POSIX popen(3c) routine from Fortran">
+      <meta name="description" content="call POSIX popen(3c) routine from Fortran">
     <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
 
     <title>test_suite_M_process &ndash; M_process</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">M_process </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-            <li><a href="../lists/programs.html">Programs</a></li>
-       
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
             </ul>
-        
-            </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
-          </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
         </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -82,32 +69,36 @@
       <small>Subroutine</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title="54.2% of total for procedures.">166 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title="54.2% of total for procedures.">166 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/test_suite_M_process.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/test_suite_m_process.f90.html'>test_suite_M_process.f90</a></li>
-          <li class="active">test_suite_M_process</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/test_suite_m_process.f90.html'>test_suite_M_process.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">test_suite_M_process</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
@@ -129,14 +120,13 @@
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#subs-0">Subroutines</a>
-        </h3>
-      </div>
-      <div id="subs-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_close">test_process_close</a>
             <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_open_read">test_process_open_read</a>
             <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_open_write">test_process_open_write</a>
@@ -154,8 +144,9 @@
   
   
   
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
       <div class="list-group">
         <a class="list-group-item" href="../proc/test_suite_m_process.html#src">test_suite_M_process</a>
       </div>
@@ -169,78 +160,29 @@
     <div class="col-md-9" id='text'>
     <h2> subroutine test_suite_M_process()  
 </h2>
-        <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Uses</h3>
+        <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item">M_framework__verify</li>
+                  <li class="list-inline-item"><a href='../module/m_process.html'>M_process</a></li>
+              </ul>
+            </li>
+        </ul>
       </div>
-      <ul class="list-group">
-          <li class="list-group-item">
-            <ul class="list-inline">
-                <li>M_framework__verify</li>
-                <li><a href='../module/m_process.html'>M_process</a></li>
-            </ul>
-          </li>
-      </ul>
     </div>
 
 
     <p>setup
 teardown</p>
 
+
     <h3>Arguments</h3>
     <em>None</em>
     <br>
     <br>
-
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#subs-1">Subroutines</a>
-        </h3>
-      </div>
-      <div id="subs-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_close">test_process_close</a>
-            <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_open_read">test_process_open_read</a>
-            <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_open_write">test_process_open_write</a>
-            <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_readall">test_process_readall</a>
-            <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_readline">test_process_readline</a>
-            <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_writeline_array">test_process_writeline_array</a>
-            <a class="list-group-item" href="../proc/test_suite_m_process.html#proc-test_process_writeline_scalar">test_process_writeline_scalar</a>
-        </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-      <div class="list-group">
-        <a class="list-group-item" href="../proc/test_suite_m_process.html#src">test_suite_M_process</a>
-      </div>
-    </div>
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
 
 
     
@@ -252,10 +194,10 @@ teardown</p>
 
     <section>
     <h2>Subroutines</h2>
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_process_close"></span><h3> subroutine test_process_close()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_process_close"></span> <h3> subroutine <a href='test_suite_m_process.html#proc-test_process_close'>test_process_close</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
   <p>call process_close(fp,ierr)             ! not open yet
 call unit_check(&lsquo;process_close&rsquo;, ierr.ne.0, &lsquo;close process before opening it&rsquo;,ierr)
@@ -267,10 +209,10 @@ call unit_check(&lsquo;process_close&rsquo;, ierr.eq.0, &lsquo;close process tha
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_process_open_read"></span><h3> subroutine test_process_open_read()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_process_open_read"></span> <h3> subroutine <a href='test_suite_m_process.html#proc-test_process_open_read'>test_process_open_read</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
   <p>call unit_check(&lsquo;process_open_read&rsquo;, ierr.eq.0, &lsquo;close ierr=&rsquo;,ierr)</p>
 
@@ -280,10 +222,10 @@ call unit_check(&lsquo;process_close&rsquo;, ierr.eq.0, &lsquo;close process tha
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_process_open_write"></span><h3> subroutine test_process_open_write()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_process_open_write"></span> <h3> subroutine <a href='test_suite_m_process.html#proc-test_process_open_write'>test_process_open_write</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
   
 
@@ -293,10 +235,10 @@ call unit_check(&lsquo;process_close&rsquo;, ierr.eq.0, &lsquo;close process tha
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_process_readall"></span><h3> subroutine test_process_readall()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_process_readall"></span> <h3> subroutine <a href='test_suite_m_process.html#proc-test_process_readall'>test_process_readall</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
   
 
@@ -306,10 +248,10 @@ call unit_check(&lsquo;process_close&rsquo;, ierr.eq.0, &lsquo;close process tha
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_process_readline"></span><h3> subroutine test_process_readline()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_process_readline"></span> <h3> subroutine <a href='test_suite_m_process.html#proc-test_process_readline'>test_process_readline</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
   
 
@@ -319,10 +261,10 @@ call unit_check(&lsquo;process_close&rsquo;, ierr.eq.0, &lsquo;close process tha
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_process_writeline_array"></span><h3> subroutine test_process_writeline_array()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_process_writeline_array"></span> <h3> subroutine <a href='test_suite_m_process.html#proc-test_process_writeline_array'>test_process_writeline_array</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
   
 
@@ -332,10 +274,10 @@ call unit_check(&lsquo;process_close&rsquo;, ierr.eq.0, &lsquo;close process tha
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-test_process_writeline_scalar"></span><h3> subroutine test_process_writeline_scalar()  
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_process_writeline_scalar"></span> <h3> subroutine <a href='test_suite_m_process.html#proc-test_process_writeline_scalar'>test_process_writeline_scalar</a>()  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
   
 
@@ -346,209 +288,210 @@ call unit_check(&lsquo;process_close&rsquo;, ierr.eq.0, &lsquo;close process tha
   </div>
 
     </section>    
+
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">test_suite_M_process</span><span class="p">()</span><span class="w"></span>
-<span class="k">use </span><span class="n">M_framework__verify</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_check_start</span><span class="p">,</span><span class="n">unit_check</span><span class="p">,</span><span class="n">unit_check_done</span><span class="p">,</span><span class="n">unit_check_good</span><span class="p">,</span><span class="n">unit_check_bad</span><span class="p">,</span><span class="n">unit_check_msg</span><span class="w"></span>
-<span class="k">use </span><span class="n">M_process</span><span class="w"></span>
+    <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">test_suite_M_process</span><span class="p">()</span>
+<span class="k">use </span><span class="n">M_framework__verify</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_check_start</span><span class="p">,</span><span class="n">unit_check</span><span class="p">,</span><span class="n">unit_check_done</span><span class="p">,</span><span class="n">unit_check_good</span><span class="p">,</span><span class="n">unit_check_bad</span><span class="p">,</span><span class="n">unit_check_msg</span>
+<span class="k">use </span><span class="n">M_process</span>
 
 <span class="c">!! setup</span>
-<span class="w">   </span><span class="k">call </span><span class="n">test_process_open_read</span><span class="p">()</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">test_process_open_write</span><span class="p">()</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">test_process_readall</span><span class="p">()</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">test_process_readline</span><span class="p">()</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">test_process_writeline_array</span><span class="p">()</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">test_process_writeline_scalar</span><span class="p">()</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">test_process_close</span><span class="p">()</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">test_process_open_read</span><span class="p">()</span>
+<span class="w">   </span><span class="k">call </span><span class="n">test_process_open_write</span><span class="p">()</span>
+<span class="w">   </span><span class="k">call </span><span class="n">test_process_readall</span><span class="p">()</span>
+<span class="w">   </span><span class="k">call </span><span class="n">test_process_readline</span><span class="p">()</span>
+<span class="w">   </span><span class="k">call </span><span class="n">test_process_writeline_array</span><span class="p">()</span>
+<span class="w">   </span><span class="k">call </span><span class="n">test_process_writeline_scalar</span><span class="p">()</span>
+<span class="w">   </span><span class="k">call </span><span class="n">test_process_close</span><span class="p">()</span>
 <span class="c">!! teardown</span>
-<span class="k">contains</span><span class="w"></span>
+<span class="k">contains</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_process_close</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_process_close</span><span class="p">()</span>
 <span class="k">type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fp</span><span class="w">              </span><span class="c">! C file pointer returned by process_open()</span>
 <span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="w">                        </span><span class="c">! check status of calls to process module routines</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="c">! hold results, assuming sufficient memory is available</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="w">            </span><span class="c">! long enough to hold any expected line</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_close&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_close&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 <span class="w">   </span><span class="c">!!call process_close(fp,ierr)             ! not open yet</span>
 <span class="w">   </span><span class="c">!!call unit_check(&#39;process_close&#39;, ierr.ne.0, &#39;close process before opening it&#39;,ierr)</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_open_read</span><span class="p">(</span><span class="s1">&#39;echo A;echo B;echo C&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">    </span><span class="c">! open process to read from</span>
 <span class="w">   </span><span class="k">do</span><span class="w">                                      </span><span class="c">! read output of process till end</span>
-<span class="w">      </span><span class="k">call </span><span class="n">process_readline</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">call </span><span class="n">process_readline</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">exit</span>
 <span class="k">      </span><span class="n">string</span><span class="o">=</span><span class="n">string</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; &#39;</span><span class="w">       </span><span class="c">! append output lines together</span>
 <span class="w">   </span><span class="k">enddo</span>
-<span class="k">   call </span><span class="n">unit_check_msg</span><span class="p">(</span><span class="s1">&#39;process_close&#39;</span><span class="p">,</span><span class="s1">&#39;string=&#39;</span><span class="p">,</span><span class="n">string</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="k">   call </span><span class="n">unit_check_msg</span><span class="p">(</span><span class="s1">&#39;process_close&#39;</span><span class="p">,</span><span class="s1">&#39;string=&#39;</span><span class="p">,</span><span class="n">string</span><span class="w"> </span><span class="p">)</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">             </span><span class="c">! Wrap up</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_close&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;close process &#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_close&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;close process &#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_open_write</span><span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">    </span><span class="c">! open process to write to that is not terminated</span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">   </span><span class="c">!!call unit_check(&#39;process_close&#39;, ierr.eq.0, &#39;close process that is open&#39;,ierr)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_close&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_process_close</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_close&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_process_close</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_process_open_read</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_process_open_read</span><span class="p">()</span>
 <span class="k">type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fp</span><span class="w">                                                  </span><span class="c">! C file pointer returned by process_open()</span>
 <span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="w">                                                            </span><span class="c">! check status of calls to process module routines</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span><span class="w">                                     </span><span class="c">! hold results, assuming sufficient memory is available</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="w">                                                </span><span class="c">! long enough to hold any expected line</span>
-<span class="w">  </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 <span class="w">  </span><span class="k">call </span><span class="n">process_open_read</span><span class="p">(</span><span class="s1">&#39;echo a;echo b;echo c&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">                   </span><span class="c">! open process to read from</span>
-<span class="w">  </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;open ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;open ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">  </span><span class="k">do</span><span class="w">                                                                       </span><span class="c">! read output of process till end</span>
-<span class="w">     </span><span class="k">call </span><span class="n">process_readline</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="k">call </span><span class="n">process_readline</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">exit</span>
 <span class="k">     </span><span class="n">string</span><span class="o">=</span><span class="n">string</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;+&#39;</span><span class="w">                                        </span><span class="c">! append output lines together</span>
 <span class="w">  </span><span class="k">enddo</span>
-<span class="k">  call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;a+b+c+&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">)</span><span class="w"></span>
+<span class="k">  call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;a+b+c+&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">)</span>
 <span class="w">  </span><span class="k">call </span><span class="n">process_open_read</span><span class="p">(</span><span class="s1">&#39;echo a;echo b;echo c&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">                   </span><span class="c">! open process to read from</span>
-<span class="w">  </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;a+b+c+&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;open already open process,ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;a+b+c+&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;open already open process,ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">  </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">                                              </span><span class="c">! Wrap up</span>
 <span class="w">  </span><span class="c">!!call unit_check(&#39;process_open_read&#39;, ierr.eq.0, &#39;close ierr=&#39;,ierr)</span>
-<span class="w">  </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_process_open_read</span><span class="w"></span>
+<span class="w">  </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_open_read&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_process_open_read</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_process_open_write</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_process_open_write</span><span class="p">()</span>
 <span class="k">type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">fp</span><span class="w">            </span><span class="c">! C file pointer returned by process_open()</span>
 <span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="w">          </span><span class="c">! check status of calls to process module routines</span>
-<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">lun</span><span class="w"></span>
-<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ios</span><span class="w"></span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">lun</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ios</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! clear scratch file</span>
-<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span>
+<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! start shell with command that finishes immediately (special case, would just use execute_command_line(3f) intrinsic)</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_open_write</span><span class="p">(</span><span class="s1">&#39;echo one &gt;_scratch_.txt;echo two &gt;&gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">    </span><span class="c">! open process to write to</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;no error on close, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;no error on close, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! check expected file</span>
-<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;line 1:&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;two&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;line 2:&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;line 1:&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span>
+<span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;two&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;line 2:&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span>
+<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! start shell that waits to read commands</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_open_write</span><span class="p">(</span><span class="s1">&#39;bash||cmd&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">    </span><span class="c">! open process to write to</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo three &gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;write of &quot;echo three &gt;_scratch_.txt&quot;, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo four &gt;&gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;write of &quot;echo four &gt;&gt;_scratch_.txt&quot;, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;should now be closed, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo three &gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;write of &quot;echo three &gt;_scratch_.txt&quot;, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo four &gt;&gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;write of &quot;echo four &gt;&gt;_scratch_.txt&quot;, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;should now be closed, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! check expected file</span>
-<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;three&#39;</span><span class="p">,</span><span class="w">  </span><span class="s1">&#39;line 1:&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;four&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;line 2:&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;three&#39;</span><span class="p">,</span><span class="w">  </span><span class="s1">&#39;line 1:&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span>
+<span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;four&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;line 2:&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span>
+<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span>
 <span class="w">   </span><span class="c">!</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_process_open_write</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_open_write&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_process_open_write</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_process_readall</span><span class="p">()</span><span class="w"></span>
-<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="w"></span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span><span class="w"></span>
-<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="n">process_readall</span><span class="p">(</span><span class="s1">&#39;echo A;echo B;echo C&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_readall&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_readall&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;A B C&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_readall&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_process_readall</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_process_readall</span><span class="p">()</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="n">process_readall</span><span class="p">(</span><span class="s1">&#39;echo A;echo B;echo C&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_readall&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_readall&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;A B C&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_readall&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_process_readall</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_process_readline</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_process_readline</span><span class="p">()</span>
 <span class="k">type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fp</span><span class="w">                                                   </span><span class="c">! C file pointer returned by process_open()</span>
 <span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="w">                                                             </span><span class="c">! check status of calls to process module routines</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span><span class="w">                                      </span><span class="c">! hold results, assuming sufficient memory is available</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="w">                                                 </span><span class="c">! long enough to hold any expected line</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_readline&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_readline&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_open_read</span><span class="p">(</span><span class="s1">&#39;echo a;echo b;echo c&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">                   </span><span class="c">! open process to read from</span>
 <span class="w">   </span><span class="k">do</span><span class="w">                                                                       </span><span class="c">! read output of process till end</span>
-<span class="w">      </span><span class="k">call </span><span class="n">process_readline</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">call </span><span class="n">process_readline</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">exit</span>
 <span class="k">      </span><span class="n">string</span><span class="o">=</span><span class="n">string</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;+&#39;</span><span class="w">                                        </span><span class="c">! append output lines together</span>
 <span class="w">   </span><span class="k">enddo</span>
-<span class="k">   call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_readline&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;a+b+c+&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">)</span><span class="w"></span>
+<span class="k">   call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_readline&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;a+b+c+&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">)</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">                                              </span><span class="c">! Wrap up</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_readline&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_process_readline</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_readline&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_process_readline</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_process_writeline_array</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_process_writeline_array</span><span class="p">()</span>
 <span class="k">type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">fp</span><span class="w">            </span><span class="c">! C file pointer returned by process_open()</span>
 <span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="w">          </span><span class="c">! check status of calls to process module routines</span>
-<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">lun</span><span class="w"></span>
-<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ios</span><span class="w"></span>
-<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">text</span><span class="p">(:)</span><span class="w"></span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">lines</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="s1">&#39;two&#39;</span><span class="p">,</span><span class="s1">&#39;three&#39;</span><span class="p">,</span><span class="s1">&#39;four&#39;</span><span class="p">]</span><span class="w"></span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">lun</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ios</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">text</span><span class="p">(:)</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">lines</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="s1">&#39;two&#39;</span><span class="p">,</span><span class="s1">&#39;three&#39;</span><span class="p">,</span><span class="s1">&#39;four&#39;</span><span class="p">]</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! clear scratch file</span>
-<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span>
+<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! start shell</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_open_write</span><span class="p">(</span><span class="s1">&#39;bash||cmd&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">    </span><span class="c">! open process to write to</span>
 <span class="w">   </span><span class="c">! feed commands to shell that redirect output to _scratch_.txt file</span>
-<span class="w">   </span><span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">      </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;echo one   &gt;_scratch_.txt&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;echo two   &gt;&gt;_scratch_.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;echo three &gt;&gt;_scratch_.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;echo four  &gt;&gt;_scratch_.txt&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">   </span><span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="s2">&quot;echo one   &gt;_scratch_.txt&quot;</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="s2">&quot;echo two   &gt;&gt;_scratch_.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="s2">&quot;echo three &gt;&gt;_scratch_.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="s2">&quot;echo four  &gt;&gt;_scratch_.txt&quot;</span><span class="p">]</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">       </span><span class="c">! multiple lines</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;wrote four lines, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;wrote four lines, ierr=&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! check expected file</span>
-<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="w"></span>
-<span class="w">      </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span><span class="w"></span>
+<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span>
+<span class="w">      </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span>
 <span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">ios</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">exit</span>
-<span class="k">      call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">lines</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="s1">&#39;got &#39;</span><span class="p">,</span><span class="n">line</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span><span class="w"></span>
+<span class="k">      call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">lines</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="s1">&#39;got &#39;</span><span class="p">,</span><span class="n">line</span><span class="p">,</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">)</span>
 <span class="w">   </span><span class="k">enddo</span>
-<span class="k">   close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;number of lines&#39;</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_process_writeline_array</span><span class="w"></span>
+<span class="k">   close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;number of lines&#39;</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_writeline_array&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_process_writeline_array</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_process_writeline_scalar</span><span class="p">()</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">test_process_writeline_scalar</span><span class="p">()</span>
 <span class="k">type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">fp</span><span class="w">            </span><span class="c">! C file pointer returned by process_open()</span>
 <span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="w">          </span><span class="c">! check status of calls to process module routines</span>
-<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">lun</span><span class="w"></span>
-<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ios</span><span class="w"></span>
-<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">lines</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="s1">&#39;two&#39;</span><span class="p">,</span><span class="s1">&#39;three&#39;</span><span class="p">,</span><span class="s1">&#39;four&#39;</span><span class="p">]</span><span class="w"></span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_writeline_scalar&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">lun</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ios</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">lines</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="s1">&#39;two&#39;</span><span class="p">,</span><span class="s1">&#39;three&#39;</span><span class="p">,</span><span class="s1">&#39;four&#39;</span><span class="p">]</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;process_writeline_scalar&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! clear scratch file</span>
-<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span>
+<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! start shell</span>
 <span class="w">   </span><span class="k">call </span><span class="n">process_open_write</span><span class="p">(</span><span class="s1">&#39;bash||cmd&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">    </span><span class="c">! open process to write to (ie. start gnuplot(1) program)</span>
 <span class="w">   </span><span class="c">! feed commands to shell that redirect output to _scratch_.txt file</span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo one    &gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo two   &gt;&gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo three &gt;&gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo four  &gt;&gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo one    &gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo two   &gt;&gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo three &gt;&gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_writeline</span><span class="p">(</span><span class="s1">&#39;echo four  &gt;&gt;_scratch_.txt&#39;</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
 <span class="w">   </span><span class="c">! check expected file</span>
-<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span><span class="w"></span>
+<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;_scratch_.txt&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+<span class="w">      </span><span class="k">read</span><span class="p">(</span><span class="n">lun</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="n">line</span>
 <span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">ios</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">exit</span>
-<span class="k">      call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_scalar&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">lines</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">line</span><span class="p">)</span><span class="w"></span>
+<span class="k">      call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_scalar&#39;</span><span class="p">,</span><span class="n">line</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">lines</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">line</span><span class="p">)</span>
 <span class="w">   </span><span class="k">enddo</span>
-<span class="k">   close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_scalar&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;number of lines&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="k">   close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">lun</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;process_writeline_scalar&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;number of lines&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_writeline_scalar&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end subroutine </span><span class="n">test_process_writeline_scalar</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;process_writeline_scalar&#39;</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">test_process_writeline_scalar</span>
 <span class="c">!===================================================================================================================================</span>
-<span class="k">end subroutine </span><span class="n">test_suite_M_process</span><span class="w"></span>
+<span class="k">end subroutine </span><span class="n">test_suite_M_process</span>
 </pre></div>
 
     </section>
@@ -557,50 +500,45 @@ call unit_check(&lsquo;process_close&rsquo;, ierr.eq.0, &lsquo;close process tha
     </div>
   </div>
 
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>M_process was developed by John S. Urban<br>&copy; 2023 
+        <div class="row justify-content-between">
+          <div class="col"><p>M_process was developed by John S. Urban<br>&copy; 2024 
 </p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-03-29 03:37              </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-04-21 14:06            </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
     <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>
