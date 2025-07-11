@@ -1,0 +1,444 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="call POSIX popen(3c) routine from Fortran">
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>process_writeline &ndash; M_process</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">M_process </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>process_writeline
+      <small>Interface</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title="<p> 1.0% of total for procedures.</p>Including implementation: 47 statements, 15.4% of total for procedures.">3 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/M_process.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_process.f90.html'>M_process.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/m_process.html'>M_process</a></li>
+            <li class="breadcrumb-item active" aria-current="page">process_writeline</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#modprocs-0"
+         aria-expanded="false" aria-controls="modprocs-0">
+         <h4 class="card-header bg-primary text-white">Module Procedures</h4>
+      </a>
+      <div id="modprocs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../interface/process_writeline.html#moduleprocedure-process_writeline_scalar">process_writeline_scalar</a>
+            <a class="list-group-item" href="../interface/process_writeline.html#moduleprocedure-process_writeline_array">process_writeline_array</a>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <h2>public interface process_writeline</h2>
+      
+
+
+
+        <h2>Module Procedures</h2>
+            <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-process_writeline_scalar"></span> <h3>private  subroutine process_writeline_scalar(writefrom, fp, ierr, trm)  
+</h3></div>
+    <div class="card-body">
+        <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code><span class="k">proc</span><span class="nv">ess_writeline</span><span class="p">(</span><span class="mi">3</span><span class="nv">fm</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">[</span><span class="nv">M_process</span><span class="p">]</span><span class="w"> </span><span class="nv">write</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">process</span><span class="w"> </span><span class="nv">using</span><span class="w"> </span><span class="nv">a</span><span class="w"></span>
+<span class="w">                         </span><span class="nf">POSIX</span><span class="w"> </span><span class="nv">interface</span><span class="w"></span>
+<span class="err">(</span><span class="nl">LICENSE:</span><span class="nf">PD</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code> subroutine process_writeline(string,fp,ierr)
+
+   character(len=*)    :: string
+   type(streampointer) :: fp
+   integer             :: ierr
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<p>The M_process Fortran procedures use the ISO_C_BINDING interface to define
+   Fortran-callable versions of the C procedures popen(3c)/pclose(3c)
+   and fgets(3c)/fputs(3c). A set of record-oriented wrapper routines
+   are then used to create a simple Fortran-callable interface.</p>
+<p>A POSIX C interface is generally available but may require using a Linux
+   subwindow or an application such as CygWin on MSWindows platforms.</p>
+<p>See &ldquo;M_process&rdquo; for an extended description.</p>
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code>string   data line to to process
+fp       C file pointer returned by process_open_*()
+ierr     error flag returned.
+
+          o process_writeline(3f) : negative indicates an error
+          o process_readline(3f)  : Non-zero indicates an error
+
+maximum character value length is currently 4096
+</code></pre></div>
+
+<h2 id="examples">EXAMPLES</h2>
+<p>This example shows a routine to write lines to the stdin of a system process</p>
+<p>program demo_process_writeline
+   use, intrinsic :: iso_fortran_env, only : &amp;
+      &amp; stdin=&gt;input_unit, &amp;
+      &amp; stdout=&gt;output_unit, &amp;
+      &amp; stderr=&gt;error_unit
+   use m_process ,only: process_open_write, process_writeline
+   use m_process ,only: streampointer, process_close
+   implicit none
+   type(streampointer) :: fp
+   ! line of data to write
+   character(len=4096) :: line
+   integer             :: ierr
+   integer             :: i
+     ! open process to write to
+     call process_open_write(&lsquo;cat -n&rsquo;,fp,ierr)
+     write(<em>,</em>)&rsquo;WRITETEST: process is opened with status &lsquo;,ierr
+     ! remember C and Fortran I/O are often independent of each other
+     flush(stdout)
+     ierr=0
+     line=&rsquo;xxxxxxxxxxxxxxxxxxxxxxxxxxx&rsquo;
+     do i=1,10
+       ! write a line to the process
+       call process_writeline(trim(line),fp,ierr)
+       if(ierr.lt.0)then
+         write(<em>,</em>)&rsquo;WRITETEST: ierr is &lsquo;,ierr
+         exit
+       endif
+     enddo
+     call process_close(fp,ierr)
+     write(<em>,</em>)&rsquo;WRITETEST: process closed with status &lsquo;,ierr
+   end program demo_process_writeline</p>
+<p>Sample output:</p>
+<blockquote>
+<p>WRITETEST: process is opened with status            0
+  1 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  2 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  3 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  4 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  5 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  6 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  7 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  8 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  9 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 10 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+WRITETEST: process closed with status            0</p>
+</blockquote>
+<h2 id="see-also">SEE ALSO</h2>
+<div class="codehilite"><pre><span></span><code>o PIPES: pipe(3c), popen(3c), pclose(3c), fflush(3c)
+o NAMED PIPES: mkfifo(3c), mknod(3c)
+o SUBPROCESSES: fork(3c)
+o OTHER: fflush(3c)
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-writefrom"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>writefrom</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fp~15"></span>
+              type(<a href='../type/streampointer.html'>streampointer</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fp</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~17"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-trm"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>trm</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+            <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-process_writeline_array"></span> <h3>private  subroutine process_writeline_array(writefrom, fp, ierr)  
+</h3></div>
+    <div class="card-body">
+        
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-writefrom~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>writefrom</strong>(:)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fp~16"></span>
+              type(<a href='../type/streampointer.html'>streampointer</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fp</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~18"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+</div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              M_process
+ was developed by John S. Urban<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-07-11 01:35 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

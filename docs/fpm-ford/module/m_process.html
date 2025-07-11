@@ -1,0 +1,1296 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="call POSIX popen(3c) routine from Fortran">
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>M_process &ndash; M_process</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">M_process </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>M_process
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title="100.0% of total for modules and submodules.">219 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/M_process.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_process.f90.html'>M_process.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">M_process</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_process.html#variable-process_debug">process_debug</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#inters-0"
+         aria-expanded="false" aria-controls="inters-0">
+         <h4 class="card-header bg-primary text-white">Interfaces</h4>
+      </a>
+      <div id="inters-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_process.html#interface-process_writeline">process_writeline</a>
+        </div>
+      </div>
+    </div>
+
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#types-0"
+         aria-expanded="false" aria-controls="types-0">
+         <h4 class="card-header bg-primary text-white">Derived Types</h4>
+      </a>
+      <div id="types-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_process.html#type-streampointer">streampointer</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#funcs-0"
+         aria-expanded="false" aria-controls="funcs-0">
+         <h4 class="card-header bg-primary text-white">Functions</h4>
+      </a>
+      <div id="funcs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_process.html#proc-process_readall">process_readall</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_process.html#proc-process_close">process_close</a>
+            <a class="list-group-item" href="../module/m_process.html#proc-process_open_read">process_open_read</a>
+            <a class="list-group-item" href="../module/m_process.html#proc-process_open_write">process_open_write</a>
+            <a class="list-group-item" href="../module/m_process.html#proc-process_readline">process_readline</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">M_process</span><span class="ss">(</span><span class="mi">3</span><span class="nv">fm</span><span class="ss">)</span> <span class="o">-</span> [<span class="nv">M_process</span>::<span class="nv">INTRO</span>] <span class="nv">Fortran</span> <span class="nv">Module</span> <span class="k">for</span> <span class="nv">calling</span>
+                 <span class="nv">process</span><span class="o">-</span><span class="nv">related</span> <span class="nv">C</span> <span class="nv">functions</span> <span class="nv">from</span> <span class="nv">Fortran</span>
+<span class="ss">(</span><span class="nv">LICENSE</span>:<span class="nv">PD</span><span class="ss">)</span>
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code> use M_process, only : process_open_read, process_open_write, process_close
+
+ use M_process, only : process_readline, process_readall, process_writeline
+
+ use M_process, only : streampointer, process_debug
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<p>Module M_process(3f) lets Fortran code read/write lines from/to processes.</p>
+<p>These Fortran procedures use the ISO_C_BINDING interface to define
+   Fortran-callable versions of the C procedures popen(3c)/pclose(3c)
+   and fgets(3c)/fputs(3c). A set of record-oriented wrapper routines
+   are then used to create a simple Fortran-callable interface.</p>
+<p>A POSIX C interface is generally available but may require using a Linux
+   subwindow or an application such as CygWin on MSWindows platforms.</p>
+<p>Basically, you</p>
+<p>o Open a process for either reading from or writing to using formatted
+     sequential text records (eg. &ldquo;lines&rdquo;); much like with a regular file.
+   o pass a CHARACTER variable to/from the process that represents
+     a record.
+   o Use internal READs and internal WRITEs or parsing routines to
+     create or interpret the lines.
+   o when done close the process much like closing a file.</p>
+<p>The procedures defined are:</p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">from</span><span class="w"></span>
+<span class="w"> </span><span class="n">subroutine</span><span class="w"> </span><span class="n">process_open_read</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+
+<span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
+<span class="w"> </span><span class="n">subroutine</span><span class="w"> </span><span class="n">process_open_write</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+
+<span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">process</span><span class="w"></span>
+<span class="w"> </span><span class="n">subroutine</span><span class="w"> </span><span class="n">process_readline</span><span class="p">(</span><span class="n">string</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">string</span><span class="w"></span>
+<span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">process_readall</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="w"></span>
+
+<span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">process</span><span class="w"></span>
+<span class="w"> </span><span class="n">subroutine</span><span class="w"> </span><span class="n">process_writeline</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">string</span><span class="o">|</span><span class="n">string_array</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">[,</span><span class="n">trm</span><span class="o">=.</span><span class="n">t</span><span class="o">.|.</span><span class="n">f</span><span class="o">.</span><span class="p">])</span><span class="w"></span>
+
+<span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="n">process</span><span class="w"></span>
+<span class="w"> </span><span class="n">subroutine</span><span class="w"> </span><span class="n">process_close</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">where</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">types</span><span class="w"> </span><span class="n">are</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="o">=*</span><span class="p">)</span><span class="w">    </span><span class="p">::</span><span class="w"> </span><span class="n">cmd</span><span class="w"></span>
+<span class="w">   </span><span class="n">type</span><span class="p">(</span><span class="n">streampointer</span><span class="p">)</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="n">fp</span><span class="w"></span>
+<span class="w">   </span><span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="o">=*</span><span class="p">)</span><span class="w">    </span><span class="p">::</span><span class="w"> </span><span class="n">string</span><span class="w"></span>
+<span class="w">   </span><span class="n">integer</span><span class="w">             </span><span class="p">::</span><span class="w"> </span><span class="n">ierr</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">cmd</span>      <span class="nv">command</span> <span class="nv">passed</span> <span class="nv">to</span> <span class="nv">system</span> <span class="nv">to</span> <span class="nv">start</span> <span class="nv">process</span>
+<span class="nv">fp</span>       <span class="nv">C</span> <span class="nv">file</span> <span class="nv">pointer</span> <span class="nv">returned</span> <span class="nv">by</span> <span class="nv">process_open_</span><span class="o">*</span><span class="ss">()</span>
+<span class="nv">string</span>   <span class="nv">data</span> <span class="nv">line</span> <span class="nv">to</span> <span class="k">send</span> <span class="nv">or</span> <span class="nv">receive</span> <span class="nv">from</span> <span class="nv">process</span>
+<span class="nv">ierr</span>     <span class="nv">error</span> <span class="nv">flag</span> <span class="nv">returned</span>.
+
+          <span class="nv">o</span> <span class="nv">process_writeline</span><span class="ss">(</span><span class="mi">3</span><span class="nv">f</span><span class="ss">)</span> : <span class="nv">negative</span> <span class="nv">indicates</span> <span class="nv">an</span> <span class="nv">error</span>
+          <span class="nv">o</span> <span class="nv">process_readline</span><span class="ss">(</span><span class="mi">3</span><span class="nv">f</span><span class="ss">)</span>  : <span class="nv">Non</span><span class="o">-</span><span class="nv">zero</span> <span class="nv">indicates</span> <span class="nv">an</span> <span class="nv">error</span>
+
+<span class="nv">maximum</span> <span class="nv">character</span> <span class="nv">value</span> <span class="nv">length</span> <span class="nv">is</span> <span class="nv">currently</span> <span class="mi">4096</span>
+</code></pre></div>
+
+<h2 id="examples">EXAMPLES</h2>
+<p>An example that places all the output of a command into a single
+ string variable (see process_readall(3) for an even simpler way to
+ do this) &hellip;</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">program</span> <span class="nv">read_ex</span>
+<span class="nv">use</span> <span class="nv">M_process</span> ,<span class="nv">only</span>: <span class="nv">process_open_read</span>, <span class="nv">process_readline</span>
+<span class="nv">use</span> <span class="nv">M_process</span> ,<span class="nv">only</span>: <span class="nv">streampointer</span>, <span class="nv">process_close</span>
+<span class="nv">implicit</span> <span class="nv">none</span>
+<span class="o">!</span> <span class="nv">C</span> <span class="nv">file</span> <span class="nv">pointer</span> <span class="nv">returned</span> <span class="nv">by</span> <span class="nv">process_open</span><span class="ss">()</span>
+<span class="nv">type</span><span class="ss">(</span><span class="nv">streampointer</span><span class="ss">)</span> :: <span class="nv">fp</span>
+<span class="o">!</span> <span class="nv">check</span> <span class="nv">status</span> <span class="nv">of</span> <span class="nv">calls</span> <span class="nv">to</span> <span class="nv">process</span> <span class="nv">module</span> <span class="nv">routines</span>
+<span class="nv">integer</span> :: <span class="nv">ierr</span>
+<span class="o">!</span> <span class="nv">hold</span> <span class="nv">results</span>, <span class="nv">assuming</span> <span class="nv">sufficient</span> <span class="nv">memory</span> <span class="nv">is</span> <span class="nv">available</span>
+<span class="nv">character</span><span class="ss">(</span><span class="nv">len</span><span class="o">=</span>:<span class="ss">)</span>,<span class="nv">allocatable</span> :: <span class="nv">string</span>
+<span class="o">!</span> <span class="nv">long</span> <span class="nv">enough</span> <span class="nv">to</span> <span class="nv">hold</span> <span class="nv">any</span> <span class="nv">expected</span> <span class="nv">line</span>
+<span class="nv">character</span><span class="ss">(</span><span class="nv">len</span><span class="o">=</span><span class="mi">4096</span><span class="ss">)</span> :: <span class="nv">line</span>
+   <span class="nv">string</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+   <span class="o">!</span>###<span class="o">!</span> <span class="nv">open</span> <span class="nv">process</span> <span class="nv">to</span> <span class="nv">read</span> <span class="nv">from</span>
+   <span class="k">call</span> <span class="nl">process_open_read</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">ls</span><span class="s1">&#39;</span>,<span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+   <span class="o">!</span>###<span class="o">!</span> <span class="nv">read</span> <span class="nv">output</span> <span class="nv">of</span> <span class="nv">process</span> <span class="nv">till</span> <span class="k">end</span>
+   <span class="k">do</span>
+      <span class="k">call</span> <span class="nl">process_readline</span><span class="ss">(</span><span class="nv">line</span>,<span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+      <span class="k">if</span><span class="ss">(</span><span class="nv">ierr</span>.<span class="nv">ne</span>.<span class="mi">0</span><span class="ss">)</span><span class="k">exit</span>
+      <span class="o">!</span>###<span class="o">!</span> <span class="nv">append</span> <span class="nv">output</span> <span class="nv">lines</span> <span class="nv">together</span>
+      <span class="nv">string</span><span class="o">=</span><span class="nv">string</span><span class="o">//</span><span class="nv">trim</span><span class="ss">(</span><span class="nv">line</span><span class="ss">)</span><span class="o">//</span><span class="s1">&#39;</span><span class="s"> </span><span class="s1">&#39;</span>
+      <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="s1">&#39;</span><span class="s">[</span><span class="s1">&#39;</span><span class="o">//</span><span class="nv">string</span><span class="o">//</span><span class="s1">&#39;</span><span class="s">]</span><span class="s1">&#39;</span>
+   <span class="nv">enddo</span>
+   <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="nv">trim</span><span class="ss">(</span><span class="nv">string</span><span class="ss">)</span>
+   <span class="o">!</span>###<span class="o">!</span> <span class="nv">Wrap</span> <span class="nv">up</span>
+   <span class="k">call</span> <span class="nl">process_close</span><span class="ss">(</span><span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+<span class="k">end</span> <span class="nv">program</span> <span class="nv">read_ex</span>
+</code></pre></div>
+
+<p>When calling a line-mode program from another program the most natural
+ way is to open a process and write to it.</p>
+<p>Following is an example program that calls the M_process module to
+ start a plotting program called gnuplot(1) and give it enough commands
+ to generate a plot. It then lets you interactively interact with the
+ gnuplot(1) program or continue on in the program.</p>
+<p>program gnuplotExample
+   use M_process ,only: process_open_write, process_writeline
+   use M_process ,only: streampointer, process_close
+   implicit none
+   !
+   ! Example of Fortran writing GNUPLOT command and data file.
+   !
+   !<em>! line of data to write
+   !</em>! (assumed long enough to hold any command line)
+   character(len=4096) :: line
+   !<em>! C file pointer returned by process_open()
+   type(streampointer) :: fp
+   !</em>! check status of calls to process module routines
+   integer :: ierr
+   !<em>! DO loop counter
+   integer :: i
+   !</em>! number of points to put into curve to be plotted
+   integer,parameter   :: n=50
+   !<em>! arrays to fill with curve data to be plotted
+   real                :: x(n),y(n)
+   integer             :: ios
+   !</em>! Define sample X,Y array.
+   do i=1,n
+   !<em>! set X() values as whole numbers 1 to N
+      x(i)=i
+      !</em>!
+      y(i)=(x(i)+0.5)<em><em>2
+   enddo
+   !</em>! Write the GnuPlot commands
+   !</em>! open process to write to (ie. start gnuplot(1) program)
+   call process_open_write(&lsquo;gnuplot&rsquo;,fp,ierr)
+   !<em>! create in-line dataset $SET1
+   call process_writeline(&lsquo;$SET1 &lt;&lt;EOD&rsquo;,fp,ierr)
+   do i=1,n
+      !</em>! Write the X,Y array as coordinates to be plotted.
+      write(line,&rsquo;(2(f10.3,1x))&rsquo;)x(i),y(i)
+      call process_writeline(line,fp,ierr)
+   enddo</p>
+<p>call process_writeline([character(len=128) ::                        &amp;
+   &amp;&rsquo;EOD                                                             &lsquo;, &amp;
+   &amp;&rsquo;set title &rdquo; Example of GNUPlot data and command file generation&rdquo;&rsquo;, &amp;
+   &amp;&rsquo;set nokey&rsquo;                                                       , &amp;
+   &amp;&rsquo;plot $SET1 with lines&rsquo;                                           , &amp;
+   &amp;&rsquo;&lsquo;],fp,ierr)</p>
+<p>!<em>! Additional gnuplot commands; in this case interactively entered
+   write(</em>,&rsquo;(a)&rsquo;)&rsquo;enter gnuplot commands or &ldquo;.&rdquo; to exit&rsquo;
+   do
+      write(<em>,&rsquo;(a)&rsquo;,advance=&rsquo;no&rsquo;)&rsquo;gnu&gt;&gt;&rsquo;
+      read(</em>,&rsquo;(a)&rsquo;,iostat=ios)line
+      if(line.eq.&rsquo;.&rsquo;)exit
+      call process_writeline(trim(line),fp,ierr)
+   enddo
+   !<em>! Wrap up
+   call process_close(fp,ierr)
+   write(</em>,*)&rsquo;CLOSED THE PROCESS. RETURNING TO PROGRAM&rsquo;
+   end program gnuplotExample</p>
+<p>This program starts a bash shell that, among other things, calls
+ sqlite3 and gnuplot. In this case the text is fixed to keep the example
+ simple. More typically the text would be conditionally selected or
+ generated by the program.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">program</span> <span class="nv">demo_M_process</span>
+ <span class="nv">use</span> <span class="nv">M_process</span> ,<span class="nv">only</span> : <span class="nv">process_open_write</span>, <span class="nv">process_writeline</span>
+ <span class="nv">use</span> <span class="nv">M_process</span> ,<span class="nv">only</span> : <span class="nv">streampointer</span>, <span class="nv">process_close</span>
+ <span class="nv">implicit</span> <span class="nv">none</span>
+ <span class="o">!</span> <span class="nv">C</span> <span class="nv">file</span> <span class="nv">pointer</span> <span class="nv">returned</span> <span class="nv">by</span> <span class="nv">process_open</span><span class="ss">()</span>
+ <span class="nv">type</span><span class="ss">(</span><span class="nv">streampointer</span><span class="ss">)</span> :: <span class="nv">fp</span>
+ <span class="o">!</span> <span class="nv">check</span> <span class="nv">status</span> <span class="nv">of</span> <span class="nv">calls</span> <span class="nv">to</span> <span class="nv">process</span> <span class="nv">module</span> <span class="nv">routines</span>
+ <span class="nv">integer</span> :: <span class="nv">ierr</span>
+ <span class="nv">character</span><span class="ss">(</span><span class="nv">len</span><span class="o">=</span>:<span class="ss">)</span>,<span class="nv">allocatable</span> :: <span class="nv">text</span><span class="ss">(</span>:<span class="ss">)</span>
+
+ <span class="o">!</span> <span class="nv">open</span> <span class="nv">process</span> <span class="nv">to</span> <span class="nv">write</span> <span class="nv">to</span> <span class="ss">(</span><span class="nv">ie</span>. <span class="nv">start</span> <span class="nv">gnuplot</span><span class="ss">(</span><span class="mi">1</span><span class="ss">)</span> <span class="nv">program</span><span class="ss">)</span>
+ <span class="o">!!</span><span class="k">call</span> <span class="nl">process_open_write</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">cat</span><span class="s1">&#39;</span>,<span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+ <span class="o">!</span> <span class="nv">open</span> <span class="nv">process</span> <span class="nv">to</span> <span class="nv">write</span> <span class="nv">to</span> <span class="ss">(</span><span class="nv">ie</span>. <span class="nv">start</span> <span class="nv">gnuplot</span><span class="ss">(</span><span class="mi">1</span><span class="ss">)</span> <span class="nv">program</span><span class="ss">)</span>
+ <span class="k">call</span> <span class="nl">process_open_write</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">bash</span><span class="s1">&#39;</span>,<span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+
+ <span class="nv">text</span><span class="o">=</span>[<span class="nv">character</span><span class="ss">(</span><span class="nv">len</span><span class="o">=</span><span class="mi">128</span><span class="ss">)</span> :: <span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">rm -f sqlite1.db</span><span class="s2">&quot;</span>, <span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">sqlite3 sqlite1.db &lt;&lt;\EOF</span><span class="s2">&quot;</span>, <span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">-- ***********************************************</span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">CREATE TABLE IF NOT EXISTS animals(               </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">   name        TEXT   NOT NULL   PRIMARY KEY ,    </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">   hair        INT    NOT NULL   ,                </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">   mobility    INT    NOT NULL   ,                </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">   vision      INT    NOT NULL   );               </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">-- ***********************************************</span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">INSERT INTO animals(&amp;</span>
+ <span class="o">&amp;</span><span class="nv">name</span>,<span class="nv">hair</span>,<span class="nv">mobility</span>,<span class="nv">vision</span><span class="ss">)</span> <span class="nv">VALUES</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">kittens</span><span class="s1">&#39;</span>,<span class="mi">4</span>,<span class="mi">5</span>,<span class="mi">1</span><span class="ss">)</span><span class="c1">;&quot;,&amp;</span>
+ <span class="s2">&quot;</span><span class="s">INSERT INTO animals(&amp;</span>
+ <span class="o">&amp;</span><span class="nv">name</span>,<span class="nv">hair</span>,<span class="nv">mobility</span>,<span class="nv">vision</span><span class="ss">)</span> <span class="nv">VALUES</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">mice</span><span class="s1">&#39;</span>   ,<span class="mi">6</span>,<span class="mi">7</span>,<span class="mi">2</span><span class="ss">)</span><span class="c1">;&quot;,&amp;</span>
+ <span class="s2">&quot;</span><span class="s">INSERT INTO animals(&amp;</span>
+ <span class="o">&amp;</span><span class="nv">name</span>,<span class="nv">hair</span>,<span class="nv">mobility</span>,<span class="nv">vision</span><span class="ss">)</span> <span class="nv">VALUES</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">rats</span><span class="s1">&#39;</span>   ,<span class="mi">2</span>,<span class="mi">3</span>,<span class="mi">3</span><span class="ss">)</span><span class="c1">;&quot;,&amp;</span>
+ <span class="s2">&quot;</span><span class="s">-- ***********************************************</span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">.quit</span><span class="s2">&quot;</span>, <span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">EOF</span><span class="s2">&quot;</span>, <span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">##################################################</span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">sqlite3 -header -column sqlite1.db  &#39;select * from animals&#39;</span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">sqlite3 sqlite1.db  &amp;</span>
+ <span class="o">&amp;</span><span class="s1">&#39;</span><span class="s">select name, hair, mobility, vision from animals</span><span class="s1">&#39;</span><span class="s2">&quot;</span><span class="s">,&amp;</span>
+ <span class="s2">&quot;</span><span class="s">##################################################</span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">gnuplot --persist &lt;&lt;\EOF                          </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">########################################          </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">#set terminal gif                                 </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">#set output &#39;M_process.3.gif&#39;                     </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">########################################          </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">#set terminal png                                 </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">#set output &#39;bar.png&#39;                             </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">########################################          </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">#set terminal pdf enhanced                        </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">#set output &#39;bar.pdf&#39;                             </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">########################################          </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">#set style data lines                             </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">########################################          </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">set datafile separator </span><span class="s2">&quot;&quot;</span><span class="s">|</span><span class="s2">&quot;&quot;</span><span class="s">                      </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">set style data histogram                          </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">set style histogram cluster gap 1                 </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">set style fill solid border rgb </span><span class="s2">&quot;&quot;</span><span class="s">black</span><span class="s2">&quot;&quot;</span><span class="s">         </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">set auto x                                        </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">set yrange [0:*]                                  </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">plot </span><span class="s2">&quot;&quot;</span><span class="s">&lt; sqlite3 sqlite1.db  &amp;</span>
+ <span class="o">&amp;</span><span class="s1">&#39;</span><span class="s">select name, hair, mobility, vision  from animals</span><span class="s1">&#39;</span><span class="s2">&quot;&quot;</span> \  <span class="s2">&quot;</span><span class="s">, &amp;</span>
+ <span class="s2">&quot;</span><span class="s">      using 2:xtic(1) title </span><span class="s2">&quot;&quot;</span><span class="s">hair</span><span class="s2">&quot;&quot;</span><span class="s">,  \          </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">   &#39;&#39; using 4:xtic(1) title </span><span class="s2">&quot;&quot;</span><span class="s">vision</span><span class="s2">&quot;&quot;</span><span class="s">, \         </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">   &#39;&#39; using 3:xtic(1) title </span><span class="s2">&quot;&quot;</span><span class="s">mobility</span><span class="s2">&quot;&quot;</span><span class="s">          </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">quit                                              </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s">EOF                                               </span><span class="s2">&quot;</span>,<span class="o">&amp;</span>
+ <span class="s2">&quot;</span><span class="s"> </span><span class="s2">&quot;</span>]
+
+    <span class="o">!!</span><span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="s1">&#39;</span><span class="s">(a)</span><span class="s1">&#39;</span><span class="ss">)</span><span class="nv">text</span>
+    <span class="k">call</span> <span class="nl">process_writeline</span><span class="ss">(</span><span class="nv">text</span>,<span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+    <span class="k">call</span> <span class="nl">process_close</span><span class="ss">(</span><span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="s1">&#39;</span><span class="s">(a)</span><span class="s1">&#39;</span><span class="ss">)</span><span class="s1">&#39;</span><span class="s">CLOSED THE PROCESS. RETURNING TO PROGRAM</span><span class="s1">&#39;</span>
+
+ <span class="k">end</span> <span class="nv">program</span> <span class="nv">demo_M_process</span>
+</code></pre></div>
+
+<p>This example shows a routine to read the output of one command and
+ then call another command to write that output to.</p>
+<div class="codehilite"><pre><span></span><code>  <span class="nv">program</span> <span class="nv">test</span>
+  <span class="nv">implicit</span> <span class="nv">none</span>
+    <span class="k">call</span> <span class="nl">readit</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">ls -l</span><span class="s1">&#39;</span><span class="ss">)</span>
+    <span class="k">call</span> <span class="nl">writeit</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">cat -n</span><span class="s1">&#39;</span><span class="ss">)</span>
+  <span class="nv">contains</span>
+
+  <span class="nv">subroutine</span> <span class="nv">readit</span><span class="ss">(</span><span class="nv">cmd</span><span class="ss">)</span>
+  <span class="nv">use</span> <span class="nv">M_process</span> ,<span class="nv">ONLY</span>: <span class="nv">process_open_read</span>, <span class="nv">process_readline</span>
+  <span class="nv">use</span> <span class="nv">M_process</span> ,<span class="nv">ONLY</span>: <span class="nv">streampointer</span>, <span class="nv">process_close</span>
+  <span class="o">!</span> <span class="nv">C</span> <span class="nv">file</span> <span class="nv">pointer</span> <span class="nv">returned</span> <span class="nv">by</span> <span class="nv">process_open</span><span class="ss">()</span>
+  <span class="nv">type</span><span class="ss">(</span><span class="nv">streampointer</span><span class="ss">)</span> :: <span class="nv">fp</span>
+  <span class="o">!</span> <span class="nv">command</span> <span class="nv">line</span> <span class="nv">executed</span> <span class="nv">to</span> <span class="nv">start</span> <span class="nv">process</span>
+  <span class="nv">character</span><span class="ss">(</span><span class="nv">len</span><span class="o">=*</span><span class="ss">)</span>    :: <span class="nv">cmd</span>
+  <span class="o">!</span> <span class="nv">line</span> <span class="nv">of</span> <span class="nv">data</span> <span class="nv">to</span> <span class="nv">read</span> <span class="ss">(</span><span class="nv">assumed</span> <span class="nv">long</span> <span class="nv">enough</span> <span class="nv">to</span> <span class="nv">hold</span> <span class="nv">any</span> <span class="nv">input</span> <span class="nv">line</span><span class="ss">)</span>
+  <span class="nv">character</span><span class="ss">(</span><span class="nv">len</span><span class="o">=</span><span class="mi">4096</span><span class="ss">)</span> :: <span class="nv">line</span>
+  <span class="nv">integer</span> <span class="nv">ierr</span>
+    <span class="o">!</span> <span class="nv">open</span> <span class="nv">process</span> <span class="nv">to</span> <span class="nv">read</span> <span class="nv">from</span>
+    <span class="k">call</span> <span class="nl">process_open_read</span><span class="ss">(</span><span class="nv">cmd</span>,<span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="s1">&#39;</span><span class="s">READTEST: process is opened with status </span><span class="s1">&#39;</span>,<span class="nv">ierr</span>
+    <span class="nv">ierr</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">do</span> <span class="k">while</span><span class="ss">(</span><span class="nv">ierr</span> .<span class="nv">eq</span>. <span class="mi">0</span><span class="ss">)</span>
+      <span class="o">!</span> <span class="nv">read</span> <span class="nv">a</span> <span class="nv">line</span> <span class="nv">from</span> <span class="nv">the</span> <span class="nv">process</span>
+      <span class="k">call</span> <span class="nl">process_readline</span><span class="ss">(</span><span class="nv">line</span>,<span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+      <span class="k">if</span><span class="ss">(</span><span class="nv">ierr</span>.<span class="nv">ne</span>.<span class="mi">0</span><span class="ss">)</span><span class="k">then</span>
+        <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="s1">&#39;</span><span class="s">READTEST: ierr is </span><span class="s1">&#39;</span>,<span class="nv">ierr</span>
+        <span class="k">exit</span>
+      <span class="k">endif</span>
+      <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="s1">&#39;</span><span class="s">READTEST: line:</span><span class="s1">&#39;</span><span class="o">//</span><span class="nv">trim</span><span class="ss">(</span><span class="nv">line</span><span class="ss">)</span>
+    <span class="nv">enddo</span>
+    <span class="k">call</span> <span class="nl">process_close</span><span class="ss">(</span><span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="s1">&#39;</span><span class="s">READTEST: process closed with status </span><span class="s1">&#39;</span>,<span class="nv">ierr</span>
+  <span class="k">end</span> <span class="nv">subroutine</span> <span class="nv">readit</span>
+  <span class="o">!---------------------------------------------------------------------</span>
+  <span class="nv">subroutine</span> <span class="nv">writeit</span><span class="ss">(</span><span class="nv">cmd</span><span class="ss">)</span>
+  <span class="nv">use</span> <span class="nv">M_process</span>, <span class="nv">only</span>: <span class="nv">process_open_write</span>, <span class="nv">process_writeline</span>
+  <span class="nv">use</span> <span class="nv">M_process</span>, <span class="nv">only</span>: <span class="nv">streampointer</span>, <span class="nv">process_close</span>
+  <span class="o">!</span> <span class="nv">C</span> <span class="nv">file</span> <span class="nv">pointer</span> <span class="nv">returned</span> <span class="nv">by</span> <span class="nv">process_open</span><span class="ss">()</span>
+  <span class="nv">type</span><span class="ss">(</span><span class="nv">streampointer</span><span class="ss">)</span> :: <span class="nv">fp</span>
+  <span class="o">!</span> <span class="nv">command</span> <span class="nv">line</span> <span class="nv">executed</span> <span class="nv">to</span> <span class="nv">start</span> <span class="nv">process</span>
+  <span class="nv">character</span><span class="ss">(</span><span class="nv">len</span><span class="o">=*</span><span class="ss">)</span>    :: <span class="nv">cmd</span>
+  <span class="o">!</span> <span class="nv">line</span> <span class="nv">of</span> <span class="nv">data</span> <span class="nv">to</span> <span class="nv">write</span> <span class="ss">(</span><span class="nv">assumed</span> <span class="nv">long</span> <span class="nv">enough</span> <span class="nv">to</span> <span class="nv">hold</span> <span class="nv">any</span> <span class="nv">output</span> <span class="nv">line</span><span class="ss">)</span>
+  <span class="nv">character</span><span class="ss">(</span><span class="nv">len</span><span class="o">=</span><span class="mi">4096</span><span class="ss">)</span> :: <span class="nv">line</span>
+  <span class="nv">integer</span>             :: <span class="nv">ierr</span>
+  <span class="nv">integer</span>             :: <span class="nv">i</span>
+    <span class="o">!</span> <span class="nv">open</span> <span class="nv">process</span> <span class="nv">to</span> <span class="nv">write</span> <span class="nv">to</span>
+    <span class="k">call</span> <span class="nl">process_open_write</span><span class="ss">(</span><span class="nv">cmd</span>,<span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="s1">&#39;</span><span class="s">WRITETEST: process is opened</span><span class="s1">&#39;</span>
+    <span class="nv">ierr</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">do</span> <span class="nv">i</span><span class="o">=</span><span class="mi">1</span>,<span class="mi">10</span>
+      <span class="nv">write</span><span class="ss">(</span><span class="nv">line</span>,<span class="s1">&#39;</span><span class="s">(&quot;WRITETEST: line &quot;,i0)</span><span class="s1">&#39;</span><span class="ss">)</span><span class="nv">i</span>
+      <span class="k">call</span> <span class="nl">process_writeline</span><span class="ss">(</span><span class="nv">line</span>,<span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+      <span class="k">if</span><span class="ss">(</span><span class="nv">ierr</span>.<span class="nv">lt</span>.<span class="mi">0</span><span class="ss">)</span><span class="k">then</span>
+        <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="s1">&#39;</span><span class="s">WRITETEST: process write error </span><span class="s1">&#39;</span>,<span class="nv">ierr</span>
+        <span class="k">exit</span>
+      <span class="k">endif</span>
+    <span class="nv">enddo</span>
+    <span class="k">call</span> <span class="nl">process_close</span><span class="ss">(</span><span class="nv">fp</span>,<span class="nv">ierr</span><span class="ss">)</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="s1">&#39;</span><span class="s">WRITETEST: process closed with status </span><span class="s1">&#39;</span>,<span class="nv">ierr</span>
+  <span class="k">end</span> <span class="nv">subroutine</span> <span class="nv">writeit</span>
+  <span class="k">end</span> <span class="nv">program</span> <span class="nv">test</span>
+</code></pre></div>
+
+<h2 id="see-also">SEE ALSO</h2>
+<div class="codehilite"><pre><span></span><code>o PIPES: pipe(3c), popen(3c), pclose(3c), fflush(3c)
+o NAMED PIPES: mkfifo(3c), mknod(3c)
+o SUBPROCESSES: fork(3c)
+o OTHER: fflush(3c)
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
+
+<p>DESCRIPTION: record-oriented Fortran I/O interface to C popen,pclose,fgets,fputs</p>
+<h2 id="version-200-20161105">VERSION:     2.0.0, 20161105</h2>
+<p>AUTHOR:      John S. Urban</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      
+      <br>
+
+
+        <section>
+          <h2>Variables</h2>
+            <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-process_debug"></span>
+              logical,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>process_debug</strong></td>
+<td> =</td>
+                <td>.false.</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+        </section>
+        <br>
+
+
+        <section>
+          <h2>Interfaces</h2>
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-process_writeline"></span>
+      <h3>public        interface <a href='../interface/process_writeline.html'>process_writeline</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine process_writeline_scalar(writefrom, fp, ierr, trm)  
+
+    </h3>
+  <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code><span class="k">proc</span><span class="nv">ess_writeline</span><span class="p">(</span><span class="mi">3</span><span class="nv">fm</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">[</span><span class="nv">M_process</span><span class="p">]</span><span class="w"> </span><span class="nv">write</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">process</span><span class="w"> </span><span class="nv">using</span><span class="w"> </span><span class="nv">a</span><span class="w"></span>
+<span class="w">                         </span><span class="nf">POSIX</span><span class="w"> </span><span class="nv">interface</span><span class="w"></span>
+<span class="err">(</span><span class="nl">LICENSE:</span><span class="nf">PD</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code> subroutine process_writeline(string,fp,ierr)
+
+   character(len=*)    :: string
+   type(streampointer) :: fp
+   integer             :: ierr
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<p>The M_process Fortran procedures use the ISO_C_BINDING interface to define
+   Fortran-callable versions of the C procedures popen(3c)/pclose(3c)
+   and fgets(3c)/fputs(3c). A set of record-oriented wrapper routines
+   are then used to create a simple Fortran-callable interface.</p>
+<p>A POSIX C interface is generally available but may require using a Linux
+   subwindow or an application such as CygWin on MSWindows platforms.</p>
+<p>See &ldquo;M_process&rdquo; for an extended description.</p>
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code>string   data line to to process
+fp       C file pointer returned by process_open_*()
+ierr     error flag returned.
+
+          o process_writeline(3f) : negative indicates an error
+          o process_readline(3f)  : Non-zero indicates an error
+
+maximum character value length is currently 4096
+</code></pre></div>
+
+<h2 id="examples">EXAMPLES</h2>
+<p>This example shows a routine to write lines to the stdin of a system process</p>
+<p>program demo_process_writeline
+   use, intrinsic :: iso_fortran_env, only : &amp;
+      &amp; stdin=&gt;input_unit, &amp;
+      &amp; stdout=&gt;output_unit, &amp;
+      &amp; stderr=&gt;error_unit
+   use m_process ,only: process_open_write, process_writeline
+   use m_process ,only: streampointer, process_close
+   implicit none
+   type(streampointer) :: fp
+   ! line of data to write
+   character(len=4096) :: line
+   integer             :: ierr
+   integer             :: i
+     ! open process to write to
+     call process_open_write(&lsquo;cat -n&rsquo;,fp,ierr)
+     write(<em>,</em>)&rsquo;WRITETEST: process is opened with status &lsquo;,ierr
+     ! remember C and Fortran I/O are often independent of each other
+     flush(stdout)
+     ierr=0
+     line=&rsquo;xxxxxxxxxxxxxxxxxxxxxxxxxxx&rsquo;
+     do i=1,10
+       ! write a line to the process
+       call process_writeline(trim(line),fp,ierr)
+       if(ierr.lt.0)then
+         write(<em>,</em>)&rsquo;WRITETEST: ierr is &lsquo;,ierr
+         exit
+       endif
+     enddo
+     call process_close(fp,ierr)
+     write(<em>,</em>)&rsquo;WRITETEST: process closed with status &lsquo;,ierr
+   end program demo_process_writeline</p>
+<p>Sample output:</p>
+<blockquote>
+<p>WRITETEST: process is opened with status            0
+  1 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  2 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  3 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  4 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  5 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  6 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  7 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  8 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+  9 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 10 xxxxxxxxxxxxxxxxxxxxxxxxxxx
+WRITETEST: process closed with status            0</p>
+</blockquote>
+<h2 id="see-also">SEE ALSO</h2>
+<div class="codehilite"><pre><span></span><code>o PIPES: pipe(3c), popen(3c), pclose(3c), fflush(3c)
+o NAMED PIPES: mkfifo(3c), mknod(3c)
+o SUBPROCESSES: fork(3c)
+o OTHER: fflush(3c)
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-writefrom"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>writefrom</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fp~15"></span>
+              type(<a href='../type/streampointer.html'>streampointer</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fp</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~17"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-trm"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>trm</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine process_writeline_array(writefrom, fp, ierr)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-writefrom~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>writefrom</strong>(:)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fp~16"></span>
+              type(<a href='../type/streampointer.html'>streampointer</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fp</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~18"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+        </section>
+        <br>
+
+
+        <section>
+          <h2>Derived Types</h2>
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-streampointer"></span>
+      <h3>
+        type, public&nbsp;::&nbsp;
+        <a href='../type/streampointer.html'>streampointer</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-handle"></span>
+              type(c_ptr),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>handle</strong></td>
+<td> =</td>
+                <td>c_null_ptr</td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Functions</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-process_readall"></span> <h3>public  function <a href='../proc/process_readall.html'>process_readall</a>(cmd, delim, ierr) result(string)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>syntax:</p><a href="../proc/process_readall.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cmd~4"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cmd</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-delim"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>delim</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~16"></span>
+              integer,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>character(len=:), allocatable</small>
+    </h4>
+    <p>assume will not run out of memory</p>
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-process_close"></span> <h3>public  subroutine <a href='../proc/process_close.html'>process_close</a>(fp, ierr)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>The M_process Fortran procedures use the ISO_C_BINDING
+   interface to define Fortran-callable versions of the C procedures
+   popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-oriented
+   wrapper routines are then used to create a simple Fortran-callable
+   interface.</p><a href="../proc/process_close.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fp~12"></span>
+              type(<a href='../type/streampointer.html'>streampointer</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fp</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~14"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-process_open_read"></span> <h3>public  subroutine <a href='../proc/process_open_read.html'>process_open_read</a>(cmd, fp, ierr)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>The M_process Fortran procedures use the ISO_C_BINDING interface to define
+   Fortran-callable versions of the C procedures popen(3c)/pclose(3c)
+   and fgets(3c)/fputs(3c). A set of record-oriented wrapper routines
+   are then used to create a simple Fortran-callable interface.</p><a href="../proc/process_open_read.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cmd"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cmd</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fp~9"></span>
+              type(<a href='../type/streampointer.html'>streampointer</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fp</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~11"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-process_open_write"></span> <h3>public  subroutine <a href='../proc/process_open_write.html'>process_open_write</a>(cmd, fp, ierr)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>The M_process Fortran procedures use the ISO_C_BINDING interface to define
+   Fortran-callable versions of the C procedures popen(3c)/pclose(3c)
+   and fgets(3c)/fputs(3c). A set of record-oriented wrapper routines
+   are then used to create a simple Fortran-callable interface.</p><a href="../proc/process_open_write.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cmd~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cmd</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fp~10"></span>
+              type(<a href='../type/streampointer.html'>streampointer</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fp</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~12"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-process_readline"></span> <h3>public  subroutine <a href='../proc/process_readline.html'>process_readline</a>(readfrom, fp, ierr)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>The M_process Fortran procedures use the ISO_C_BINDING
+   interface to define Fortran-callable versions of the C procedures
+   popen(3c)/pclose(3c) and fgets(3c)/fputs(3c). A set of record-oriented
+   wrapper routines are then used to create a simple Fortran-callable
+   interface.</p><a href="../proc/process_readline.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-readfrom"></span>
+              character(len=*),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>readfrom</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fp~13"></span>
+              type(<a href='../type/streampointer.html'>streampointer</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fp</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~15"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              M_process
+ was developed by John S. Urban<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-07-11 01:35 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>
